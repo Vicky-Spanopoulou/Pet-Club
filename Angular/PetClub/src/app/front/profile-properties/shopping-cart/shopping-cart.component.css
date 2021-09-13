@@ -1,0 +1,231 @@
+
+/* main */
+main{
+    display:grid;
+    grid-template-columns: 12% 73% 12%;
+    grid-gap: 0px;
+    margin-top: 300px;
+    margin-bottom: 50px;
+    font-family: var(--main-font);
+    min-height: 500px;
+}
+
+
+.box-container{
+    background-color: white;
+    border:2px solid var(--first-color);
+    border-radius: 5px;
+    min-width: 320px;
+    width: 350px;
+    float:right;
+    display: block;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+.box-container .box-header{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+.box-container .box-header .header{
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-family: var(--headers-font);
+    color:var(--first-color);
+    font-size: 30px;
+    font-weight: bolder;
+}
+.box-container .box-header hr{
+    background-color: var(--first-color);
+    width: 90%;
+    margin: auto;
+}
+.box-container .box-body{
+    width: 100%;
+}
+.box-container .box-body .box-row,
+.box-container .box-body .box-option{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: var(--default-font-color);
+}
+.box-container .box-body .box-row .box-title{
+    height: 30px;
+    width:150px;
+    line-height: 30px;
+    margin-right: 20px;
+    float:left;
+    text-align: right;
+    font-weight: bolder;
+}
+.box-container .box-body .box-row .box-value{
+    height: 30px;
+    width:calc(100% - 170px);
+    line-height: 30px;
+    float: right;
+}
+.box-container .box-body .box-option .check{
+    margin-left:20px;
+    width:40px;
+    float: left;
+} 
+.box-container .box-body .box-option .check input{
+    width: 20px;
+    height: 20px;
+}
+.box-container .box-body .box-option .box-title{
+    width:calc(100% - 60px);
+    float: right;
+    line-height: 30px;
+} 
+.box-container .box-body .box-option .box-title a{
+    text-transform: none;
+    color: var(--first-color);
+} 
+
+.box-container .box-body .box-selection{ 
+    width:100%;
+}
+.box-container .box-body .box-selection .radioButtons{ 
+    width:100%;
+    border-bottom: 2px solid var(--first-color);
+    margin-bottom: 20px;
+}
+   
+.box-container .box-body .box-selection .radioButtons .radioButton{
+    width: 180px;
+    height: 50px;
+    margin: auto;
+}
+.box-container .box-body .box-selection .purchase-container{
+    width: 100%;
+}
+.box-container .box-body .box-selection .purchase-container #paypal-container{
+    width: 90%;
+    margin: auto;
+    min-height: 150px;
+}
+.box-container .box-body .box-selection .purchase-container #bank-container{
+    width: 90%;
+    margin: auto;
+    min-height: 60px;
+}
+.box-container .box-body .box-selection .purchase-container #bank-container #info{
+    width: 100%;
+    border: 4px solid rgb(255, 153, 51);
+    background-color: rgb(255, 153, 51,0.15);
+    color: rgb(255, 153, 51);;
+    margin-bottom: 20px;
+}
+.box-container .box-body .box-selection .purchase-container #bank-container #buy-bankTransfer{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: var(--first-color);
+    border-color:var(--first-color) ;
+    border-radius: 5px;
+    color: white;
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+
+.billing-details{
+    background-color: white;
+    min-width: 320px;
+    width:calc(100% - 400px);
+    min-height: 600px;
+    float: left;
+    border: 2px solid var(--first-color);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.billing-details .billing-header{
+    height: 50px;
+    width: 100%;
+    margin-bottom:50px;
+}
+.billing-details .billing-header .header{
+    height: 50px;
+    width: 150px;
+    line-height: 50px;
+    font-family: var(--headers-font);
+    color:var(--first-color);
+    font-size: 30px;
+    font-weight: bolder;
+    margin-left: 30px;
+    float:left;
+}
+.billing-details .billing-header .edit-buttons{
+    height: 50px;
+    width:30px;
+    margin-right: 20px;
+    display: block;
+    float:right;
+    color: var(--first-color);
+    font-size: 30px;
+    line-height: 50px;
+    cursor: pointer;
+}
+.billing-details .billing-header .edit-buttons#cancel{
+    color: red;
+}
+.billing-details .billing-header hr{
+    width: 96%;
+    margin:auto;
+    background-color: var(--first-color);
+}
+.billing-details .billing-body{
+    width: 100%;
+}
+
+.error-msg{
+     
+    color: red;
+    font-family: var(--second-font);
+  }
+
+@media screen and (max-width: 1400px) {
+    main{
+        display:grid;
+        grid-template-columns: 100% ;
+    }   
+    section:nth-child(2){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .box-container .box-body{
+        width:320px;
+        margin: auto;
+    }
+   
+}
+@media screen and (max-width: 1000px) {
+    .box-container{
+        float:none;
+        width:80%;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .billing-details{
+        float:none;
+        width:80%;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .box-container,
+    .billing-details{
+        width: 100%;
+    }
+}

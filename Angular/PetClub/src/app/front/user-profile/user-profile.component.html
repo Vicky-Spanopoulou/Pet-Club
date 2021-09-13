@@ -1,0 +1,138 @@
+<div>
+  <!-- PREPEI NA MPOUN TA FORMS  -->
+
+
+
+
+  <header
+    style='background:url("/assets/images/background-dogsEdited.jpg") no-repeat;background-position: 200px 0px; width: 100%; height: 500px;background-color: #E1E1E1;'>
+    <app-front-navbar></app-front-navbar>
+  </header>
+
+  <main>
+    <section></section>
+
+
+    <!-- Page's Content -->
+    <section>
+
+      <div id="profile-navbar" class="small-shadow">
+        <div id="profile-image" >
+          
+          <img [src]="user.img?user.img:'../../../assets/images/defaultProfileImage.jpg'" alt=""> 
+          <input id='inputUserPhoto' type="file" (change)="selectFile($event)" />
+          <label id='inputUserPhotoLabel' for='inputUserPhoto'><i class="fas fa-edit"></i></label>
+      
+       
+
+
+      
+      
+        </div>
+        <div id="profile-nav">
+          <div id="profile-nav-burger" (click)="toggleNavList()">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div id="nav-list" (click)="toggleNavList()" *ngIf="navList">
+            <!-- <a href="#pet-content"> -->
+            <div id="myPets-tab" class="nav-item selected" (click)="setContainer('myPets',$event)">
+              <!-- <span class="icon"><i class="fas fa-paw"></i></span> -->
+              <span class="item-value">My Pets</span>
+            </div>
+            <!-- </a> -->
+            <!-- <a href="#ad-content"> -->
+            <div id="myAds-tab" class="nav-item" (click)="setContainer('myAds',$event)">
+              <!-- <span class="icon"><i class="fab fa-readme"></i></span> -->
+              <span class="item-value">My Ads</span>
+            </div>
+            <!-- </a> -->
+            <!-- <a href="#reminder-content"> -->
+            <div id="myReminder-tab" class="nav-item " (click)="setContainer('myReminder',$event)">
+              <!-- <span class="icon"><i class="fab fa-readme"></i></span> -->
+              <span class="item-value">My Reminder</span>
+            </div>
+            <!-- </a> -->
+          </div>
+        </div>
+      </div>
+
+
+      <div id="content">
+
+
+        <!-- Profile Details -->
+        <div class="sidebox-cont shadow">
+          <div class="sidebox-cont-header">
+            <h3>{{user.firstName}}</h3>
+            <h3>{{user.lastName}}</h3>
+            <hr>
+          </div>
+          <div class="sidebox-cont-body">
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="far fa-envelope-open"></i></span>
+              <span class="value"><a href="mailto:{{user.email}}">{{(user.email !== '')? user.email :'-'}}</a></span>
+            </div>
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="fas fa-phone-alt"></i></span>
+              <span class="value"><a href="tel:{{user.phone}}">{{(user.phone!== null)? user.phone :'-'}}</a></span>
+            </div>
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="value">{{user.address.street}}</span>
+              <!-- <span class="value">{{user.address.street}}</span> -->
+            </div>
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="fas fa-city"></i></span>
+              <span class="value">{{user.address.city.name}}</span>
+              <!-- <span class="value">{{user.address.city.name}}</span> -->
+            </div>
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="fas fa-paw"></i></span>
+              <span class="value">{{user.pets.length}}</span>
+            </div>
+            <div class="sidebox-cont-det">
+              <span class="icon"><i class="fab fa-readme"></i></span>
+              <span class="value">{{user.ads.length}}</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- PETS CONTAINER -->
+        <app-my-pets [pets]="pets" *ngIf="container_shown === 'myPets'"></app-my-pets>
+        <!-- ADS CONTAINER -->
+        <app-my-ads [ads]="ads" *ngIf="container_shown === 'myAds'"></app-my-ads>
+
+        <!-- REMINDERS CONTAINER -->
+        <app-my-reminders [reminders]="reminders" *ngIf="container_shown === 'myReminder'"></app-my-reminders>
+
+      </div>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+    <aside>
+      <div class="advertisement"
+        style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+      </div>
+    </aside>
+
+
+
+  </main>
+  <!-- for the modal -->
+  <div class="modal-backdrop fade show">
+
+  </div>
+</div>

@@ -1,0 +1,169 @@
+
+
+    <header >
+      <img [src]="business.imgBackground" style = "no-repeat; width: 100%; height: 500px;">
+        <app-front-navbar></app-front-navbar>
+    </header>
+
+
+
+    <main>
+        <section></section>
+
+
+        <!-- Page's Content -->
+        <section>
+
+            <div *ngIf="business" id="profile-navbar" class="small-shadow">
+                <div id="profile-image">
+                    <img id="profile-image-img" src={{business.imgLogo}} alt="profile image">
+                </div>
+                <div id="profile-nav">
+                    <div id="profile-nav-burger" onclick="toggleShow('#nav-list')">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div id="nav-list"  onclick="toggleShow('#nav-list')">
+                        
+                            <div #ourCompany (click)='changeMenu($event)' id="ourCompany-tab" class="nav-item selected">
+                                <!-- <span class="icon"><i class="fas fa-paw"></i></span> -->
+                                <span class="item-value">Our Company</span>
+                            </div>
+                        
+                       
+                            <div #contactUs (click)='changeMenu($event)' id="ContatctUs-tab" class="nav-item unselected">
+                                <!-- <span class="icon"><i class="fab fa-readme"></i></span> -->
+                                <span class="item-value">Contact us</span>
+                            </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="content" *ngIf="business">
+
+                <!-- Profilr Details -->
+                <div class="sidebox-cont shadow">
+                    <div class="sidebox-cont-header">
+                        <h3 id='sidebox-cont-header-h3'>{{business.name}}</h3>
+                        <hr>
+                    </div>
+                    <div class="sidebox-cont-body">
+                        <div class="sidebox-cont-det">
+                            <span class="icon"><i class="far fa-envelope-open"></i></span>
+                            <span class="value"><a href="mailto:{{business.email}}">{{business.email}}</a></span>
+                        </div>
+                        <div class="sidebox-cont-det">
+                            <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                            <span class="value"><a href="tel:{{business.phone}}">{{business.phone}}</a></span>
+                        </div>
+                        <div class="sidebox-cont-det">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span class="value"> {{business.address.street}} </span>
+                        </div>
+                        <div class="sidebox-cont-det">
+                            <span class="icon"><i class="fas fa-city"></i></span>
+                            <span class="value">{{business.address.city.name}}</span>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+
+                <!-- Description -->
+                <div *ngIf='showDescription' id="service_desc" class="serv-cont shadow">
+                    <div class="header">
+                        <h3>Description</h3>
+                        <div id="rate"><i class="fas fa-star"></i><span id="value">{{business.avgRating === null? "-" :business.avgRating|number:'1.0-1'}}</span></div>
+                        <hr>
+                    </div>
+                    <div class="serv-cont-body" [innerHTML]="business.description">
+                        <!-- 1000 words -->
+                        
+                    </div>
+                </div>
+
+
+                <!-- Contact with Us -->
+                <div *ngIf='showDescription===false' id="service_form" class="serv-cont shadow">
+                    <div class="header">
+                        <h3>Contact With Us</h3>
+                        <hr>
+                    </div>
+                    <div class="serv-cont-body">
+                        <div id="contact-form">
+                            <form *ngIf="!isSuccessful" #f="ngForm" (submit)="sendEmail()">
+                                <label id="label_email">Your Email:</label>
+                                <input [(ngModel)]='contactForm.sender' #name="ngModel" type="text" id="email" name="sender" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                <label id="label_subject">Subject:</label>
+                                <input [(ngModel)]='contactForm.subject' #subject="ngModel" type="text" id="subject" name="subject" maxlength="50">
+                                <label id="label_message">Your Message:</label>
+                                <textarea [(ngModel)]='contactForm.message' #message="ngModel" name="message" id="message" cols="30" rows="10" minlength="7" required></textarea>
+                                <div id="submit_button"><input type="submit" value="Send E-mail" name="submit"></div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                
+
+                <!-- Rate us -->
+                <div id="rate-container" *ngIf="visitor.id && owner.id !== visitor.id">
+                    <div id="rate-header">
+                        RATE US
+                    </div><div id="stars">
+                        <form >
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='5' name="star" id="star5"><label (click)='rateUs(5)' class="fas fa-star" for="star5"></label>
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='4' name="star" id="star4"><label (click)='rateUs(4)' class="fas fa-star" for="star4"></label>
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='3' name="star" id="star3"><label (click)='rateUs(3)' class="fas fa-star" for="star3"></label>
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='2' name="star" id="star2"><label (click)='rateUs(2)' class="fas fa-star" for="star2"></label>
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='1' name="star" id="star1"><label (click)='rateUs(1)' class="fas fa-star" for="star1"></label>
+                            <input type="radio" [(ngModel)]="rating.ratingNumber" #star="ngModel" [value]='0' name="star" id="star1">
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Map -->
+                <app-map 
+                    #mapComponent 
+                    id="map"  
+                    lat={{business.address.latitude}}
+                    lng={{business.address.longitude}} 
+                    zoom="15" 
+                    width="100%" 
+                    height="300px"
+                    autoMarker='true'
+                    >
+                </app-map>
+
+            </div>
+
+
+            
+
+                    
+
+               
+
+         
+
+
+
+        </section>
+
+
+
+        <aside>
+            <div class="advertisement"
+                style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+            </div>
+        </aside>
+
+
+    </main>
+<app-footer></app-footer>
+

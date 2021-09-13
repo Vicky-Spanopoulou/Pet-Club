@@ -1,0 +1,52 @@
+<div id="pet-history-content-body" class="content-body">
+  <div id="table">
+    <table>
+      <tr>
+        <th colspan="1">When</th>
+        <th colspan="1">Until</th>
+        <th colspan="1">Exam. type</th>
+        <th colspan="1">Doctor</th>
+      </tr>
+    </table>
+    <div id="table-body">
+      <table>
+        <!-- Dont delete th. We need them -->
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <!-- starts a visit -->
+        <ng-container *ngIf='exams&&exams.length; else emptyTable'>
+            <ng-container *ngFor="let exam of exams; let i = index" >
+                <tr class="always-shown" (click)="toggleDescripion(i)">
+                    <td colspan="1" *ngIf="exam.examDay!==null">{{exam.examDay|date:'dd/MM/yyyy'}}</td>
+                    <td colspan="1" *ngIf="exam.examDay===null">{{'-----------------'}}</td>
+                    <td colspan="1" *ngIf="exam.validUntil">{{ exam.validUntil|date:'dd/MM/yyyy' }}</td>
+                    <td colspan="1" *ngIf="!exam.validUntil">{{ '-----------------'}}</td>
+                    <td colspan="1" *ngIf="exam.examCat">{{ exam.examCat | replaceUnderscore | titlecase}}</td>
+                    <td colspan="1" *ngIf="!exam.examCat">{{ '-----------' }}</td>
+                    <td colspan="1">
+                            {{ exam.user ? exam.user.firstName : '   -------------    ' }}
+                            {{ exam.user ? exam.user.lastName : '   -------------   ' }}
+                    </td>
+                </tr>
+                <tr id={{i}} class="description hidden">
+                    <td colspan="4">
+                        <span [innerHTML]="exam.diagnosis"></span>
+                        
+                    </td>
+                </tr>
+            </ng-container>
+        </ng-container>
+        <ng-template #emptyTable>
+          <div id='noExaminations'>
+              <span>There are no examinations</span>
+          </div>
+        </ng-template>
+        <!-- Ends a visit -->
+      </table>
+    </div>
+  </div>
+</div>

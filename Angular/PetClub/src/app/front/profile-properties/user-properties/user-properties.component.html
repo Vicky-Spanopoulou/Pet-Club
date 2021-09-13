@@ -1,0 +1,108 @@
+<div class="content-label-row">
+  <h3>User Properties</h3>
+  <span (click)="toggleEditForm()" class="edit-buttons" id="edit"><i class="fas fa-edit"></i></span>
+  <span (click)="canselEdit()" class="edit-buttons hidden" id="cancel"><i class="fas fa-window-close"></i></span>
+</div>
+<hr>
+
+<div class="content-body">
+  <!-- Here we import our content -->
+
+
+  <form #f="ngForm" (submit)="subUserProperties.form.valid && submitUserPropertiesForm()" #subUserProperties='ngForm'
+    class="properties_user_from" action="" novalidate>
+
+    <div class="image-group disabled-input inputs" id="uploadImg">
+      <div class="profile-pic-div">
+        <img [src]="imgUrl?imgUrl:'../../../../assets/images/defaultProfileImage.jpg'" id="photo">
+        <input type="file" id="file" (change)="selectFile($event)">
+        <label for="file" id="uploadBtn">Choose Photo</label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="fName">First Name :</label>
+      <input [(ngModel)]='userForm.firstName' #firstName="ngModel" class="disabled-input inputs" pattern="^[a-zA-Z]+$"
+        type="text" name="fName" id="fName" required minlength="3" maxlength="25" />
+      <div *ngIf="firstName.errors && subUserProperties.submitted">
+        <div *ngIf="firstName.errors.required" class="error-msg">First is required</div>
+        <div *ngIf="firstName.errors.minlength" class="error-msg">
+          First Name must be at least 3 characters
+        </div>
+        <div *ngIf="firstName.errors.maxlength" class="error-msg ">
+          First Name must be at most 25 characters
+        </div>
+        <div *ngIf="firstName.errors.pattern" class="error-msg">
+          First Name must contain only letters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lName">Last Name :</label>
+      <input [(ngModel)]='userForm.lastName' #lastName="ngModel" class="disabled-input inputs" pattern="^[a-zA-Z ]*$"
+        type="text" name="lName" id="lName" required minlength="3" maxlength="25" />
+      <div *ngIf="lastName.errors && subUserProperties.submitted">
+        <div *ngIf="lastName.errors.required" class="error-msg">Last Name is required</div>
+        <div *ngIf="lastName.errors.minlength" class="error-msg">
+          Last Name must be at least 3 characters
+        </div>
+        <div *ngIf="lastName.errors.maxlength" class="error-msg">
+          Last Name must be at most 25 characters
+        </div>
+        <div *ngIf="lastName.errors.pattern" class="error-msg">
+          Last Name must contain only letters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address :</label>
+      <input [(ngModel)]='userForm.street' #street="ngModel" class="disabled-input inputs" type="text" name="address"
+        id="address" minlength="3" maxlength="50" />
+      <div *ngIf="street.errors && subUserProperties.submitted">
+
+        <div *ngIf="street.errors.minlength" class="error-msg">
+          Address must be at least 3 characters
+        </div>
+        <div *ngIf="street.errors.maxlength" class="error-msg">
+          Address must be at most 50 characters
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="city">City :</label>
+
+      <select [(ngModel)]='userForm.city' #city="ngModel" class="disabled-input inputs" name="city" id="city" required>
+        <option [value]="city.name" *ngFor='let city of cities'>{{city.name}}</option>
+      </select>
+      <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+      <div *ngIf="city.errors && subUserProperties.submitted">
+        <div *ngIf="city.errors.required" class="error-msg">City is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone :</label>
+      <input [(ngModel)]='userForm.phone' #phone="ngModel" class="disabled-input inputs" pattern="[0-9]+" 
+        type="text" name="phone" id="phone" minlength="10" maxlength="10">
+      <div *ngIf="phone.errors && subUserProperties.submitted">
+        <div *ngIf="phone.errors.minlength" class="error-msg">
+          Please enter a valid phone number
+        </div>
+        <div *ngIf="phone.errors.maxlength" class="error-msg">
+          Please enter a valid phone number
+        </div>
+        <div *ngIf="phone.errors.pattern" class="error-msg">
+          Please enter a valid phone number
+        </div>
+      </div>
+    </div>
+    <div class="form-submit">
+      <input type="submit" value="Save Changes" class="submit disabled-input inputs hidden" name="submit" id="submit" />
+    </div>
+
+  </form>
+
+
+</div>

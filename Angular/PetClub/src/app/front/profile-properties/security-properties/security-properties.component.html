@@ -1,0 +1,190 @@
+<div class="content-label-row">
+    <h3>Security Properties</h3>
+</div>
+<hr>
+
+<div class="content-body">
+
+    <!-- Edit email  -->
+    <div class="edit-container">
+        <div class="content-label-row">
+            <h3>Email Properties</h3>
+            <span (click)="setMailForm()" class="mail-invisible EmailPropBut edit-buttons" id="edit"><i
+                    class="fas fa-edit"></i></span>
+            <span (click)="toggleEmailForm()" class="mail-invisible EmailPropBut edit-buttons hidden" id="cancel"><i
+                    class="fas fa-window-close"></i></span>
+        </div>
+
+        <div class="error-message mail-invisible hidden" id="email-error">
+            <span class="error-text">
+                By clicking save you are changing your current e-mail to the one below.
+               <p>Please make sure all of the information given below are correct.</p>
+               <p>Do not forget to <span style="text-decoration: underline;">verify your email</span>
+                 in order to be able to log in to your account.</p>
+            </span>
+        </div>
+
+        <form class="properties_user_from" (submit)="emailForm.form.valid && editEmail()" #emailForm="ngForm">
+            <div class="form-group">
+                <label for="email"><span id="old-mail" class="mail-invisible hidden">Old</span> Email :</label>
+                <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required type="email"
+                    class="mail-inactive  disabled-input" name="email" id="email" maxlength="50"
+                    value="tsepetzidis@gmail.com" 
+                    [(ngModel)]="oldMail" email #oldEMail="ngModel"/>
+                    <div  *ngIf="oldEMail.errors && emailForm.submitted">
+                        <div *ngIf="oldEMail.errors.required" class="error-msg">Old Email is required</div>
+                        <div *ngIf="oldEMail.errors.email" class="error-msg">
+                          Old Email must be a valid email address
+                        </div>
+                      </div>
+
+            </div>
+            <div class="form-group mail-invisible hidden">
+                <label for="new-email">New Email:</label>
+                <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required type="email"
+                    class="mail-inactive disabled-input" name="new-email" id="new-email" maxlength="50"
+                    [(ngModel)]="editMailForm.email" email #email="ngModel"/>
+
+                    <div  *ngIf="email.errors && emailForm.submitted">
+                        <div *ngIf="email.errors.required" class="error-msg">New Email is required</div>
+                        <div *ngIf="email.errors.email" class="error-msg">
+                            New Email must be a valid email address
+                        </div>
+                      </div>
+            </div>
+            <div class="form-group mail-invisible hidden">
+                <label for="confirm-email">Confirm Email :</label>
+                <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required type="email"
+                    class="mail-inactive disabled-input" name="confirm-email" id="confirm-email" maxlength="50"
+                    [(ngModel)]="confirmMail" email #conEmail="ngModel"/>
+                    <div  *ngIf="conEmail.errors && emailForm.submitted">
+                        <div *ngIf="conEmail.errors.required" class="error-msg">Confirm Email is required</div>
+                        <div *ngIf="conEmail.errors.email" class="error-msg">
+                            Confirm Email must be a valid email address
+                        </div>
+                      </div>
+            </div>
+            <div class="form-group mail-invisible hidden">
+                <label for="password"> Password :</label>
+                <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required type="password"
+                    name="password" id="password" class="mail-inactive disabled-input"
+                    [(ngModel)]="editMailForm.password" minlength="8" maxlength="50" #passMail='ngModel'/>
+                    <div *ngIf="passMail.errors && emailForm.submitted">
+                        <div *ngIf="passMail.errors.required" class="error-msg">Password is required</div>
+                        <div *ngIf="passMail.errors.minlength" class="error-msg">
+                          Password  must be at least 8 characters
+                        </div>
+                        <div *ngIf="passMail.errors.maxlength" class="error-msg">
+                          Password  must be at most 50 characters
+                        </div>
+                        <div *ngIf="passMail.errors.pattern" class="error-msg">
+                          Password contain at least one upercase, one lowercase , one special character
+                        </div>
+                      </div>
+            </div>
+            <div class="form-submit mail-invisible hidden">
+                <input type="submit" value="Save Changes" class="submit mail-inactive disabled-input"
+                    name="change-email"
+                    id="change-email" />
+            </div>
+        </form>
+    </div>
+
+    <!-- Edit password  -->
+    <div class="edit-container">
+        <div class="content-label-row">
+            <h3>Password Properties</h3>
+            <span (click)="togglePassForm()" class="pass-invisible  edit-buttons" id="edit"><i
+                    class="fas fa-edit"></i></span>
+            <span (click)="togglePassForm()" class="pass-invisible  edit-buttons hidden" id="cancel"><i
+                    class="fas fa-window-close"></i></span>
+        </div>
+
+        <div class="error-message pass-invisible hidden" id="email-error">
+            <span class="error-text">
+                By clicking save you are changing your current password to the one below.
+               <p>Please make sure to remember the new password as the old one will be deleted 
+                <span style="text-decoration: underline;">permanently</span>.</p>
+            </span>
+        </div>
+
+        <form class="properties_user_from" (submit)="pass.form.valid && editPassword()" #pass='ngForm'>
+            <div class="form-group">
+                <label for="password"><span id="old-pass" class="pass-invisible hidden">Old</span> Password :</label>
+                <input  
+                    required type="password"
+                    name="password" id="password" 
+                    class="pass-inactive disabled-input"
+                    [(ngModel)]="editPassForm.oldPass" 
+                    #password="ngModel">
+            </div>
+
+            <div class="form-group pass-invisible hidden">
+                <label for="new-password">New Password :</label>
+                <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"  
+                    required type="password"
+                    name="new-password" 
+                    id="new-password" 
+                    class="pass-inactive disabled-input" 
+                    [(ngModel)]="editPassForm.newPass" 
+                    #newPass='ngModel'
+                    maxlength="50"
+                    minlength="8">
+                    <div *ngIf="newPass.errors && pass.submitted">
+                        <div *ngIf="newPass.errors.required" class="error-msg">Password is required</div>
+                        <div *ngIf="newPass.errors.minlength" class="error-msg">
+                         New Password  must be at least 8 characters
+                        </div>
+                        <div *ngIf="newPass.errors.maxlength" class="error-msg">
+                         New Password  must be at most 50 characters
+                        </div>
+                        <div *ngIf="newPass.errors.pattern" class="error-msg">
+                         New Password contain at least one upercase, one lowercase , one special character
+                        </div>
+                      </div>
+            </div>
+            <div class="form-group pass-invisible hidden">
+                <label for="confirm_password">Confirm Password :</label>
+                <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" type="password" 
+                    required name="confirm_password" 
+                    id="confirm_password" 
+                    class="pass-inactive disabled-input"
+                    [(ngModel)]="confirmPass" 
+                  #conPass="ngModel" maxlength="50" minlength="8"/>
+                  <div *ngIf="conPass.errors && pass.submitted">
+                    <div *ngIf="conPass.errors.required" class="error-massage">
+                        Confirm  Password is required</div>
+                      <div *ngIf="conPass.errors.pattern" class="error-massage">
+                        Your Password doesnt much with the Confimation
+                      </div>
+                  </div>
+            </div>
+
+
+            <div class="form-submit pass-invisible hidden">
+                <input type="submit" value="Save Changes" 
+                    class="submit pass-inactive disabled-input" name="change-password"
+                    id="change-password" />
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <div class="edit-container">
+        <div class="content-label-row">
+            <h3>Account Properties</h3>
+            
+        </div>
+
+        <button class="del_button" (click)="deleteAccount(userToDelete)" >Delete Account</button>
+
+
+    </div>
+
+
+   
+
+
+</div>

@@ -1,0 +1,33 @@
+.main-forms .error-massage{
+    color: red;
+    font-family: var(--second-font);
+  }
+  #search-owner{
+    position: absolute;
+    margin-top: 5px;
+    padding-bottom: 10px;
+    width: 260px;
+    background-color: rgb(66, 66, 66);
+    color: white;
+    border-radius: 2px 2px 2px 2px;
+    z-index: 5;
+  }
+  #search-owner #close-search-owner{
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline;
+    float: right;
+  }
+  #search-owner div{
+    cursor: pointer;
+    padding-bottom: 10px;
+   
+  }
+  #search-owner div:hover{
+    background-color: rgb(75, 74, 74);
+  }
+  #search-owner span{  
+    margin-left: 15px;
+    width: 100%;
+    display: block;
+  }

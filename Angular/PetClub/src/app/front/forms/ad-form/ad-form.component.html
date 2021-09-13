@@ -1,0 +1,328 @@
+<div id="create-pet-ad" class="full-screen flex-container-center" *ngIf="modal">
+  <div class="main-forms" id="best">
+    <div class="container">
+      <h1 class="page-header">
+        <span class="page-header"> Pet Lost Form </span>
+      </h1>
+      <div class="form">
+        <div class="form-close" (click)="this.closeModal()">
+          <i class="fas fa-times"></i>
+        </div>
+
+        <!-- FORM  -->
+        <form
+          *ngIf="!isSuccessful"
+          class="register-form"
+          id="register-form"
+          #f="ngForm"
+          name="regForm"
+          (ngSubmit)="f.form.valid && submitAdForm()"
+          novalidate
+        >
+          <div class="form-group img-group">
+            <div class="profile-pic-div">
+              <img
+                [src]="
+                  imgUrl
+                    ? imgUrl
+                    : '../../../../assets/images/animals-lost-pet.jpg'
+                "
+                id="photo-aggs"
+                class="photo"
+              />
+              <input
+                (change)="selectFile($event)"
+                type="file"
+                id="file-aggs"
+                class="file"
+              />
+
+              <label for="file-aggs" id="uploadBtn-aggs" class="uploadBtn"
+                >Choose Photo</label
+              >
+            </div>
+          </div>
+
+          <!-- pet name  -->
+          <div class="form-group">
+            <label for="pName" title="required"> Pet Name* :</label>
+
+            <input
+              pattern="^[a-zA-Z ]*$"
+              type="text"
+              name="pName"
+              id="pName-ad"
+              [(ngModel)]="adForm.petName"
+              required
+              #petName="ngModel"
+              minlength="3"
+              maxlength="50"
+            />
+            <div *ngIf="petName.errors && f.submitted">
+              <div *ngIf="petName.errors.required" class="error-massage">
+                This field is required
+              </div>
+              <div *ngIf="petName.errors.minlength" class="error-massage">
+                Must be at least 3 characters
+              </div>
+              <div *ngIf="petName.errors.maxlength" class="error-massage">
+                Must be lees than 50 characters
+              </div>
+              <div *ngIf="petName.errors.pattern" class="error-massage">
+                Pet Name must contain only characters
+              </div>
+            </div>
+          </div>
+
+          <!-- pet category  -->
+          <div class="form-group">
+            <label for="pet" title="required">Pet* :</label>
+            <div class="form-select">
+              <select
+                [(ngModel)]="adForm.petCategory"
+                #petCategory="ngModel"
+                name="pet"
+                id="pet-ad"
+                required
+              >
+                <option value="" disabled selected>What Kind Of Pet</option>
+                <option
+                  value="{{ cat.name }}"
+                  *ngFor="let cat of petCategories"
+                >
+                  {{ cat.name | titlecase }}
+                </option>
+              </select>
+              <span class="select-icon"
+                ><i class="zmdi zmdi-chevron-down"></i
+              ></span>
+            </div>
+          </div>
+
+          <!-- chip number  -->
+          <div class="form-group">
+            <label for="companyName">Chip Number :</label>
+            <input
+              [(ngModel)]="adForm.chipNumber"
+              #chipNumber="ngModel"
+              type="text"
+              name="cNumber"
+              id="cNumber-ad"
+              minlength="15"
+              maxlength="15"
+            />
+            <div *ngIf="chipNumber.errors && f.submitted">
+              <div *ngIf="chipNumber.errors.maxlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+              <div *ngIf="chipNumber.errors.minlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- pet gender  -->
+          <div class="form-radio">
+            <label for="gender" class="radio-label" title="required">Gender :</label>
+            <div class="form-radio-item" *ngFor="let sexC of sexCategories">
+              <input
+                type="radio"
+                [(ngModel)]="adForm.sex"
+                #sex="ngModel"
+                value="{{ sexC }}"
+                required
+                id="{{ sexC | lowercase }}"
+                name="sex"
+              />
+              <label for="{{ sexC | lowercase }}">{{ sexC | titlecase }}</label>
+              <span class="check"></span>
+            </div>
+          </div>
+
+          <!-- ad type  -->
+          <div class="form-group">
+            <label for="adCategory" title="required">Ad Type* :</label>
+            <select
+              [(ngModel)]="adForm.adCategory"
+              #adCategory="ngModel"
+              id="adCategory"
+              class="box-input"
+              name="adCategory"
+              required
+            >
+              <option value="" disabled selected>Choose Type</option>
+              <option [value]="ad" *ngFor="let ad of adCategories">
+                {{ ad | titlecase }}
+              </option>
+            </select>
+            <div *ngIf="adCategory.errors && f.submitted">
+              <div *ngIf="adCategory.errors.required" class="error-massage">
+                You have to choose a type
+              </div>
+            </div>
+          </div>
+
+          <!-- some words  -->
+          <div class="form-group">
+            <label for="editor-aggs">Some words for the disapearnce :</label>
+            <ngx-editor-menu [editor]="editorSomeWords" class="editor-menu">
+            </ngx-editor-menu>
+            <ngx-editor
+              [editor]="editorSomeWords"
+              [(ngModel)]="someWordsJson"
+              #someWords="ngModel"
+              [disabled]="false"
+              [placeholder]="'Type here...'"
+              name="someWords"
+              maxlength="1000"
+            ></ngx-editor>
+            <div *ngIf="someWords.errors && f.submitted">
+              <div *ngIf="someWords.errors.maxlength" class="error-massage">
+                To many words for description
+              </div>
+            </div>
+          </div>
+
+          <!-- pet description  -->
+          <div class="form-group">
+            <label for="descriptions">Pet Description :</label>
+            <ngx-editor-menu
+              [editor]="editorDescriptions"
+              class="editor-menu"
+              id="descriptions"
+            >
+            </ngx-editor-menu>
+            <ngx-editor
+              [editor]="editorDescriptions"
+              [(ngModel)]="descriptionJson"
+              #description="ngModel"
+              [disabled]="false"
+              [placeholder]="'Type here...'"
+              name="descriptions"
+              maxlength="2000"
+            ></ngx-editor>
+            <div *ngIf="description.errors && f.submitted">
+              <div *ngIf="description.errors.maxlength" class="error-massage">
+                Too many words for description
+              </div>
+            </div>
+          </div>
+
+          <!-- date  -->
+          <div class="form-group">
+            <label for="date" title="required">Date Lost/Found*:</label>
+            <input
+              [(ngModel)]="adForm.dateLost"
+              #dateLost="ngModel"
+              type="date"
+              name="dateLost"
+              id="dateLost-ad"
+              required
+              [max]="maxDate"
+            />
+            <div *ngIf="dateLost.errors && f.submitted">
+              <div *ngIf="dateLost.errors.required" class="error-massage">
+                Field is required
+              </div>
+            </div>
+          </div>
+
+          <!-- city  -->
+          <div class="form-group">
+            <label for="city" title="required">City*:</label>
+            <select
+              [(ngModel)]="adForm.city"
+              #city="ngModel"
+              id="city"
+              class="box-input"
+              name="city"
+              required
+            >
+              <option value="" disabled selected>Choose City...</option>
+              <option [value]="c.name" *ngFor="let c of cities">
+                {{ c.name }}
+              </option>
+            </select>
+            <div *ngIf="city.errors && f.submitted">
+              <div *ngIf="city.errors.required" class="error-massage">
+                You have to choose a city
+              </div>
+            </div>
+          </div>
+
+          <!-- map area  -->
+          <div class="form-group">
+            <label for="street" title="required">Area Where The Pet was Lost/Found* :</label>
+            <input
+              (keyup)="searchPosition()"
+              [(ngModel)]="adForm.street"
+              #street="ngModel"
+              type="text"
+              name="street"
+              id="street"
+              maxlength="255"
+              required
+              #areaLost="ngModel"
+            />
+            <div *ngIf="areaLost.errors && f.submitted">
+              <div *ngIf="areaLost.errors.required" class="error-massage">
+                Adderss is required
+              </div>
+              <div *ngIf="areaLost.errors.maxlength" class="error-massage">
+                Too long name for address
+              </div>
+            </div>
+          </div>
+
+          <!-- latitude  -->
+          <div class="form-group">
+            <label for="latitude">latitude</label>
+            <input
+              [(ngModel)]="adForm.latitude"
+              #latitude="ngModel"
+              type="text"
+              name="latitude"
+              id="latitude"
+              disabled
+            />
+          </div>
+
+          <!-- longitude  -->
+          <div class="form-group">
+            <label for="longitude">longitude</label>
+            <input
+              [(ngModel)]="adForm.longitude"
+              #longitude="ngModel"
+              type="text"
+              name="longitude"
+              id="longtitude"
+              disabled
+            />
+          </div>
+
+          <!-- map  -->
+          <app-map
+            #mapComponent
+            id="map"
+            lat="39.11035094005105"
+            lng="23.263987890625017"
+            zoom="6"
+            width="100%"
+            height="250px"
+            (click)="mapClick($event)"
+          >
+          </app-map>
+          <div class="form-submit">
+            <input
+              type="submit"
+              value="Submit Form"
+              class="submit aggs"
+              name="submit"
+              id="submit"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

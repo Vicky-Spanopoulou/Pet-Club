@@ -1,0 +1,44 @@
+
+
+        <header>
+            <app-horizontal-nav></app-horizontal-nav>
+        </header>
+    <main>
+        <section>
+            <app-vertical-nav></app-vertical-nav>
+        </section>
+        <div id="dashboard-pages-container">
+            <div id="mid">
+                <div id="search-div">
+                    <input [(ngModel)]="searchPets" (keyup)="handlePets()" id="search-bar" type="search" placeholder="Search Pet..."><i class="fas fa-search"></i>
+                    <div id="add-user" (click)="addPet()"><i class="fas fa-cat"></i>Add Pet</div>
+                </div>
+                <div id="mid-table">
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Pet</th>
+                            <th>Breed</th>
+                            <th>Owner</th>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let owner of filterOnwers" >
+                                <tr *ngFor="let pet of owner.pets" (click)="setEditPet(pet, owner)" >
+                                    <td><img src={{pet.image}} ></td>
+                                    <td> {{pet.name}} </td>
+                                    <td> {{pet.petCategory.name}} </td>
+                                    <td> {{pet.breed}} </td>
+                                    <td> {{owner.email}} </td>
+                                </tr>
+                        </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="mid-down">
+                <div id="close-window" *ngIf="editedPet" (click)="onCloseForm()"><i class="fas fa-times"></i></div>
+              <app-dash-pet-form *ngIf="editedPet" [externalPet]="petForm" (notify)="updateTable()" ></app-dash-pet-form>
+            </div>
+        </div>
+    </main>

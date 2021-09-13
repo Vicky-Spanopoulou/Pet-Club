@@ -1,0 +1,300 @@
+header{
+    width:100%;
+}
+main{
+    display:grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-gap: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: var(--main-font);
+}
+section{
+    padding: 0px;
+}
+aside{
+    margin-top: 70px;
+}
+
+#profile-navbar{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+}
+#profile-navbar #profile-image{
+    width: 310px;
+    height: 160px;
+    padding: 5px;
+    background-color: white;
+    margin-top: -110px;
+    float: left;
+}
+#profile-navbar #profile-image img{
+    width: 300px;
+    height: 150px;
+    margin:auto;
+}
+#profile-navbar #profile-nav{
+    height: 50px;
+    float: right;
+}
+#profile-navbar #profile-nav #profile-nav-burger{
+    display: none;
+    cursor: pointer;
+}
+#profile-nav #nav-list{
+    float:right;
+    text-align: right;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+}
+#profile-nav #nav-list .nav-item{
+    display: inline-block;
+    height: 40px;
+    list-style: none;
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 5px 0px 0px;
+    cursor:pointer;
+    font-family: var(--headers-font);
+}
+#profile-nav #nav-list .nav-item.selected{
+    color: var(--first-color);
+    font-weight: bold;
+    
+}
+#profile-nav #nav-list .nav-item.unselected{
+    color: var(--second-color);
+}
+#profile-nav #nav-list .nav-item.unselected:hover{
+    color: var(--first-color);
+}
+/* Rate us */
+#rate-container{
+    margin-top: 20px;
+    float: left;
+    width:250px;
+    height: 80px;
+    background-color: var(--first-color);
+    border-radius: 3px;
+    position: relative;
+}
+#rate-container #rate-header{
+    margin:auto;
+    text-align: center;
+    font-family: var(--headers-font);
+    font-size: 35px;
+    color: white;
+}
+#rate-container #stars{
+    position: absolute;
+    width: 110px;
+    top: 70%;
+    left: 48.5%;
+    transform: translate(-50%,-50%) rotateY(180deg);
+    /* display: flex; */
+}
+#rate-container #stars input{
+    display: none;
+}
+#rate-container #stars label{
+    color:#444;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+#rate-container #stars input:not(:checked) ~ label:hover,
+#rate-container #stars input:not(:checked) ~ label:hover ~ label{
+    color: var(--star-color);
+}
+#rate-container #stars input:checked ~ label{
+    color: var(--star-color);
+}
+#rate-container #stars input#star5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+
+/* Description Text */
+.serv-cont{
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 5px;
+    width:calc(96% - 250px);
+    float: right;
+    border-radius: 3px;
+    color: var(--default-font-color);
+    padding: 20px;
+}
+.serv-cont .header{
+    height: 37px;
+    padding-top: 12px;
+    line-height: 25px;
+    color: var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 25px;
+}
+.serv-cont .header h3{
+    display: block;
+    width:200px;
+    float: left;
+}
+.serv-cont .header #rate{
+    display: block;
+    width:70px;
+    float: right;
+    color: var(--star-color);
+    font-family: var(--main-font);
+    font-size: 20px;
+}
+.serv-cont .header hr{
+    background: var(--first-color);
+    display: block;
+    width: 100%;
+}
+.serv-cont .serv-cont-body{
+    font-family: var(--main-font);
+    color: var(--default-font-color);
+    padding-top: 20px;
+    min-height: 400px;
+    max-height: 900px;
+    overflow-y: auto;
+    width:100%;
+}
+/* contact form */
+.serv-cont .serv-cont-body #contact-form,
+.serv-cont .serv-cont-body #contact-form form{
+    display: block;
+    width:100%;
+}
+.serv-cont .serv-cont-body #contact-form label{
+    display: block;
+    width: 80%;
+    margin:auto;
+    font-family: var(--headers-font);
+    font-size: 25px;
+    color: var(--first-color);
+    margin-top: 10px;
+}
+.serv-cont .serv-cont-body #contact-form input,
+.serv-cont .serv-cont-body #contact-form textarea{
+    display: block;
+    width: 80%;
+    margin:auto;
+    height: 30px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.serv-cont .serv-cont-body #contact-form textarea{
+    height: 200px;
+}
+.serv-cont .serv-cont-body #contact-form #submit_button{
+    width:80%;
+    margin: auto;
+    margin-top: 10px;
+    height: 20px;
+}
+.serv-cont .serv-cont-body #contact-form #submit_button input{
+    width:200px;
+    height: 40px;
+    float:right;
+    background-color: white;
+    color: var(--first-color);
+    border:2px solid var(--first-color);
+    transition: 0.5s;
+}
+.serv-cont .serv-cont-body #contact-form #submit_button input:hover{
+    background-color: var(--first-color);
+    color: white;
+    border:2px solid var(--first-color);
+    cursor: pointer;
+}
+
+
+/* Map */
+#map{
+    width:calc(96% - 250px);
+    height:300px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 1060px) {
+    main{
+        display:grid;
+        grid-template-columns: 100% ;
+    }   
+    section:nth-child(2){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+   
+}
+@media screen and (max-width:660px){
+    #profile-navbar #profile-nav{
+        width:50px;
+        float: right;
+        position: relative;
+       }
+    #profile-navbar #profile-nav #profile-nav-burger{
+           display: block;
+        background-color: white;
+        width:50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 30px;
+        text-align: center;
+        color:var(--default-font-color);
+       }
+    #profile-navbar #profile-nav #nav-list{
+            background: white;
+            display: none;
+            width:200px;
+            position: absolute;
+            right: 0;
+            top: 60;
+            min-height: 150px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+       }
+    #profile-navbar #profile-nav #nav-list .nav-item{
+           display: block;
+           width: 100%;
+       }
+
+    .serv-cont,
+    #map{
+        margin: auto;
+        margin-top: 20px;
+        width:80%;
+        float: none;
+        display: block;
+    }
+
+    #rate-container{
+        width:80%;
+        margin:auto;
+        margin-top:20px;
+        float: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section:nth-child(2){
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .serv-cont,
+    #map{
+        width: 100%;
+    }
+
+    #rate-container{
+        width:100%;
+    }
+}

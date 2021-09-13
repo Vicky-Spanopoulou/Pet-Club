@@ -1,0 +1,162 @@
+
+
+
+/*--------------------- Ads ---------------------*/
+
+.ads{
+  width: 80%;
+  margin:auto;
+  margin-top: 20px;
+  margin-bottom: 90px;
+}
+
+.advertise-title{
+  font-family: var(--decorative-font);
+  font-size: 80px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  padding: 0px;
+}
+
+.img-text-wrapper{
+  width: 100%;
+  padding: 20px;
+  min-height: 500px;
+}
+
+.img-text-wrapper .ads-img{
+  float: left;
+  width: 49%;
+  margin-top: 50px;
+  display: block;
+}
+
+.img-text-wrapper#float-child-2 .ads-img{
+  float: right;
+}
+
+
+.img-text-wrapper .ads-img img{
+  margin: auto;
+  display: block;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.img-text-wrapper .advertise-text{
+  font-family: var(--main-font);
+  font-size: 17px;
+  text-align: justify;
+  width: 49%;
+  margin-top: 90px;
+  padding-right: 110px;
+  float: right;
+}
+
+.img-text-wrapper#float-child-2 .advertise-text{
+  float: left;
+  padding-left: 110px;
+  padding-right: 0px;
+}
+
+#text-title{
+  color: var(--main-home-color);
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.try-now a{ 
+  color: var(--main-home-color);
+  font-size: large;
+  font-weight: bold;
+  
+}
+
+.try-now{
+  margin-bottom: 15px;
+}
+
+.advertise-text p{
+  margin-bottom: 5px;
+}
+
+.cirles{
+  text-align: center;
+}
+
+.deco-dot{
+  height: 25px;
+  width: 25px;
+  border: 3px solid var(--main-home-color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* --------------- media --------------- */
+@media screen and (max-width: 1200px){
+  .ads{
+    width:90%;
+  }
+}
+
+@media screen and (max-width: 1000px){
+
+  .advertise-title{
+    font-size: 50px;
+  }
+
+  .img-text-wrapper .ads-img, 
+  .img-text-wrapper#float-child-2 .ads-img{
+    float: none;
+    width: 100%;
+  }
+
+  .img-text-wrapper .ads-img img{
+    width: 300px;
+  }
+
+  .img-text-wrapper .advertise-text,
+  .img-text-wrapper#float-child-2 .advertise-text{
+    float: none;
+    width: 100%;
+    margin: 0px;
+    margin-top: 50px;
+    padding: 0px;
+    text-align: center;
+  }
+
+}
+
+
+@media screen and (max-width: 600px){
+
+  .advertise-title{
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+
+}
+
+
+@media screen and (max-width: 400px){
+
+  .advertise-title{
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+
+  .img-text-wrapper .ads-img, 
+  .img-text-wrapper#float-child-2 .ads-img{
+    float: none;
+    width: 100%;
+  }
+}

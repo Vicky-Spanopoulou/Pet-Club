@@ -1,0 +1,47 @@
+
+    <header>
+        <app-horizontal-nav></app-horizontal-nav>    
+    </header>
+    <main>
+        <section>
+            <app-vertical-nav></app-vertical-nav>
+         </section>
+        <div id="dashboard-pages-container">
+            <div id="mid">
+                <div id="search-div">
+                    <input [(ngModel)]="searchAd"  (input)=" searchAds()"  id="search-bar" type="text" placeholder="Search Pet name.."><i
+                        class="fas fa-search"></i>
+                    <div id="add-user" (click)="addNewAd()" ><i class="fas fa-map-marked-alt"></i>Add Ad</div>
+                </div>
+                <div id="mid-left">
+                    <ul>
+                        <li (click)='filterAdCategory("All")' ><span><i class="fas fa-exclamation"></i></span><span>All</span></li>
+                        <li (click)='filterAdCategory("Found")' ><span><i class="fas fa-exclamation"></i></span><span>Found</span></li>
+                        <li (click)='filterAdCategory("Lost")' ><span><i class="fas fa-exclamation"></i></span><span>Lost</span></li>
+                    </ul> 
+                </div>
+                <div id="mid-table">
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Pet Name</th>
+                            <th>Pet</th>
+                            <th>Ads</th>
+                            <th>Area</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ad of providedAdCategories" (click)="visibleAdsForm(ad)">
+                                <td><img src="{{ad.image?ad.image:'../../../assets/images/pet_icon.png'}}"></td>
+                                <td>{{ad.petName}}</td>
+                                <td>{{ad.petCategory.name}}</td>
+                                <td>{{ad.adCategory}}</td>
+                                <td>{{ad.address.street}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>           
+            <div id="mid-down">
+                <div id="close-window" *ngIf="editAdsForm" (click)="onCloseForm()"><i class="fas fa-times"></i></div>
+                <app-dash-ads-form *ngIf="editAdsForm" [dtoAd]="adForm" [dtoUser]="editUser" (notify)="updateTable()" ></app-dash-ads-form>
+            </div>

@@ -1,0 +1,129 @@
+
+<app-pet-form #petForm [externaIPet]='pet'></app-pet-form>
+
+
+    <header
+        style='background:url("../../../assets/images/background-dogsEdited.jpg") no-repeat; width: 100%; height: 500px;background-color: #E1E1E1;'>
+        <app-front-navbar></app-front-navbar>
+    </header>
+
+
+
+    <main id="pet-profile">
+        <section></section>
+
+
+        <!-- Page's Content -->
+        <section>
+
+            <div id="profile-navbar" class="small-shadow">
+                <div id="profile-image">
+                    <img [src]="pet.image?pet.image:'../../../assets/images/pet_icon.png'"
+                        alt="profile image">
+                </div>
+                <div id="profile-nav-select">
+                    <select [(ngModel)]='examinationCategory' #examCategory="ngModel" name="visits" id="doctor-visits">
+                        <option value="All" >All the tests</option>
+                        <option [value]="cat" *ngFor='let cat of examinationCategories'>{{cat|titlecase|replaceUnderscore}}</option>
+                        
+                    </select>
+                </div>
+            </div>
+
+
+            <div id="content">
+
+
+                <!-- Profile Details -->
+                <div class="sidebox-cont shadow">
+                    <div class="sidebox-cont-header">
+                        <h3>{{pet.name}}</h3>
+                        <!-- button for edit menu -->
+                        <span *ngIf="userIsTheOwner" (click)='toggleMenu()'><i class="fas fa-ellipsis-v"></i></span>
+                        <!-- menu items div -->
+                        <div *ngIf='showEditMenu' id="edit-menu" class="shadow "> 
+                            <!-- <a href=""> -->
+                                <div class="menu-item" (click)='editPet()'>
+                                    <span class="item-value" >Edit</span>
+                                </div>
+                            <!-- </a> -->
+                            <a href="">
+                                <div class="menu-item" (click)="deletePet()">
+                                    <span class="item-value">Delete</span>
+                                </div>
+                            </a>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="sidebox-cont-body">
+                        <div class="sidebox-cont-det" *ngIf="pet.chipNumber">
+                            <span class="icon"><i class="fas fa-barcode"></i></span>
+                            <span class="value">{{pet.chipNumber}}</span>
+                        </div>
+                        <div class="sidebox-cont-det"  *ngIf="pet.dob">
+                            <span class="icon"><i class="fas fa-birthday-cake"></i></span>
+                            <span class="value">{{pet.dob|date:'dd/MM/yyyy'}}</span>
+                        </div>
+                        <div class="sidebox-cont-det"  *ngIf="pet.sex">
+                            <span class="icon"><i class="fas fa-venus-mars"></i></span>
+                            <span class="value">{{pet.sex|lowercase}}</span>
+                        </div>
+                        <div class="sidebox-cont-det"  *ngIf="pet.petCategory.name">
+                            <span class="icon"><i class="fas fa-paw"></i></span>
+                            <span class="value">{{pet.petCategory.name}}</span>
+                        </div>
+                        <div class="sidebox-cont-det"  *ngIf="pet.breed">
+                            <span class="icon"><i class="far fa-address-card"></i></span>
+                            <span class="value">{{pet.breed}}</span>
+                        </div>
+                        <div class="sidebox-cont-det"  *ngIf="pet.color">
+                            <span class="icon"><i class="fas fa-palette"></i></span>
+                            <span class="value">{{pet.color}}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="pet-history-content" class="profile-div-container small-shadow">
+                    <div class="content-label-row">
+                        <h3>All Test</h3>
+                    </div>
+                    <hr>
+                    
+                    <app-pet-exams *ngIf="pet.id!==0" [pet]='pet' [examCategory]='examinationCategory' ></app-pet-exams>
+                </div>
+
+                <div *ngIf='pet.behavior' id="pet-history-content" class="profile-div-container small-shadow">
+                    <div class="content-label-row">
+                        <h3>{{pet.name}} Character</h3>
+                    </div>
+                    <hr>
+                    <div id="pet-history-content-body" class="content-body"  *ngIf="pet.behavior" [innerHTML]="pet.behavior">
+                        
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+
+
+        <aside>
+            <div class="advertisement"
+                style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+            </div>
+        </aside>
+
+
+
+
+
+    </main>
+
+
+
+    <app-footer></app-footer>

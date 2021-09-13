@@ -1,0 +1,19 @@
+.main-forms{
+    z-index: 1000;
+}
+::ng-deep 
+
+.NgxEditor {
+    min-height: 130px;
+    overflow-y: scroll;
+}
+  
+.NgxEditor__Content {
+    min-height: 130px; /* make all of the editor area clickable */
+}
+
+
+.main-forms .error-massage{
+    color: red;
+    font-family: var(--second-font);
+  }

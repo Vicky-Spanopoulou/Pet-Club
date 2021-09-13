@@ -1,0 +1,92 @@
+
+
+/*-------- about us --------*/
+
+header{
+    width: 100%; 
+    height: 30px;
+}
+
+
+#aboutUs-section{
+    background-image: url("/assets/images/bg-img-pets.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    position: relative;
+    margin: auto;
+    height: 800px;
+  }
+
+  .about-us{
+    height: auto;
+    margin-top: 150px;
+    text-align: justify;
+  }
+  
+  .about-us-title{
+    font-family: var(--decorative-font);
+    font-size: 80px;
+    width: 20%;
+    float: left;
+    text-align: center;
+    margin-top: 180px;
+    margin-left: 270px;
+  }
+  
+  .about-us-text{
+    font-family: var(--second-font);
+    font-size: 17px;
+    width: 40%;
+    margin-top: 95px;
+    margin-right: 190px;
+    float: right;
+  }
+  
+  .names{
+    font-family: var(--decorative-font);
+    font-size: 30px;
+  }
+
+
+
+  @media screen and (max-width: 1200px){
+
+    #aboutUs-section{
+      height: 700px;
+    }
+
+    .about-us-title{
+      float: none;
+      width: 100%;
+      margin: auto;
+    }
+
+    .about-us-text{
+      float: none;
+      width: 80%;
+      margin: auto;
+      margin-top: 40px;
+    }
+
+  }
+
+  @media screen and (max-width: 800px){
+
+    #aboutUs-section{
+      height: 500px;
+    }
+
+    .about-us-title{
+      font-size: 60px;
+    }
+
+    .about-us-text{
+      font-size: 15px;
+    }
+
+    .names{
+      font-size: 20px;
+    }
+
+  }

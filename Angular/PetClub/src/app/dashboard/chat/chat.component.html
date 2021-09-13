@@ -1,0 +1,57 @@
+<header>
+  <app-horizontal-nav></app-horizontal-nav>
+</header>
+<main>
+  <section>
+    <app-vertical-nav></app-vertical-nav>
+  </section>
+
+
+
+
+  <div class="container">
+    <img class="image-bg"
+      src="https://image.shutterstock.com/shutterstock/photos/1039923571/display_1500/stock-vector-seamless-pattern-with-social-media-and-networking-global-internet-communication-chatting-and-1039923571.jpg"
+      alt="">
+    <div class="header">
+      <h2>Admins Chat</h2>
+
+    </div>
+
+    <div #scrollMe class="chat-box">
+
+      <div *ngFor="let chatMessage of webSocketService.chatMessages">
+        <ng-container *ngIf="loggedInUser.username==chatMessage.user;else left">
+
+          <div class="message-box">
+            <div class="user-msg right">
+              <span class="name"> {{chatMessage.user |uppercase}} </span>
+              <div class="message ">
+                <strong>{{chatMessage.message}}</strong>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #left>
+          <div class="message-box ">
+            <div class="user-msg">
+
+              <span class="name">{{chatMessage.user |uppercase}}</span>
+
+              <div class="message user">
+                <strong>{{chatMessage.message}} </strong>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="enter-message">
+      <form class="msger-inputarea" (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+        <input required type="text" name="message" id="input-message" class="msger-input" ngModel>
+        <button type="submit" class="msger-send-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</main>

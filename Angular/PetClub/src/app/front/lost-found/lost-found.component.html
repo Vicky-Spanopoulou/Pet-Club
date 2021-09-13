@@ -1,0 +1,107 @@
+<div>
+<header>
+    <app-front-navbar></app-front-navbar>
+
+    <app-map 
+    #mapComponent 
+    id="map"  
+    lat="39.11035094005105" 
+    lng="23.263987890625017" 
+    zoom="6" 
+    width="100%" 
+    height="600px"
+    >
+    </app-map>
+
+
+</header>
+
+<div id="main-header-searchbar" class="shadow">
+    <h1>SEARCH FOR YOUR PET</h1>
+    <div id="search-body">
+            <span><select [(ngModel)]="adCategory" (click)='filter()' id="choose-ad" class="box-input" name="ad">
+                    <option value="All">All Ads...</option>
+                    <option [value]="ac" *ngFor='let ac of adCategories'>{{ac | titlecase}}</option>
+                </select></span>
+            <span><select (click)='filter()' [(ngModel)]="gender" id="choose-gender" class="box-input" name="gender">
+                    <option value="All">All Genders...</option>
+                    <option [value]="gen" *ngFor='let gen of genders'>{{gen | titlecase}}</option>
+                </select></span>
+            <span><select (click)='filter()' [(ngModel)]="petCategory" id="choose-pet" class="box-input" name="pet">
+                    <option value="All">All Pets</option>
+                    <option [value]="cat.name" *ngFor='let cat of petCategories'>{{cat.name}}</option>
+                   
+                </select></span>
+            <span><select (click)='filter()' [(ngModel)]="city" id="choose-city" class="box-input" name="city">
+                    <option [value]="defaultCity.name">All Cities...</option>
+                    <option [value]="c.name" *ngFor='let c of cities'>{{c.name}}</option>
+                </select></span>
+    </div>
+</div>
+
+<main>
+
+    <section>
+    </section>
+
+
+    <section>
+
+        <div id="ads" class="" *ngIf="dataReady">
+
+
+            <!-- Class map-marker is only for js. There are the posion properties for the map marker -->
+            <div class="ad-cont map-marker" *ngFor="let ad of providedAds">
+                <a [routerLink]="['/ad_profile', ad.id]">
+                    <div class="ad-cont-image">
+                        <img [src]="ad.image?ad.image: '../../../../assets/images/animals-lost-pet.jpg'"
+                            alt="pet photo">
+                        <div id ='ribbon' class="ribbon-{{ad.adCategory|lowercase}} ribbon-top-right"><span>{{ad.adCategory}}</span></div>
+                    </div>
+                    <div class="ad-cont-body">
+                        <div class="ad-cont-details">
+                            <span class="name">Name:</span><span class="name-value">{{ad.petName}}</span>
+                        </div>
+                        <hr>
+                        <div class="ad-cont-some-words" [innerHTML]="ad.someWords">
+                            <!-- 50 words -->
+                        </div>
+                        <hr>
+                        <div class="ad-cont-address">
+                            <div class="city">
+                                <span class="icon"><i class="fas fa-city"></i></span>
+                                <span class="value">{{ad.address.city.name}}</span>
+                            </div>
+                            <div class="address">
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                <span class="value">{{ad.address.street}}</span>
+                            </div>
+                            <div class="address">
+                                <span class="icon"><i class="fas fa-venus-mars"></i></span>
+                                <span class="value">{{ad.sex}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <aside>
+
+        <div class="advertisement"
+            style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+        </div>
+
+
+    </aside>
+
+</main>
+
+<app-footer></app-footer>
+</div>

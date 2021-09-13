@@ -1,0 +1,169 @@
+<div class="content-label-row">
+  <h3>Company Page</h3>
+
+  <span (click)="toggleEdit()" class="edit-buttons" id="edit"><i class="fas fa-edit"></i></span>
+  <span (click)="cancelEdit()" class="edit-buttons hidden" id="cancel"><i class="fas fa-window-close"></i></span>
+  <span *ngIf="business.status"><span *ngIf="business.status!=='UNPAID'"><a
+        [routerLink]="['/business_profile', busForm.id]"><i class="fas fa-external-link-alt"></i></a></span></span>
+</div>
+<hr>
+
+<div class="content-body">
+  <!-- Here we import our content -->
+
+
+  <form *ngIf="!isSuccessful" class="properties_user_from" id="company-form" #f="ngForm" name="busForm"
+    (submit)="page.form.valid && submitSubForm()" novalidate #page="ngForm">
+
+    <div class="image-group  " id="image-photo">
+      <div class="profile-pic-div" id="profile-pic-div-store">
+        <img [src]="imgUrlBg?imgUrlBg:'../../../../assets/images/BusinessPageBackground.png'" id="photo-store"
+          class="photo">
+        <input type="file" (change)="selectFileBg($event)" id="file-store" class="file" name="imgBackground">
+        <label for="file-store" id="uploadBtn-store" class="uploadBtn">Choose Photo</label>
+      </div>
+    </div>
+
+    <div class="image-group  " id="image-logo">
+      <div class="profile-pic-div" id="profile-pic-div-store-logo">
+        <img [src]="imgUrlLogo?imgUrlLogo:'../../../../assets/images/BusinessLOGO.png'" id="photo-store-logo"
+          class="photo">
+        <input type="file" (change)="selectFileLogo($event)" id="file-store-logo" class="file" name="imgLogo">
+        <label for="file-store-logo" id="uploadBtn-store-logo" class="uploadBtn">Choose
+          Logo</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="companyName">Company Name* :</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.name" #name="ngModel" type="text" name="name"
+        id="cName-store" required minlength="3" maxlength="50" />
+      <div *ngIf="name.errors && page.submitted">
+        <div *ngIf="name.errors.required" class="error-massage">
+          Company Name is required</div>
+        <div *ngIf="name.errors.minlength" class="error-massage">
+          Company must be at least 3 characters
+        </div>
+        <div *ngIf="name.errors.maxlength" class="error-massage animate__fadeInLeftBig">
+          Company must be at most 50 characters
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <label for="city-store">City* :</label>
+      <select required class=" bis-input disabled-input" name="city" id="city-store" [(ngModel)]="busForm.city" #city="ngModel">
+        <option value="" disabled selected>Choose your City</option>
+        <option [value]="c.name" *ngFor="let c of cities">
+          {{ c.name }}
+        </option>
+      </select>
+      <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+      <div *ngIf="city.errors && page.submitted">
+        <div *ngIf="city.errors.required" class="error-massage">City is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone-store">Phone* :</label>
+      <input class="  bis-input disabled-input" [(ngModel)]="busForm.phone" #phone="ngModel" pattern="[0-9]+"
+        type="text" name="phone" id="phone-store" required maxlength="10" minlength="10">
+      <div *ngIf="phone.errors && page.submitted">
+        <div *ngIf="phone.errors.minlength" class="error-massage">
+          Please enter a valid phone number
+        </div>
+        <div *ngIf="phone.errors.maxlength" class="error-msg">
+          Please enter a valid phone number
+        </div>
+        <div *ngIf="phone.errors.pattern" class="error-msg">
+          Please enter a valid phone number
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email-store">Email* :</label>
+      <input class="bis-input disabled-input" required [(ngModel)]="busForm.email" #email="ngModel"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email-store" email />
+      <div *ngIf="email.errors && page.submitted">
+        <div *ngIf="email.errors.required" class="error-massage">Email is required</div>
+        <div *ngIf="email.errors.email" class="error-massage">
+          Email must be a valid email address
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="editor-aggs">Some words for the business :</label>
+      <ngx-editor-menu [editor]="editorSomeWords" class="editor-menu">
+      </ngx-editor-menu>
+      <ngx-editor [editor]="editorSomeWords" [(ngModel)]="someWordsJson" #someWords="ngModel" [disabled]="false"
+        [placeholder]="'Type here...'" class="editor bis-input disabled-input" id="editor1" name="someWords"
+        maxlength="500" required></ngx-editor>
+        <div *ngIf="someWords.errors && page.submitted">
+        <div *ngIf="someWords.errors.required" class="error-massage">
+            This field is required
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="">Business Description:</label>
+      <ngx-editor-menu [editor]="editorDescriptions" class="editor-menu" id="descriptions">
+      </ngx-editor-menu>
+      <ngx-editor [editor]="editorDescriptions" [(ngModel)]="descriptionJson" #description="ngModel" [disabled]="false"
+        [placeholder]="'Type here...'" name="descriptions" class="editor bis-input disabled-input" id="editor2"
+        maxlength="2000"></ngx-editor>
+    </div>
+    <div class="form-group">
+      <label for="facebook-store">Business Facebook:</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.facebook" #facebook="ngModel"  type="text"
+        name="facebook" id="facebook-store" minlength="3" maxlength="250">
+    </div>
+    <div class="form-group">
+      <label for="google-store">Business Instagram:</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.instagram" #Instagram="ngModel"  type="text"
+        name="instagram" id="insta-store" minlength="3" maxlength="250">
+    </div>
+
+    <div class="form-group">
+      <label for="personal-page-store">Business Web Page:</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.pageUrl" #pageUrl="ngModel"  type="text"
+        name="pageUrl" id="personal-page-store" minlength="3" maxlength="250">
+    </div>
+    <div class="form-group">
+      <label for="">Business Address *:</label>
+      <input class="bis-input disabled-input" (keyup)="searchPosition()" [(ngModel)]="busForm.street" #street="ngModel"
+        type="text" name="address" id="address" required>
+      <div *ngIf="street.errors && page.submitted">
+        <div *ngIf="street.errors.required">
+          Address is required
+        </div>
+        <div *ngIf="street.errors.minlength" class="error-massage">
+          Address must be at least 3 characters
+        </div>
+        <div *ngIf="street.errors.maxlength" class="error-massage">
+          Address must be at most 50 characters
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+
+      <label for="">Latitude</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.latitude" #latitude="ngModel" type="text"
+        name="latitude" id="latitude" disabled>
+    </div>
+    <div class="form-group">
+      <label for="">Longtitude</label>
+      <input class="bis-input disabled-input" [(ngModel)]="busForm.longitude" #longitude="ngModel" type="text"
+        name="longtitude" id="longtitude" disabled>
+    </div>
+    <label id="map-tip">Please place the pin above your store on the map</label>
+
+    <app-map #mapComponent class="bis-input disabled-input" id="map" lat="39.11035094005105" lng="23.263987890625017"
+      zoom="6" width="100%" height="250px" (click)="mapClick($event)">
+    </app-map>
+    <div class="form-submit edit-buttons hidden">
+      <input type="submit" value="Save Changes" class="submit bis-input disabled-input" name="submit" id="submit" />
+    </div>
+  </form>
+</div>

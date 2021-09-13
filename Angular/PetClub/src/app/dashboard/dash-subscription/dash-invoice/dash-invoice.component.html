@@ -1,0 +1,58 @@
+<div id="invoice">
+    <div id="date-invoice">
+        <img src="../../../../assets/images/logo.png">
+        <div id="container">
+            <h3>Invoice</h3>
+            <p>{{dtoTrastaction.date|date}}</p>
+            <p><span>Invoice Number :</span>{{dtoTrastaction.id}}</p>
+        </div>
+    </div>
+    <div id="info-invoice" *ngIf="invoiceDetails">
+        <div id="left-info">
+            <h5 >Company's Name :</h5>
+            <p>{{invoiceDetails.companyName}}</p>
+            <h5>Address :</h5>
+            <p>{{invoiceDetails.address.street}}</p>
+            <h5>Phone :</h5>
+            <p>{{invoiceDetails.phone}}</p> 
+            <h5>Type Of Trasanction :</h5>
+            <p>{{dtoTrastaction.type}}</p>
+
+        </div>
+        <div id="right-info">
+            <h5>Email :</h5>
+            <p>{{invoiceDetails.companyEmail}}</p>
+            <h5>Public Financial Service :</h5>
+            <p>{{invoiceDetails.financialService}}</p>
+            <h5>VAT Number :</h5>
+            <p>{{invoiceDetails.vatNumber}}</p>
+            <h5>Ιnvoicing Statement</h5>
+            <select name="paid" id="paid" [(ngModel)]="dtoTrastaction.paid"  (change)="editTransaction(dtoTrastaction)">
+              <option [value]="true">Paid</option>
+              <option [value]="false">Unpaid</option>
+            </select>
+            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+        </div>
+    </div>
+    <div id="amount-invoice" *ngIf="invoiceDetails">
+        <table>
+            <thead>
+                <th>Description</th>
+                <th>Duration Days</th>
+                <th>Adv. Forever</th>
+                <th>Role</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                <td>{{dtoTrastaction.sub_name}}</td>
+                <td>{{dtoTrastaction.sub_duration}}</td>
+                <td >{{dtoTrastaction.advForEver?'YES':'NO'}}</td>
+                <td>{{dtoTrastaction.sub_role  | replacerole | titlecase }}</td> 
+                <td>{{dtoTrastaction.sub_price}} $</td>
+            </tbody>
+        </table>
+        <div id="total">
+            <p>Total : <span>{{dtoTrastaction.sub_price}} $</span></p>
+        </div>
+    </div>
+</div>

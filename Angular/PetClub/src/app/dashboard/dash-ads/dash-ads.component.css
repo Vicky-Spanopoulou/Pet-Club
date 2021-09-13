@@ -1,0 +1,88 @@
+
+  #dashboard-pages-container{ 
+    width: calc(100% - 80px);
+    margin-top: 30px;
+      display: block;  
+    }
+    #dashboard-pages-container #search-div{
+      width: 100%;
+      height: 50px;
+    }
+    #dashboard-pages-container #mid #search-div #add-user i{
+      font-size: 23px;
+      width: 30px;
+      float: left;
+    }
+    #dashboard-pages-container #search-div #search-bar{ 
+      border: none;
+      width: 300px;
+      height: 30px;
+    }
+    #dashboard-pages-container #search-div  i:hover{
+      cursor: pointer;
+    }
+    #dashboard-pages-container #search-div #search-owner{
+      border: none;
+      width: 300px;
+      height: 30px;
+      float: right;
+      /* display: none; */
+    }
+    #dashboard-pages-container #search-div #search-owner #search-owner-input{
+      border: none;
+      width: 300px;
+      height: 30px;
+    }
+    #dashboard-pages-container #search-div #search-bar:focus{
+      outline: none;
+    }
+    #dashboard-pages-container #search-div #add-user{
+      cursor: pointer;
+      display: block;
+      float: right;
+      padding-right: 20px;
+    }
+    #dashboard-pages-container  #mid-table table .dropdown {
+      display: block;
+    }
+    #dashboard-pages-container #mid-table table .dropdown i{
+        margin-left: 15px;
+        font-size: small;
+        z-index: 1;
+    }
+    
+    #dashboard-pages-container #mid-table table .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 2;
+    }
+  
+    #dashboard-pages-container #mid-table table .dropdown{
+      background-color: transparent;
+  
+      border: 0px solid;
+      width: 100px;
+    }
+    #dashboard-pages-container #mid-table table #lost-found #one{
+      color: green;
+    }
+    #dashboard-pages-container #mid-table table #lost-found #two{
+      color: red;
+    }
+    #close-window{
+      color: var( --first-color-blur);
+      width: 35px;
+      height: 35px;
+      font-size: 35px;
+      float: right;
+  }
+  #close-window:hover{
+      cursor: pointer;
+      color:  red;
+  }
+
+

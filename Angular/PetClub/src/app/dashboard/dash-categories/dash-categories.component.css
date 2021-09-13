@@ -1,0 +1,346 @@
+#dashboard-pages-container {
+  padding: 15px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+
+#mid-left{
+  width: 200px;
+  float: left;
+  background-color: rgb(243, 237, 237);
+  max-height: 200px;
+  margin-left: 0px;
+  margin-top: 0px; 
+  border-radius: 5px;
+
+}
+#mid-left ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ 
+}
+#mid-left ul li{
+  line-height: 50px;
+
+}
+#mid-left ul li:hover{
+  cursor: pointer;
+  background-color: rgb(233, 231, 231);
+
+}
+#mid-left ul span{
+  font-size: large;
+  width: 10px;
+  margin-left: 20px;
+}
+#mid-table{
+  float: right  ;
+  width: calc(100% - 220px);
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;  
+}
+#mid-table .types-of-categories{
+  float: left;
+  width: 48%;
+  height: 50%;
+
+}
+#mid-table tr:hover{
+  cursor: pointer;
+
+}
+#mid-table #business-container{
+  display: block;
+}
+#mid-table #pet-container{
+  display: block;
+}
+#mid-table #city-container{
+  display: block;
+}
+
+#mid-table .types-of-categories #add{
+    cursor: pointer;
+    float: right;
+    font-family: cursive;
+    font-size: x-large;
+}
+#mid-table .types-of-categories #add #add-icon{
+    margin-right: 10px;
+}
+#mid-table table{
+  vertical-align: center;
+  font-family: var(--default-font-family);
+  font-size: large;
+  width: 100%; 
+  border-spacing: 0px;
+}
+#mid-table table thead {
+  text-align: center;
+  width: auto;
+  height: 50px;
+  background-color: var(--logo-backgournd-color);
+  color: white;
+}
+#mid-table table tbody{
+  text-align: center;
+  vertical-align: top;
+}
+#mid-table table td,th{
+  line-height: 40px;
+  padding: 5px;
+}
+#mid-table div:nth-child(odd){
+  display: inline;
+}
+#mid-table tbody tr td i{
+    font-size:  20px;
+}
+#mid-table tbody tr td i:hover{
+  cursor: pointer; 
+}
+
+#mid-table table th:first-child{
+    border-top-left-radius: 8px ;
+}
+#mid-table table th:last-child{
+  border-top-right-radius: 8px ;
+}
+#mid-table table tr:last-child td:first-child{
+  border-bottom-left-radius: 8px ;
+}
+#mid-table table tr:last-child td:last-child{
+  border-bottom-right-radius: 8px ;
+}
+
+#mid-table table td:nth-child(1){
+  text-align: center;
+}
+
+#mid-table table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#mid-table table td img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto;
+}
+#mid-table .edit-categories{  
+ float: right;
+  width: 50%;
+
+}
+#mid-table .edit-categories form{
+  margin-left: 100px;
+}
+#mid-table .edit-categories label{
+  font-size: large;
+}
+#mid-table .edit-categories input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#mid-table .edit-categories input[type=number]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#adv-label{
+  margin-top: 10px;
+  font-size: x-large;
+}
+#advertisment{
+  height: 20px;
+  margin-left: 5px;
+  display: inline;
+  width: 50px;  
+}
+
+
+
+#mid-table .edit-categories input[type=submit] {
+  width: 70%;
+  float: left;
+  font-size: large;
+  background-color: var(--logo-backgournd-color);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#mid-table .edit-categories input[type=submit]:hover {
+  cursor: pointer;
+  background-color: var(--first-color);
+  color:black;
+  transition: 0.5s;
+}
+#mid-down{
+  width: 100%;
+  display: inline-block;
+  margin-top: 10px;
+}
+#mid-down #no1{
+  display: block;
+}
+#mid-down #no2{
+  display: block;
+}
+#mid-down #no3{
+  width: 100%;
+  display: block;
+}
+#mid-down #no3 #map{
+  float: right;
+  width: 40%;
+  height: 400px;
+  display: block;
+}
+.submit{
+  width: 70%;
+}
+.delete-form-btn{
+  cursor: pointer;
+  text-align: center;
+  display: inline;
+  float: right;
+  width: 180px;
+  height: 45px;
+  background-color: white;
+  border: 2px solid red;  
+  border-radius: 4px;
+  margin-top: 7px;
+
+}
+.delete-form-btn:hover{
+  background-color: red;   
+  transition: 0.5s;
+}
+.delete-form-btn:hover p{
+  color: white;
+  transition: 0.5s;
+}
+.delete-form-btn p{
+  font-family: var(--main-font);
+  font-size: large; 
+  font-weight: bold;  
+  color: red;
+  margin-top: 13px;
+  align-items: center;
+}
+
+.edit-categories #role{
+  width: 100%;
+  height: 45px;
+  font-size: large;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+@media screen and (max-width:1790px){
+  #mid-table .edit-categories input[type=submit]{
+    width: 100%;
+  }
+  .delete-form-btn{
+    width: 99.3%;
+}
+}
+@media screen and (max-width:1280px){
+  #dashboard-pages-container{
+    margin-bottom: 100px;
+    display: block;   
+  }
+
+   #mid-left{
+    float: none;
+    width: 98%;
+    height: 50px;
+    margin:auto;
+    margin-top: 20px;
+    display: block;
+  }
+   #mid-left ul li{
+    display: inline;
+  }
+   #mid-table{
+    
+    float: none;
+    display: block;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+   #mid-table .types-of-categories{
+    width: 100%;
+  }
+   #mid-table .edit-categories {
+    display: block;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-right: 200px;
+  }
+   #mid-table .edit-categories form{
+    width: 100%;
+    margin-left: 200px;
+  }
+ #mid-table .edit-categories input[type=text] {
+    width: 100%;   
+  }
+
+  #mid-down #no3{
+    width: 100%;
+  }
+  #mid-down #no3 #map{
+    padding-right: 10px;
+    margin: 0;
+    width: 100%;
+  }
+
+}
+@media screen and (max-width:620px){
+   #mid-left{
+      line-height: 5px;
+      display: flow-root;
+      overflow: auto;
+      font-size: small;
+      width: 100%; 
+      height: 200px;
+    }
+ #mid-left ul{
+      background-color: rgb(221, 219, 219);
+      border-radius: 5px;
+      width: 100%;
+      height: 100%; 
+    }
+     #mid-left ul li{
+      width: 100%;
+      display: inline-block;
+      margin-top: 6px;
+      line-height:40px;
+    }
+   #mid-table{
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+    }
+}

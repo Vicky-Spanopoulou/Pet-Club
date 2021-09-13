@@ -1,0 +1,31 @@
+#dashboard-pages-container{ 
+  width: calc(100% - 80px);
+  margin-top: 30px;
+    display: block;  
+  }
+  
+  #dashboard-pages-container #mid-table table .dropdown {
+  display: block;
+}
+#dashboard-pages-container #mid-table table .dropdown i{
+    margin-left: 15px;
+    font-size: small;
+    z-index: 1;
+}
+
+#dashboard-pages-container #mid-table table .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 2;
+}
+
+#dashboard-pages-container #mid-table table .dropdown{
+  background-color: transparent;
+
+  border: 0px solid;
+  width: 100px;
+}

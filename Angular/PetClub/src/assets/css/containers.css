@@ -1,0 +1,488 @@
+/* ad-container */
+.ad-cont {
+  display: flow-root;
+  width: 99%;
+  color: var(--default-font-color);
+  min-height: 150px;
+  border-radius: 3px;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 3px;
+  border-top: 1px solid var(--first-color-blur);
+  background-color: white;
+}
+.ad-cont:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.ad-cont hr {
+  width: 90%;
+  background-color: var(--first-color);
+  border-color: var(--first-color);
+}
+.ad-cont .ad-cont-image {
+  width: 150px;
+  height: 150px;
+  float: left;
+  position: relative;
+}
+.ad-cont .ad-cont-image img {
+  width: 150px;
+  height: 150px;
+}
+
+.ad-cont .ad-cont-body {
+  width: calc(100% - 20px - 150px);
+  float: right;
+  min-height: 150px;
+  min-width: 250px;
+}
+.ad-cont .ad-cont-body .ad-cont-details {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+.ad-cont .ad-cont-body .ad-cont-details span {
+  font-family: var(--main-font);
+  margin-left: 5px;
+  font-weight: bold;
+}
+.ad-cont .ad-cont-body .ad-cont-details span.name {
+  color: var(--first-color);
+}
+.ad-cont .ad-cont-body .ad-cont-details span.name-value {
+  color: var(--default-font-color);
+  font-weight: bold;
+  font-size: 20px;
+}
+.ad-cont .ad-cont-body .ad-cont-details span.ad-cont-rate {
+  margin-right: 10px;
+  font-weight: bold;
+  float: right;
+  color: var(--star-color);
+}
+.ad-cont .ad-cont-body .ad-cont-some-words {
+  font-family: var(--main-font);
+  width: calc(100%);
+  padding-top: 10px;
+  min-height: 100px;
+  color: var(--default-font-color);
+}
+.ad-cont .ad-cont-body .ad-cont-address {
+  width: calc(100%);
+  padding-top: 10px;
+}
+.ad-cont .ad-cont-body .ad-cont-address div {
+  display: inline-block;
+  padding-right: 20px;
+}
+.ad-cont .ad-cont-body .ad-cont-address div .icon {
+  color: var(--first-color);
+}
+.ad-cont .ad-cont-body .ad-cont-address div .value {
+  color: var(--default-font-color);
+  font-family: var(--main-font);
+}
+@media screen and (max-width: 660px) {
+  .ad-cont {
+    width: 80%;
+  }
+  .ad-descr-text {
+    margin: auto;
+    margin-top: 20px;
+    width: 95%;
+    float: none;
+    display: block;
+  }
+
+  .ad-cont .ad-cont-image {
+    display: block;
+    float: none;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .ad-cont .ad-cont-body {
+    width: calc(100%);
+    float: none;
+    margin: auto;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .ad-cont {
+    width: 100%;
+  }
+}
+
+/*---------------- SIDE-BOX  -----------------*/
+/* Ad Details Container */
+
+.sidebox-cont {
+  color: var(--first-color);
+  width: 250px;
+  margin-top: 20px;
+  float: left;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: white;
+  font-family: var(--main-font);
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+.sidebox-cont .sidebox-cont-header {
+  font-family: var(--headers-font);
+  font-size: 25px;
+  text-align: center;
+  padding-top: 12px;
+  position: relative;
+}
+.sidebox-cont .sidebox-cont-header span {
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.sidebox-cont .sidebox-cont-header #edit-menu {
+  width: 200px;
+  min-width: 70px;
+  display: flow-root;
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  border: 2px solid var(--first-color-blur);
+  z-index: 2;
+  background-color: var(--first-color);
+  color: white;
+}
+.sidebox-cont .sidebox-cont-header #edit-menu .menu-item {
+  display: block;
+  width: 200px;
+  height: 40px;
+}
+.sidebox-cont .sidebox-cont-header #edit-menu .menu-item span.item-value {
+  position: static;
+  display: block;
+  width: calc(100% - 4px);
+  height: 40px;
+  line-height: 40px;
+  font-size: 30px;
+  color: white;
+  text-transform: none;
+}
+.sidebox-cont .sidebox-cont-header #edit-menu .menu-item span.item-value:hover {
+  background-color: white;
+  color: var(--first-color);
+}
+.sidebox-cont .sidebox-cont-header hr {
+  background: var(--first-color);
+}
+.sidebox-cont .sidebox-cont-body {
+  color: var(--default-font-color);
+  padding: 10px;
+}
+.sidebox-cont .sidebox-cont-body .sidebox-cont-det {
+  min-height: 40px;
+  line-height: 25px;
+  margin-top: 10px;
+  font-size: 15px;
+  width: 100%;
+  display: flow-root;
+}
+.sidebox-cont .sidebox-cont-body .sidebox-cont-det .icon {
+  color: var(--first-color);
+  float: left;
+  width: 10%;
+}
+.sidebox-cont .sidebox-cont-body .sidebox-cont-det .value {
+  margin-left: 5px;
+  height: 100%;
+  float: right;
+  width: 80%;
+  color: var(--default-font-color);
+}
+.sidebox-cont .sidebox-cont-body .sidebox-cont-det .value a {
+  text-decoration: none;
+  color: var(--default-font-color);
+}
+@media screen and (max-width: 840px) {
+  #pet-profile section #content .sidebox-cont {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    float: none;
+  }
+}
+@media screen and (max-width: 660px) {
+  .sidebox-cont {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    float: none;
+  }
+  @media screen and (max-width: 640px) {
+    #pet-profile section #content .sidebox-cont {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .sidebox-cont {
+    display: block;
+    width: 100%;
+  }
+}
+
+/*---------------- Left - Menu  -----------------*/
+
+.left-menu {
+  color: var(--first-color);
+  width: 250px;
+  margin-top: 20px;
+  float: left;
+  border-radius: 3px;
+  background-color: var(--first-color);
+  font-family: var(--main-font);
+}
+.left-menu .menu-container {
+  width: 100%;
+}
+.left-menu .menu-container a {
+  cursor: pointer;
+  width: 100%;
+  text-transform: none;
+  color: white;
+}
+.left-menu .menu-container .menu-item {
+  width: 100%;
+  height: 60px;
+  line-height: 40px;
+  padding: 10px;
+}
+.left-menu .menu-container .menu-item:hover {
+  background-color: var(--second-color);
+}
+.left-menu .menu-container .menu-item .menu-icon {
+  margin-left: 10px;
+}
+.left-menu .menu-container .menu-item .menu-title {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 840px) {
+  #user-properties-template .left-menu {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    float: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  #user-properties-template .left-menu {
+    display: block;
+    width: 100%;
+  }
+}
+
+.table {
+  width: 100%;
+}
+.table table {
+  width: 100%;
+  border-spacing: 0px;
+}
+.table table thead tr {
+  cursor: default;
+}
+.table #table-body {
+  max-height: 370px;
+  overflow: auto auto;
+}
+/* width */
+.table #table-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.table #table-body::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+.table #table-body::-webkit-scrollbar-thumb {
+  background: var(--first-color-blur);
+}
+
+/* Handle on hover */
+.table #table-body::-webkit-scrollbar-thumb:hover {
+  background: var(--default-font-color);
+}
+.table #table-body table {
+  min-width: 500px;
+}
+
+.table table tr {
+  cursor: pointer;
+  font-weight: bold;
+}
+.table table tr th {
+  background-color: white;
+  border-color: white;
+  color: var(--first-color);
+  font-family: var(--headers-font);
+  font-size: 30px;
+  border-bottom: 2px solid var(--first-color);
+}
+.table #table-body table tbody tr.always-shown {
+  height: 30px;
+}
+.table #table-body table tbody tr.description {
+  font-weight: normal;
+  font-size: 22px;
+}
+
+.table #table-body table tbody tr td {
+  text-align: center;
+  height: 40px;
+}
+.table #table-body table tbody tr.description td {
+  text-align: left;
+  padding: 10px;
+  padding-left: 20px;
+  min-height: 40px;
+}
+
+.table #table-body table tbody tr.always-shown:nth-child(4n + 3) {
+  color: var(--default-font-color);
+  background-color: white;
+}
+.table #table-body table tbody tr.always-shown:nth-child(4n + 1) {
+  background-color: var(--first-color);
+  color: white;
+}
+.table #table-body table tbody tr.description:nth-child(4n + 4) {
+  color: var(--default-font-color);
+  background-color: white;
+}
+.table #table-body table tbody tr.description:nth-child(4n + 2) {
+  background-color: var(--first-color);
+  color: white;
+}
+
+.table#doctors #table-body table tbody tr:nth-child(2n + 2),
+.table#doctors #table-body table tbody tr:nth-child(2n + 2) td a {
+  color: var(--default-font-color);
+  background-color: white;
+}
+.table#doctors #table-body table tbody tr:nth-child(2n + 1),
+.table#doctors #table-body table tbody tr:nth-child(2n + 1) td a {
+  background-color: var(--first-color);
+  color: white;
+}
+.table#doctors #table-body table tbody tr td:nth-child(3) {
+  width: 80px;
+}
+.table#doctors #table-body table tbody tr td a {
+  text-transform: none;
+  margin-right: 10px;
+}
+
+/* Subscriptions */
+.sub-container {
+  width: 100%;
+  margin: auto;
+}
+
+.sub-container .subscription {
+  border-radius: 20px 20px;
+  overflow: hidden;
+  width: 215px;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 30px;
+
+}
+.sub-container .subscription .subscription-title {
+  height: 80px;
+}
+.sub-container .subscription .subscription-title label {
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  line-height: 80px;
+  text-align: center;
+}
+.sub-container .subscription .sub-body {
+  width: 100%;
+}
+.sub-container .subscription .sub-body .sub-option {
+  width: 100%;
+  min-height: 30px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  text-align: justify;
+  padding-right: 10px;
+}
+.sub-container .subscription .sub-body .sub-option .sub-icon {
+  width: 30px;
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+}
+.sub-container .subscription .sub-body .sub-option .sub-title {
+  width: calc(100% - 45px);
+  display: inline-block;
+}
+.sub-container .subscription .sub-body .sub-option .sub-title-unlimited {
+  width: calc(100% - 45px);
+  display: inline-block;
+}
+.sub-container .subscription .sub-body .sub-price {
+  width: 100%;
+  height: 80px;
+  margin-top: 15px;
+}
+.sub-container .subscription .sub-body .sub-price .price {
+  display: block;
+  margin: auto;
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
+}
+.sub-container .subscription .sub-body .sub-price .period {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  line-height: 30px;
+  font-size: 18px;
+}
+.sub-container .subscription a .buy-button {
+  text-transform: none;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-weight: bolder;
+  background-color: var(--first-color);
+  color: white;
+  transition: 0.5s;
+}
+.sub-container .subscription a .buy-button:hover {
+  background-color: #cfb53b;
+  color: white;
+}
+
+@media screen and (max-width: 640px) {
+  .sub-container .subscription {
+  }
+}

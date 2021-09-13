@@ -1,0 +1,44 @@
+
+<app-pet-form #petForm></app-pet-form>
+
+
+
+
+<div id="pet-content" class="profile-div-container small-shadow">
+    <div class="content-label-row">
+        <h3>My Pets</h3>
+        <div class="add-button">
+            
+            <div class="newButton" (click)="this.openModal()">
+                <i class="fas fa-plus"></i>
+                <span>New</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <hr>
+
+    <div *ngIf="pets.length>0"   id="pet-content-body" class="content-body">
+        
+        <div class="pet-container"  *ngFor="let pet of pets">
+            <div class="image" style=" background-size: auto 100%"
+                [style.background-image]="pet.image?'url('+pet.image+')':'url(../../../../assets/images/pet_icon.png)'">
+
+                <div class="detail-bar">
+                    <div class="pet-name"><i class="fas fa-paw"> </i> {{pet.name}}</div>
+                    <a [routerLink]="['/pet_profile/', pet.id]">
+                        <div class="more">
+                            <span>More...</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <div *ngIf="pets.length <= 0" id="pet-content-body" class="content-body">
+        <label id="empty-error">You have no pets yet!!!</label>
+    </div>
+</div>

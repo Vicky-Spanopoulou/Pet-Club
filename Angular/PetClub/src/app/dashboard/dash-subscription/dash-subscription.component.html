@@ -1,0 +1,37 @@
+<header>
+  <app-horizontal-nav></app-horizontal-nav>
+</header>
+<main>
+  <section>
+    <app-vertical-nav></app-vertical-nav>
+  </section>
+  <div id="dashboard-pages-container">
+    <div id="mid">
+      <div id="search-div">
+        <input [(ngModel)]="searchTransaction" (input)="handleTransactions()" id="search-bar" type="search"
+          placeholder="Search transaction..." /><i class="fas fa-search"></i>
+      </div>
+      <div id="mid-table">
+        <table>
+          <thead>
+            <th>Number Trasaction</th>
+            <th>Ιnvoicing Statement</th>
+            <th>Subscription</th>
+            <th>Type</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaction of filterTransactions" (click)="visibleInvoice(transaction)">
+              <td>{{ transaction.id }}</td>
+              <td>{{ transaction.paid ? "PAID" : "UNPAID" }}</td>
+              <td>{{ transaction.sub_name }}</td>
+              <td>{{ transaction.type }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="mid-down">
+      <app-dash-invoice *ngIf="editInvoice" [dtoTrastaction]="trasanctionForm"   (notify)="updateTable()"></app-dash-invoice>
+    </div>
+  </div>
+</main>

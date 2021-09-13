@@ -1,0 +1,199 @@
+
+#empty-error{
+    font-family:var(--headers-font) ;
+    font-size: 35px;
+    font-weight: bolder;
+    color:var(--first-color);
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 100px;
+}
+
+
+.profile-div-container{
+    float: right;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 100%;
+    min-width: 250px;
+    width:calc(96% - 250px);
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+}
+.profile-div-container .content-label-row{
+    width:calc(100%);
+    height: 40px;
+    line-height:40px;
+    margin-bottom: 7px;
+}
+.profile-div-container .content-label-row h3{
+    color:var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 40px;
+    width:150px;
+    float: left;
+}
+.profile-div-container hr{
+    width:100%;
+    background-color: var(--first-color);
+}
+.profile-div-container .content-label-row .add-button{
+    max-width: 100px;
+    min-width: 100px;
+    float: right;
+}
+.profile-div-container .content-label-row .add-button .newButton{
+    float: right;
+    font-weight: bold;
+    width:30px;
+    height: 30px;
+    line-height: 30px;
+    border:2px solid var(--first-color);
+    color:var(--first-color);
+    text-align: center;
+    cursor: pointer;
+}
+.profile-div-container .content-label-row .add-button .newButton span{
+    display: none;
+}
+.profile-div-container .content-label-row .add-button .newButton:hover{
+    width:80px;
+}
+.profile-div-container .content-label-row .add-button .newButton:hover span{
+    display: inline-block;
+}
+.profile-div-container .content-body{
+    width: 100%;
+    min-height: 310px;
+    padding-top: 60px;
+}
+#content .profile-div-container .content-body{
+    padding-top: 10px;
+}
+.profile-div-container .content-body#reminder-content-body{
+    padding-top: 10px;
+}
+
+
+
+/*-------------------- My Reminder ------------------*/
+#reminder-content-body #reminder-container{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color:var(--default-font-color);
+}
+#reminder-content-body #reminder-container .reminder-item{
+    width:100%;
+    display: flow-root;
+    border-bottom: 2px solid var(--first-color);
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color:var(--default-font-color);
+    position: relative;
+}
+#reminder-content-body #reminder-container .reminder-item:hover{
+    background-color: var(--first-color);
+    color: white;
+    font-weight: bold;
+}
+#reminder-content-body #reminder-container .reminder-item .ver-burger{
+    /* display: inline-block; */
+    width:10px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top:5px ;
+    z-index: 0;
+    cursor: pointer;
+    font-size: 25px;
+    color:var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item:hover .ver-burger{
+    color: white;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu{
+    width: 200px;
+    min-height: 30px;
+    background-color: var(--first-color);
+    color: white;
+    border: 2px solid var(--first-color);
+    position: absolute;
+    top:-40px;
+    left: 30px;
+    z-index: 2;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu .menu-item{
+    width: 100% ;
+    height: 40px;
+    text-transform: none;
+    color:white;
+    line-height: 40px;
+    font-family: var(--headers-font);
+    font-size: 25px;
+    padding-left: 10px;
+    z-index: 2;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu .menu-item:hover{
+    background-color: white;
+    color:var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item:first-child{
+    border-top: 2px solid var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-text {
+    /* float: left; */
+    display: inline-block;
+    width:calc(100% - 80px);
+    font-family: var(--main-font);
+    margin-left: 20px;
+    z-index: 1;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox{
+    width:50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    float: right;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox input[type=checkbox]{
+    margin:auto;
+    width:20px;
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox input[type=checkbox]:hover{
+    cursor: pointer;
+}
+
+
+/* @media screen and (max-width: 840px) {
+    .profile-div-container{
+        float: none;
+        display: block;
+        width:80%;
+        margin: auto;
+        margin-top:20px;
+    } 
+} */
+@media screen and (max-width: 660px) {
+    .profile-div-container{
+        float: none;
+        display: block;
+        width:80%;
+        margin: auto;
+        margin-top:20px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .profile-div-container{
+        width:100%;
+    } 
+}

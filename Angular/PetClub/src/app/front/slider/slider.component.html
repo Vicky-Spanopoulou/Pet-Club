@@ -1,0 +1,59 @@
+<div class="slideshow-container">
+    <!-- photo 1 -->
+    <div class="slides fade" #slides>
+        <div id="slideshow-img1" class="slideshow-imgs"><img src="/assets/images/bg-img-pets.png" style="width:100%">
+        </div>
+        <div id="slide-1">
+            <div class="slide-title">All of your pet's info just a few clicks away</div>
+            <div class="slide-text">
+                <p>With this app you can have all of your pets' records right there with you!
+                    Wherever you are! Check out habbits, medical info, or your next vet appointment or vaccination.
+                </p>
+                <p>It's quick, easy and most of all always with you!</p>
+            </div>
+        </div>
+        <div class="ourApp-btn"><input routerLink="/register" type="button" class="register-btn" value="Try it now!" /></div>
+    </div>
+    <!-- photo 2 -->
+    <div class="slides fade" #slides>
+        <div id="slideshow-img3" class="slideshow-imgs"><img src="/assets/images/background-vet@2x.png"
+                style="width:100%">
+        </div>
+        <div id="slide-2">
+            <div class="slide-title">Find a vet near you</div>
+            <div class="slide-text">
+                Use our app to track down all vets near you who are using our app.
+                If you don't have an account yet, the vets who are using our app can enroll you for free and get
+                access to your pet-app!
+            </div>
+        </div>
+        <div class="ourApp-btn"><input routerLink="/register" type="button" class="register-btn" value="Try it now!" /></div>
+    </div>
+    <!-- photo 3 -->
+    <div class="slides fade" #slides>
+        <div id="slideshow-img2" class="slideshow-imgs"><img src="/assets/images/location-pin@2x.png"
+                style="width:100%">
+        </div>
+        <div id="slide-3">
+            <div class="slide-title">Lost & Found</div>
+            <div class="slide-text">
+                Either you have a pet, use our app or neither you can use our lost & found section.
+                Publish a post for a lost pet or one that you have already found! Let's help those little ones get
+                back home!
+            </div>
+        </div>
+        <div class="ourApp-btn"><input routerLink="/register" type="button" class="register-btn" value="Try it now!" /></div>
+    </div>
+
+     <!-- Next and previous buttons -->
+     <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+     <a class="next" (click)="plusSlides(1)">&#10095;</a>
+ 
+     <!-- The dots/circles -->
+     <div style="text-align:center">
+         <span class="dot" #dots (click)="currentSlide(1)"></span>
+         <span class="dot" #dots (click)="currentSlide(2)"></span>
+         <span class="dot" #dots (click)="currentSlide(3)"></span>
+     </div>
+
+</div>

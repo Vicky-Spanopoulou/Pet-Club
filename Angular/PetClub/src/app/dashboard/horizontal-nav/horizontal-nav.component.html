@@ -1,0 +1,17 @@
+
+    <div id="horizondal-navbar">
+        <div id="logo" (click)="goToHome()">
+            <img src="../../../assets/images/logo.png" style="width: 100px;"/>
+        </div>
+        <div id=avatar>
+            <img [src]="loggedUser.img?loggedUser.img:'../../../assets/images/defaultProfileImage.jpg'" alt="Avatar" (click)="toggleMenu()">
+        </div>
+        <div id="dashboard-profile-settings" *ngIf="menuOption">
+            <p>Singed in as <br><span>{{loggedUser.firstName}} {{loggedUser.lastName}}</span></p>
+            <hr>
+            <a class="setting" routerLink="/home" *ngIf="loggedUser.role === 'ROLE_DOCTOR'"><i class="fas fa-user"></i><span class="title" >Profile</span></a>
+            <a class="setting" routerLink="/profile_properties" *ngIf="loggedUser.role === 'ROLE_DOCTOR'"><i class="fas fa-address-card"></i><span class="title" >Profile Properties</span></a>
+            <a class="setting" (click)="logout()"><i class="fas fa-sign-out-alt"></i><span class="title" >Sign Out</span></a>
+        </div>
+    </div>
+

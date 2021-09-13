@@ -1,0 +1,67 @@
+<header>
+  <app-horizontal-nav></app-horizontal-nav>
+</header>
+<main>
+  <section>
+    <app-vertical-nav></app-vertical-nav>
+  </section>
+  <div id="dashboard-pages-container">
+    <div id="mid">
+      <div id="search-div">
+        <input id="search-bar" [(ngModel)]="searchClient" (input)="handleUsers()" type="search"
+          placeholder="Search Pet By Owner..." /><i class="fas fa-search"></i>
+        <div id="add-user" (click)="toggleSearchCustomer()">
+          <i class="fas fa-user-plus"></i><span id="add-customer">Add Customer</span>
+        </div>
+        <div class="hidden" id="search-owner">
+          <input type="search" [(ngModel)]="findNewClient" id="search-owner-input" placeholder="Find Customer..." />
+          <button (click)="getAllUsersByEmail(findNewClient)" class="button">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="pets-for-exam" *ngIf="petForExam">
+            <div id="icon">
+              <i (click)="closeNewPetList()" class="fas fa-times"></i>
+            </div>
+            <ng-container *ngIf="newPets; else noResponse">
+              <div class="new-pets" *ngFor="let newPet of newPets" (click)="setEditPet(newPet)">
+                {{ newPet.name }}
+              </div>
+            </ng-container>
+            <ng-template #noResponse>
+              <div class="new-pets">There Aren't Results</div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div id="mid-table">
+        <table>
+          <thead>
+            <th></th>
+            <th>Name</th>
+            <th>Pet</th>
+            <th>Breed</th>
+            <th>Owner</th>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let client of filterClients">
+              <tr *ngFor="let pet of client.pets" (click)="setEditPet(pet)">
+                <td><img src="{{ pet.image }}" /></td>
+                <td>{{ pet.name }}</td>
+                <td>{{ pet.petCategory.name }}</td>
+                <td>{{ pet.breed }}</td>
+                <td>{{ client.email }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="close-window" *ngIf="petHistoryForm" (click)="onCloseForm()">
+      <i class="fas fa-times"></i>
+    </div>
+    <div id="mid-down">
+      <app-dash-pet-history #examForm *ngIf="petHistoryForm"  [dtoPet]="petForm"  (notify)="updateTable()"></app-dash-pet-history>
+    </div>
+  </div>
+</main>

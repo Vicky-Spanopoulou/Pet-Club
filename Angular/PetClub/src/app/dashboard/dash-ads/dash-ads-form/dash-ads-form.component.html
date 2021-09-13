@@ -1,0 +1,415 @@
+<div class="main-forms">
+  <div class="container">
+    <h2 class="form-header" id="title-pet">Lost And Found</h2>
+
+    <form
+      class="register-form"
+      id="register-form-pet"
+      #a="ngForm"
+      (submit)="submitAdForm()"
+    >
+      <!-- image -->
+      <div class="space-div">
+        <div id="img-container">
+          <div class="profile-pic-div">
+            <img
+              [src]="
+                dtoAd.image
+                  ? dtoAd.image
+                  : '../../../../assets/images//pet_icon.png'
+              "
+              id="photo"
+              class="photo"
+            />
+            <input
+              [(ngModel)]="dtoAd.image"
+              name="image"
+              (change)="selectFile($event)"
+              type="file"
+              id="file"
+              class="file"
+            />
+            <label for="file" id="uploadBtn">Choose Photo</label>
+          </div>
+        </div>
+
+        <div id="input-containers">
+          <!-- pet Name -->
+          <div class="form-group">
+            <label for="pName" title="required"> Pet Name* :</label>
+            <input
+              pattern="^[a-zA-Z ]*$"
+              type="text"
+              name="pName"
+              id="pName-ad"
+              [(ngModel)]="dtoAd.petName"
+              required
+              #petName="ngModel"
+              minlength="3"
+              maxlength="50"
+            />
+            <div *ngIf="petName.errors && a.submitted">
+              <div *ngIf="petName.errors.required" class="error-massage">
+                Pet name is required
+              </div>
+              <div *ngIf="petName.errors.maxlength" class="error-massage">
+                Less than 50 characters
+              </div>
+              <div *ngIf="petName.errors.maxlength" class="error-massage">
+                More than 50 characters
+              </div>
+              <div *ngIf="petName.errors.pattern" class="error-massage">
+                Pet Name must contain only characters
+              </div>
+            </div>
+          </div>
+
+          <!-- pet category -->
+          <div class="form-group">
+            <label for="pet" title="required">Pet* :</label>
+            <select
+              name="pet"
+              id="pet"
+              [(ngModel)]="dtoAd.petCategory"
+              required
+              #petCat="ngModel"
+            >
+              <option value="" disabled selected>Choose Pet</option>
+              <option *ngFor="let pet of petCategories">{{ pet.name }}</option>
+            </select>
+            <span class="select-icon"
+              ><i class="zmdi zmdi-chevron-down"></i
+            ></span>
+            <div *ngIf="petCat.errors && a.submitted">
+              <div *ngIf="petCat.errors.required" class="error-massage">
+                Pet Category is required
+              </div>
+            </div>
+          </div>
+
+          <!-- breed -->
+          <div class="form-group">
+            <label for="breed">Breed :</label>
+            <input
+              pattern="^[a-zA-Z ]*$"
+              type="text"
+              name="breed"
+              id="breed-ad"
+              [(ngModel)]="dtoAd.breed"
+              #breed="ngModel"
+              maxlength="3"
+              minlength="50"
+            />
+            <div *ngIf="breed.errors && a.submitted">
+              <div *ngIf="breed.errors.minlength" class="error-massage">
+                Breed must be between 3 and 25 letters
+              </div>
+              <div *ngIf="breed.errors.maxlength" class="error-massage">
+                Breed must be between 3 and 25 letters
+              </div>
+              <div *ngIf="breed.errors.pattern" class="error-massage">
+                Breed must have letters only
+              </div>
+            </div>
+          </div>
+
+          <!-- city -->
+          <div class="form-group">
+            <label for="city" title="required">City* :</label>
+            <select
+              name="city"
+              id="city"
+              [(ngModel)]="dtoAd.city"
+              required
+              #city="ngModel"
+            >
+              <option value="" disabled selected>Choose your City</option>
+              <option [value]="city.name" *ngFor="let city of cityCategories">
+                {{ city.name | titlecase }}
+              </option>
+            </select>
+            <span class="select-icon"
+              ><i class="zmdi zmdi-chevron-down"></i
+            ></span>
+            <div *ngIf="city.errors && a.submitted">
+              <div *ngIf="city.errors.required" class="error-massage">
+                You have to choose a city
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth :</label>
+            <input
+              type="date"
+              name="dob"
+              id="dob-ad"
+              [(ngModel)]="dtoAd.postDate"
+            />
+          </div>
+
+          <!-- chip number -->
+          <div class="form-group">
+            <label for="companyName">Chip Number :</label>
+            <input
+              type="text"
+              name="cName"
+              id="cName-ad"
+              [(ngModel)]="dtoAd.chipNumber"
+              minlength="15"
+              maxlength="15"
+              #chipNumber="ngModel"
+            />
+            <div *ngIf="chipNumber.errors && a.submitted">
+              <div *ngIf="chipNumber.errors.minlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+              <div *ngIf="chipNumber.errors.maxlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- gender -->
+          <div class="form-radio">
+            <label for="gender" class="radio-label">Gender :</label>
+            <div class="form-radio-item" *ngFor="let sex of sexCategories">
+              <input
+                [value]="sex"
+                type="radio"
+                name="gender"
+                #sex
+                id="{{ sex | lowercase }}"
+                [(ngModel)]="dtoAd.sex"
+              />
+              <label for="{{ sex | lowercase }}">{{ sex | titlecase }}</label>
+              <span class="check"></span>
+            </div>
+          </div>
+
+          <!-- ad category -->
+          <div class="form-group">
+            <label for="fined-losted" title="required">Found / Lost* :</label>
+            <select
+              name="fined-losted"
+              [(ngModel)]="dtoAd.adCategory"
+              id="fined-losted"
+              required
+              #finedlost="ngModel"
+            >
+              <option value="" disabled selected>Choose Ad</option>
+              <option *ngFor="let adCategory of adCategories">
+                {{ adCategory }}
+              </option>
+            </select>
+            <span class="select-icon"
+              ><i class="zmdi zmdi-chevron-down"></i
+            ></span>
+            <div *ngIf="finedlost.errors && a.submitted">
+              <div *ngIf="finedlost.errors.required" class="error-massage">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <!-- date lost-->
+          <div class="form-group">
+            <label for="date" title="required">Date Lost* :</label>
+            <input
+              type="date"
+              name="dateLost"
+              id="dateLost-ad"
+              [(ngModel)]="dtoAd.lostDate"
+              required
+            />
+            <div *ngIf="finedlost.errors && a.submitted">
+              <div *ngIf="finedlost.errors.required" class="error-massage">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <!-- owner -->
+          <div class="form-group">
+            <label for="onwer-ad" title="required">Owner* :</label>
+            <input
+              #owner="ngModel"
+              pattern="[0-9]+"
+              type="text"
+              name="onwer-ad"
+              id="onwer-ad"
+              [(ngModel)]="selectedOwner.email"
+              [(ngModel)]="searchOwner"
+              (click)="showOwners()"
+              (input)="handleUsers()"
+              required
+            />
+            <div *ngIf="hideSearchOwers" id="search-owner">
+              <div id="close-search-owner" (click)="hideOwners()">
+                <i class="fas fa-times"></i>
+              </div>
+              <label
+                *ngFor="let owner of filterOwners"
+                (click)="selectOwner(owner)"
+              >
+                <div>
+                  <span>{{ owner.firstName }}</span>
+                  <span>{{ owner.email }}</span>
+                </div>
+              </label>
+              <div *ngIf="owner.errors && a.submitted">
+                <div *ngIf="owner.errors.required" class="error-massage">
+                  This field is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- description -->
+          <div class="form-group">
+            <label for="editor2">Some words for the description :</label>
+            <ngx-editor-menu [editor]="editor" id="editor-menu">
+            </ngx-editor-menu>
+            <ngx-editor
+              class="editor-pet"
+              id="editor-description"
+              [editor]="editor"
+              [(ngModel)]="dtoAd.descriptionJson"
+              #description="ngModel"
+              [disabled]="false"
+              [placeholder]="'Type here...'"
+              name="description"
+              minHeight="500px"
+              maxlength="2000"
+            ></ngx-editor>
+            <div *ngIf="description.errors && a.submitted">
+              <div *ngIf="description.errors.maxlength" class="error-massage">
+                Too many words for description
+              </div>
+            </div>
+          </div>
+
+          <!-- somewords -->
+          <div class="form-group">
+            <label for="editor1">Some words for the disapearnce :</label>
+            <ngx-editor-menu [editor]="editor2" id="editor-menu">
+            </ngx-editor-menu>
+            <ngx-editor
+              maxlength=""
+              class="editor-pet"
+              id="editor-somewords"
+              [editor]="editor2"
+              [(ngModel)]="dtoAd.someWordsJson"
+              #somewords="ngModel"
+              [disabled]="false"
+              [placeholder]="'Type here...'"
+              name="somewords"
+              minHeight="500px"
+            >
+            </ngx-editor>
+            <div *ngIf="somewords.errors && a.submitted">
+              <div *ngIf="somewords.errors.maxlength" class="error-massage">
+                To many words for description
+              </div>
+            </div>
+          </div>
+
+          <!-- area -->
+          <div class="form-group">
+            <label for="street" title="required">Area Where The Pet was Found / Lost* :</label>
+            <input
+              type="text"
+              name="street"
+              id="street"
+              (keyup)="findStreet()"
+              #street="ngModel"
+              [(ngModel)]="str"
+              [(ngModel)]="dtoAd.street"
+              [value]="str"
+              required
+            />
+            <div *ngIf="street.errors && a.submitted">
+              <div *ngIf="street.errors.required" class="error-massage">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <!-- PC -->
+          <div class="form-group">
+            <label for="postal-code">Postal Code :</label>
+            <input
+              maxlength="5"
+              minlength="5"
+              type="text"
+              name="postal-code"
+              id="postal-code"
+              [(ngModel)]="dtoAd.postalCode"
+              #pc="ngModel"
+            />
+            <div *ngIf="pc.errors && a.submitted">
+              <div *ngIf="pc.errors.maxlength" class="error-massage">
+                Put a valid postal code
+              </div>
+              <div *ngIf="pc.errors.minlength" class="error-massage">
+                Put a valid postal code
+              </div>
+            </div>
+          </div>
+
+          <!-- latitude -->
+          <div class="form-group">
+            <label for="latitude">latitude</label>
+            <input
+              type="text"
+              name="latitude"
+              id="latitude"
+              [(ngModel)]="dtoAd.latitude"
+              disabled
+              #latitude
+              [value]="lat"
+            />
+          </div>
+
+          <!-- longitude -->
+          <div class="form-group">
+            <label for="longitude">longitude</label>
+            <input
+              type="text"
+              name="longitude"
+              id="longitude"
+              [(ngModel)]="dtoAd.longitude"
+              disabled
+              #longitude
+              [value]="lng"
+            />
+          </div>
+          <div id="map">
+            <app-map
+              #mapComponent
+              id="map"
+              lat="39.11035094005105"
+              lng="23.263987890625017"
+              zoom="6"
+              width="100%"
+              height="300px"
+              (click)="mapClick($event)"
+            >
+            </app-map>
+          </div>
+          <div class="form-submit" id="form-submit-ads">
+            <input
+              type="submit"
+              value="Submit Form"
+              class="submit-user"
+              name="submit"
+              id="submit-ads"
+            />
+            <div class="delete-form-btn" (click)="onDeleteAd()">
+              <p>Delete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

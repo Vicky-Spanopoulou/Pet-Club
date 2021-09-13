@@ -1,0 +1,399 @@
+<div *ngIf="visibleForm" class="main-forms">
+  <div class="container">
+    <h2 class="form-header" id="title-user">User Details</h2>
+    <form class="register-form" id="register-form-user" #u="ngForm" (submit)="u.form.valid && submitUserForm()">
+      <div class="space-div">
+
+        <!-- profile pic  -->
+        <div id="img-container">
+          <div class="profile-pic-div" id="user-profile-pic">
+             <img [src]="
+                imgUrl
+                  ? imgUrl
+                  : '../../../../assets/images/defaultProfileImage.jpg'
+              " id="photo" class="photo" /> 
+            <input (change)="selectFile($event)" type="file" id="file" class="file" />
+
+            <label for="file" id="uploadBtn">Choose Photo</label>
+          </div>
+        </div>
+
+        <div id="input-containers">
+
+          <!-- first name  -->
+          <div class="form-group">
+            <label for="fName" title="required">First Name* :</label>
+            <input pattern="^[a-zA-Z]+$" type="text" name="fName" id="fName" required minlength="3" maxlength="25"
+              [(ngModel)]="dtoUser.firstName" #firstName="ngModel" />
+            <div *ngIf="firstName.errors && u.submitted">
+              <div *ngIf="firstName.errors.required" class="error-massage">
+                First is required
+              </div>
+              <div *ngIf="firstName.errors.minlength" class="error-massage">
+                First Name must be at least 3 characters
+              </div>
+              <div *ngIf="firstName.errors.maxlength" class="error-massage animate__fadeInLeftBig">
+                First Name must be at most 25 characters
+              </div>
+              <div *ngIf="firstName.errors.pattern" class="error-massage">
+                First Name must contain only letters
+              </div>
+            </div>
+          </div>
+
+          <!-- last name  -->
+          <div class="form-group">
+            <label for="lName" title="required">Last Name* :</label>
+            <input pattern="^[a-zA-Z ]*$" type="text" name="lName" id="lName" required minlength="3" maxlength="25"
+              [(ngModel)]="dtoUser.lastName" #lastName="ngModel" />
+            <div *ngIf="lastName.errors && u.submitted">
+              <div *ngIf="lastName.errors.required" class="error-massage">
+                Last is required
+              </div>
+              <div *ngIf="lastName.errors.minlength" class="error-massage">
+                Last Name must be at least 3 characters
+              </div>
+              <div *ngIf="lastName.errors.maxlength" class="error-massage">
+                Last Name must be at most 25 characters
+              </div>
+              <div *ngIf="lastName.errors.pattern" class="error-massage">
+                Last Name must contain only letters
+              </div>
+            </div>
+          </div>
+
+          <!-- username  -->
+          <div class="form-group" *ngIf="!dtoUser.id">
+            <label  title="required" for="username">Username* :</label>
+            <input [(ngModel)]="dtoUser.username" minlength="3" maxlength="25"  required type="text" name="username"
+              id="username" #username="ngModel" />
+            <div *ngIf="username.errors && u.submitted">
+              <div *ngIf="username.errors.required" class="error-massage">
+                Username is required
+              </div>
+              <div *ngIf="username.errors.minlength" class="error-massage">
+                Username must be at least 3 characters
+              </div>
+              <div *ngIf="username.errors.maxlength" class="error-massage">
+                Username must be at most 25 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- address  -->
+          <div class="form-group">
+            <label for="address">Address :</label>
+            <input type="text" name="address" id="address-user" [(ngModel)]="dtoUser.street" #street="ngModel"
+              maxlength="255" />
+            <div *ngIf="street.errors && u.submitted">
+              <div *ngIf="street.errors.minlength" class="error-massage">
+                Address must be at least 3 characters
+              </div>
+              <div *ngIf="street.errors.maxlength" class="error-massage">
+                Address must be at most 50 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- city  -->
+          <div class="form-group">
+            <label for="city" title="required">City* :</label>
+            <select name="city" id="city" [(ngModel)]="dtoUser.city" required #city="ngModel">
+              <option value="" disabled selected>Choose your City</option>
+              <option [value]="city.name" *ngFor="let city of cityCategories">
+                {{ city.name | titlecase }}
+              </option>
+            </select>
+            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+            <div *ngIf="city.errors && u.submitted">
+              <div *ngIf="city.errors.required" class="error-msg">
+                City is required
+              </div>
+            </div>
+          </div>
+
+          <!-- email  -->
+          <div class="form-group">
+            <label for="email" title="required">Email* :</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="dtoUser.email" required email
+              maxlength="255" #email="ngModel" />
+            <div *ngIf="email.errors && u.submitted">
+              <div *ngIf="email.errors.required" class="error-massage">
+                Email is required
+              </div>
+              <div *ngIf="email.errors.email" class="error-massage">
+                Email must be a valid email address
+              </div>
+              <div *ngIf="email.errors.maxlength" class="error-massage">
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+
+          <!--  Password -->
+          <div *ngIf="!dtoUser.id" class="form-group">
+            <label for="password" title="required">Add Password* :</label>
+            <input maxlength="50" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+              type="password" class="form-control" name="password" [(ngModel)]="dtoUser.password" required
+              maxlength="255" #password="ngModel" />
+            <div *ngIf="password.errors && u.submitted">
+              <div *ngIf="password.errors.required" class="error-massage">
+                Password is required
+              </div>
+              <div *ngIf="password.errors.minlength" class="error-massage">
+                Password must be at least 8 characters
+              </div>
+              <div *ngIf="password.errors.maxlength" class="error-massage">
+                Password must be at most 50 characters
+              </div>
+              <div *ngIf="password.errors.pattern" class="error-massage">
+                Password contain at least one upercase, one lowercase , one
+                special character
+              </div>
+            </div>
+          </div>
+
+          <!-- phone  -->
+          <div class="form-group">
+            <label for="phone">Phone :</label>
+            <input [(ngModel)]="dtoUser.phone" pattern="[0-9]+" type="text" name="phone" id="phone" minlength="10"
+              maxlength="10" #phone="ngModel" />
+            <div *ngIf="phone.errors && u.submitted">
+              <div *ngIf="phone.errors.minlength" class="error-massage">
+                Please enter a valid phone number
+              </div>
+              <div *ngIf="phone.errors.maxlength" class="error-msg">
+                Please enter a valid phone number
+              </div>
+              <div *ngIf="phone.errors.pattern" class="error-msg">
+                Please enter a valid phone number
+              </div>
+            </div>
+          </div>
+
+          <!-- Active  -->
+          <div class="form-group">
+            <div class="item">
+              <label class="checkbox-label" for="active">Active</label>
+              <input type="checkbox" id="active" name="active" [value]="dtoUser.active" [checked]="dtoUser.active"
+                (change)="dtoUser.active = !dtoUser.active" />
+            </div>
+          </div>
+
+          <!-- verified  -->
+          <div class="form-group">
+            <div class="item">
+              <label class="checkbox-label" for="verified">Verified</label>
+              <input type="checkbox" id="verified" name="verified" [value]="dtoUser.verified"
+                [checked]="dtoUser.verified" (change)="dtoUser.verified = !dtoUser.verified" />
+            </div>
+          </div>
+
+          <!-- not locked  -->
+          <div class="form-group">
+            <div class="item">
+              <label class="checkbox-label" for="not-locked">Is Not Locked</label>
+              <input type="checkbox" id="not-locked" name="not-locked" [value]="dtoUser.isNotLocked"
+                [checked]="dtoUser.isNotLocked" (change)="dtoUser.isNotLocked = !dtoUser.isNotLocked" />
+            </div>
+          </div>
+
+          <!-- advertisment  -->
+          <div class="form-group">
+            <div class="item">
+              <label class="checkbox-label" for="advertisment">Advertisment</label>
+              <input type="checkbox" id="advertisment" name="advertisment" [value]="dtoUser.advForEver"
+                [checked]="dtoUser.advForEver" (change)="dtoUser.advForEver = !dtoUser.advForEver" />
+            </div>
+          </div>
+
+          <!-- role  -->
+          <div class="form-group">
+            <label for="role">Role :</label>
+            <select name="role" id="role" [(ngModel)]="dtoUser.role">
+              <option value="" disabled selected>Choose Role</option>
+              <option *ngFor="let role of roleOption" [value]="role">
+                {{ role | replacerole | titlecase }}
+              </option>
+            </select>
+            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+          </div>
+
+          <!-- Subscription  -->
+          <div class="form-group">
+            <label for="until">Subscription Until :</label>
+            <input type="date" name="until" id="until" #myDate [ngModel]="dtoUser.sub_until | date"
+              [value]="dtoUser.sub_until | date: 'mm-dd-yyyy'" />
+          </div>
+
+          <!-- save and delete button  -->
+          <div class="form-submit" id="user-dashboard-submit">
+            <input type="submit" value="Submit Form" class="submit" name="submit" id="submit-user" />
+            <div class="delete-form-btn" (click)="deleteUser()">
+              <p>Delete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="dtoUser.id" class="main-forms" id="create-password">
+  <div class="container">
+    <form method="POST" class="register-form" id="pass-form" #u="ngForm" (submit)="submitPassword()">
+      <h2 class="form-header" id="business-header">Change Password :</h2>
+      <div class="space-div">
+        <div id="input-containers">
+          <div class="form-group">
+            <label class="input-label" for="newPass">Change Password :</label>
+            <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" minlength="8" maxlength="50"
+              #pass="ngModel" required type="password" name="newPass" id="newPass" [(ngModel)]="passForm.newPassword" />
+            <div *ngIf="pass.errors && u.submitted">
+              <div *ngIf="pass.errors.required" class="error-massage">
+                Password is required
+              </div>
+              <div *ngIf="pass.errors.minlength" class="error-massage">
+                Password must be at least 8 characters
+              </div>
+              <div *ngIf="pass.errors.maxlength" class="error-massage">
+                Password must be at most 50 characters
+              </div>
+              <div *ngIf="pass.errors.pattern" class="error-massage">
+                Password contain at least one upercase, one lowercase , one
+                special character
+              </div>
+            </div>
+          </div>
+          <div class="form-submit">
+            <input type="submit" value="Submit Form" class="submit-user" name="submit" id="submit-pass" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- invoice details form  -->
+<div *ngIf="dtoUser.id !== null && visibleForm" class="main-forms" id="user-doctor">
+  <div class="container">
+    <form method="POST" class="register-form" id="register-form" #u="ngForm"
+      (submit)="u.form.valid && submitInvoiceUserForm()">
+      <h2 class="form-header" id="business-header">Invoice Details :</h2>
+      <div class="space-div">
+        <div id="input-containers">
+          <div class="form-group">
+            <label class="input-label" for="">Address Doctor:</label>
+            <input required type="text" name="address" id="address-doc" [(ngModel)]="dtoInvoiceDetails.address.street"
+              maxlength="100" #street="ngModel" />
+            <div *ngIf="street.errors && u.submitted">
+              <div *ngIf="street.errors.required" class="error-massage">
+                This field is required
+              </div>
+              <div *ngIf="street.errors.maxlength" class="error-massage">
+                Can not be more than 250 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="city">City :</label>
+
+            <select name="city" required id="city-invoice" [(ngModel)]="dtoInvoiceDetails.address.city.name"
+              #city="ngModel">
+              <option value="" disabled selected>Choose your City</option>
+              <option [value]="city.name" *ngFor="let city of cityCategories">
+                {{ city.name | titlecase }}
+              </option>
+            </select>
+            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+            <div *ngIf="city.errors && u.submitted">
+              <div *ngIf="city.errors.required" class="error-massage">
+                You have to choose a city
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="companyName">Company Name :</label>
+            <input required type="text" name="cName" id="cName-doc" [(ngModel)]="dtoInvoiceDetails.companyName" required
+              #companyName="ngModel" />
+            <div *ngIf="companyName.errors && u.submitted">
+              <div *ngIf="companyName.errors.required" class="error-massage">
+                Company Name is required
+              </div>
+              <div *ngIf="companyName.errors.minlength" class="error-massage">
+                Company Name must be at least 3 characters
+              </div>
+              <div *ngIf="companyName.errors.maxlength" class="error-massage">
+                Company Name must be at most 25 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="input-label" for="password">VAT number :</label>
+            <input required type="text" [(ngModel)]="dtoInvoiceDetails.vatNumber" name="vat_number" id="vat_number"
+              minlength="9" maxlength="9" #vat="ngModel" />
+            <div *ngIf="vat.errors && u.submitted">
+              <div *ngIf="vat.errors.required" class="error-massage">
+                Vat number is required
+              </div>
+              <div *ngIf="vat.errors.minlength" class="error-massage">
+                Please enter a valid vat number
+              </div>
+              <div *ngIf="vat.errors.maxlength" class="error-massage">
+                Please enter a valid vat number
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="input-label" for="confPass">Public Financial Service(ΔΟΥ) :</label>
+            <input pattern="^[a-zA-Z ]*$" [(ngModel)]="dtoInvoiceDetails.financialService" required type="text"
+              name="pfs" id="pfs" #doy="ngModel" minlength="3" maxlength="50" />
+            <div *ngIf="doy.errors && u.submitted">
+              <div *ngIf="doy.errors.required" class="error-massage">
+                This field is required
+              </div>
+              <div *ngIf="doy.errors.minlength" class="error-massage">
+                Public Financial Service must have more than 3 characters
+              </div>
+              <div *ngIf="doy.errors.maxlength" class="error-massage">
+                Public Financial Service must be at most 50 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone-store">Phone Doctor* :</label>
+            <input pattern="[0-9]+" type="text" name="phone" id="phone-store" required maxlength="10" minlength="10"
+              [(ngModel)]="dtoInvoiceDetails.phone" #phone="ngModel" />
+            <div *ngIf="phone.errors && u.submitted">
+              <div *ngIf="phone.errors.required" class="error-massage">
+                Phone is required
+              </div>
+              <div *ngIf="phone.errors.pattern" class="error-massage">
+                Please enter a valid number
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email-store">Email* :</label>
+            <input type="email" name="email" id="email-store" [(ngModel)]="dtoInvoiceDetails.companyEmail"
+              #mail="ngModel" email maxlength="255" required />
+            <div *ngIf="mail.errors && u.submitted">
+              <div *ngIf="mail.errors.required" class="error-massage">
+                Email is required
+              </div>
+              <div *ngIf="mail.errors.email" class="error-massage">
+                Please enter a valid number
+              </div>
+              <div *ngIf="mail.errors.maxlength" class="error-massage">
+                Please enter a valid number
+              </div>
+            </div>
+          </div>
+          <div class="form-submit">
+            <input type="submit" value="Submit Form" class="submit-user" name="submit" id="submit-doctor" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

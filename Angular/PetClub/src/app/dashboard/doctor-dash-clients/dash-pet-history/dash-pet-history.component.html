@@ -1,0 +1,56 @@
+<div id="examination-pet-form">
+  <form id="diagnosis-form" (submit)="submitExamForm()">
+    <div class="exam-form-group" id="type-of-diagnosis">
+      <div id="exam-img-div">
+        <img src="{{
+            dtoPet.image
+              ? dtoPet.image
+              : '../../../../assets/images/pet_icon.png'
+          }}" style="width: 300px; height: 300px" />
+      </div>
+      <div id="container-diagnosis-date">
+        <label for="type-diagnosis" id="type-of-examination">Type Of Examination :
+          <select [(ngModel)]="newExamination.examCat" name="examCat">
+            <option [value]="examCategory" *ngFor="let examCategory of examCategories">
+              {{ examCategory | replaceUnderscore | titlecase  }}
+            </option>
+          </select>
+        </label>
+        <div id="exam-date">
+          <div class="exam-form-group" id="until">
+            <label for="date">End Of Date Examination :</label><br />
+            <input type="date" name="date" [(ngModel)]="newExamination.validUntil" />
+          </div>
+        </div>
+      </div>
+      <div class="exam-form-group" id="text-diagnosis">
+        <label for="diagnosis">Some Words For Diagnosis :</label>
+        <ngx-editor-menu [editor]="editor" id="editor-menu"> </ngx-editor-menu>
+        <ngx-editor class="editor-pet" id="editor-pet" [editor]="editor" [(ngModel)]="newExamination.diagnosis"
+          #behavior="ngModel" [disabled]="false" [placeholder]="'Type here...'" name="pet-character" minHeight="500px">
+        </ngx-editor>
+        <input type="submit" value="Submit" />
+      </div>
+    </div>
+  </form>
+</div>
+<div id="history-container">
+  <div id="pet-history-content-body" class="content-body">
+    <div id="history-pet-table-div">
+      <div id="history-title">
+        <h3>History</h3>
+      </div>
+      <app-pet-exams #history [pet]="dtoPet"></app-pet-exams>
+    </div>
+
+    <div id="caracter-pet-div">
+      <div id="caracter-title">
+        <h3>{{ dtoPet.name }} Caracter</h3>
+      </div>
+      <div id="description-caracter">
+        <p class="scrollbar" [innerHTML]="dtoPet.behavior">
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<app-ad-form #adForm></app-ad-form>
+
+<div id="ad-content" class="profile-div-container small-shadow">
+    <div class="content-label-row">
+        <h3>My Ads</h3>
+        <div class="add-button">
+            <div class="newButton" (click)="openModal()">
+                <i class="fas fa-plus"></i>
+                <span>New</span>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    
+    <div *ngIf='ads.length > 0' id="ad-content-body" class="content-body">
+        <a [routerLink]="['/ad_profile/', ad.id]" *ngFor="let ad of ads">
+            <div class="pet-container">
+                <div class="image" style=" background-size: auto 100%"
+                [style.background-image]="ad.image?'url('+ad.image+')':'url(../../../../assets/images/animals-lost-pet.jpg)'">
+                    <div class="ribbon-{{ad.adCategory|lowercase}} ribbon-top-right"><span>{{ad.adCategory|lowercase}}</span></div>
+                    <div class="detail-bar">
+                        <div class="pet-name"><i class="fas fa-paw"> </i> {{ad.petName}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+
+    <div *ngIf="ads.length <= 0" id="ad-content-body" class="content-body">
+        <label id="empty-error">You have no Ads yet!!!</label>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+<div class="main-forms">
+  <div class="container">
+    <h2 class="form-header" id="title-pet">Pet Details</h2>
+    <form class="register-form" id="register-form-pet" #p="ngForm" (submit)="submitPetForm()">
+      <!-- p.form.valid && -->
+      <div class="space-div">
+        <div id="img-container">
+          <div class="profile-pic-div">
+            <img [src]="
+                externalPet.image
+                  ? externalPet.image
+                  : '../../../../assets/images/pet_avatar.jpg'
+              " id="photo" class="photo" />
+            <input  name="image"  (change)="selectFile($event)"
+              type="file" id="file" class="file" />
+
+            <label for="file" id="uploadBtn">Choose Photo</label>
+          </div>
+        </div>
+        <div id="input-containers">
+
+          <!-- pet name  -->
+          <div class="form-group">
+            <label for="petName" title="required">Pet Name* :</label>
+            <input pattern="^[a-zA-Z]+$" type="text" name="petName" id="petName" [(ngModel)]="externalPet.name" required
+              minlength="3" maxlength="25" #petName="ngModel" />
+            <div *ngIf="petName.errors && p.submitted">
+              <div *ngIf="petName.errors.required" class="error-massage">
+                Pet is required
+              </div>
+              <div *ngIf="petName.errors.maxlength" class="error-massage">
+                Pet name must not be more than 25 characters
+              </div>
+              <div *ngIf="petName.errors.minlength" class="error-massage">
+                Pet name must be at least 3 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- chip number  -->
+          <div class="form-group">
+            <label for="chipNumber">Chip Number :</label>
+            <input pattern="^[a-zA-Z]+$" type="text" name="chipNumber" id="chipNumber"
+              [(ngModel)]="externalPet.chipNumber" minlength="15" maxlength="15" #chipNumber="ngModel" />
+            <div *ngIf="chipNumber.errors && p.submitted">
+              <div *ngIf="chipNumber.errors.minlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+              <div *ngIf="chipNumber.errors.maxlength" class="error-massage">
+                Chip Number must have 15 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- color  -->
+          <div class="form-group">
+            <label for="color">Color :</label>
+            <input pattern="^[a-zA-Z]+$" type="text" name="color" id="color" [(ngModel)]="externalPet.color"
+              minlength="3" maxlength="25" #color="ngModel" />
+            <div *ngIf="color.errors && p.submitted">
+              <div *ngIf="color.errors.minlength" class="error-massage">
+                Color must have at least 3 characters
+              </div>
+              <div *ngIf="color.errors.maxlength" class="error-massage">
+                Color must have more than 25 characters
+              </div>
+              <div *ngIf="color.errors.pattern" class="error-massage">
+                Color must Contain only letters
+              </div>
+            </div>
+          </div>
+
+          <!-- owner  -->
+          <div class="form-group">
+            <label for="owner" title="required">Owner* :</label>
+            <input pattern="^[a-zA-Z ]*$" type="text" name="owner" id="ownerName" required minlength="3" maxlength="25"
+              [(ngModel)]="editOnwer.email" [(ngModel)]="searchOwner" (click)="showOwners()" (input)="handleUsers()"
+              #owner="ngModel" />
+            <div *ngIf="owner.errors && p.submitted">
+              <div *ngIf="owner.errors.required" class="error-massage">
+                Owner is required
+              </div>
+            </div>
+
+            <div *ngIf="hideSearchOwers" id="search-owner">
+              <div id="close-search-owner" (click)="hideOwners()">
+                <i class="fas fa-times"></i>
+              </div>
+              <label *ngFor="let owner of filterOwners" (click)="selectOwner(owner)">
+                <div>
+                  <span>{{ owner.firstName }}</span>
+                  <span>{{ owner.email }}</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- pet category  -->
+          <div class="form-group">
+            <label for="pet" title="required">Pet* :</label>
+            <select name="pet" id="pet" [(ngModel)]="externalPet.petCategory" required #petCat="ngModel">
+              <option disabled selected>Choose Pet Category</option>
+              <option *ngFor="let petCategory of petCategories">
+                {{ petCategory.name }}
+              </option>
+            </select>
+            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+            <div *ngIf="petCat.errors && p.submitted">
+              <div *ngIf="petCat.errors.required" class="error-massage">
+                Pet category is required
+              </div>
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div class="form-group">
+            <label for="age">Age :</label>
+            <input type="date" name="age" id="age" [(ngModel)]="externalPet.dob"
+              [value]="externalPet.dob | date: 'yyyy-MM-dd'" />
+          </div>
+
+          <!-- breed  -->
+          <div class="form-group">
+            <label for="breed">Breed :</label>
+            <input pattern="^[a-zA-Z ]*$" type="text" name="breed" id="breed" [(ngModel)]="externalPet.breed"
+              minlength="3" maxlength="25" #breed="ngModel" />
+            <div *ngIf="breed.errors && p.submitted">
+              <div *ngIf="breed.errors.minlength" class="error-massage">
+                Breed must be between 3 and 25 letters
+              </div>
+              <div *ngIf="breed.errors.maxlength" class="error-massage">
+                Breed must be between 3 and 25 letters
+              </div>
+              <div *ngIf="breed.errors.pattern" class="error-massage">
+                Breed must have letters only
+              </div>
+            </div>
+          </div>
+
+          <!-- gender  -->
+          <div class="form-radio">
+            <label for="gender" class="radio-label">Gender :</label>
+            <div class="form-radio-item" *ngFor="let sex of sexCategories">
+              <input [value]="sex" type="radio" name="gender" #sex id="{{ sex | lowercase }}"
+                [(ngModel)]="externalPet.sex" />
+              <label for="{{ sex | lowercase }}">{{ sex | titlecase }}</label>
+              <span class="check"></span>
+            </div>
+          </div>
+
+          <!-- some words  -->
+          <div id="text-area-pet-details" class="form-group">
+            <label for="">Some Words for Pet Behavior :</label>
+            <ngx-editor-menu [editor]="editor" id="editor-menu">
+            </ngx-editor-menu>
+            <ngx-editor class="editor-pet" id="editor-pet" [editor]="editor" [(ngModel)]="externalPet.behavior"
+              #behavior="ngModel" [disabled]="false" [placeholder]="'Type here...'" name="pet-character"
+              minHeight="500px" maxlength="255" #beh="ngModel"></ngx-editor>
+            <div *ngIf="beh.errors && externalPet.submitted">
+              <div *ngIf="beh.errors.maxlength" class="error-massage">
+                Must not be more than 254 characters
+              </div>
+            </div>
+          </div>
+
+          <!-- submit and delete  -->
+          <div class="form-submit" id="user-dashboard-submit">
+            <input type="submit" value="Submit Form" class="submit" name="submit" id="submit-user" />
+            <div class="delete-form-btn" (click)="deletePet(externalPet)">
+              <p>Delete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

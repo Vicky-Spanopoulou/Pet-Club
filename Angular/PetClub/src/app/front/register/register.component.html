@@ -1,0 +1,247 @@
+<div id='userRegForm' class="shadow">
+  <header style=' width: 100%; height: 200px;background-color: var(--body-background);'>
+    <app-front-navbar></app-front-navbar>
+  </header>
+
+  <div class="main-forms">
+    <div class="container">
+
+      <div class="signup-content shadow">
+        <div class="img-user-singup">
+
+        </div>
+
+
+        <div class="signup-form">
+          <div class="buttons-reg-log">
+            <a routerLink="/login"><button class="login-btn ">Login</button></a>
+            <a routerLink="/register"><button class="register-btn">Register</button></a>
+          </div>
+          <div *ngIf="routerPath == '/login'" class="login" id="login">
+            <form *ngIf="!isLoggedIn" name="loginForm" (ngSubmit)="l.form.valid && submitLogin()" #l="ngForm"
+              class="login-form" id="login-form">
+
+              <div class="form-group text">
+                <h1 class="page-header ">Login To Your Account</h1>
+
+                <label for="email-login">Username</label>
+                <input [(ngModel)]='loginForm.username' required type="username" name="username" id="username-login"
+                  #username="ngModel" />
+                <div *ngIf="username.errors && l.submitted" class="error-massage">
+                  Username is required!
+                </div>
+              </div>
+
+              <div class="form-group text">
+                <label for="password">Password :</label>
+                <input [(ngModel)]='loginForm.password' type="password" name="password" id="password-login"
+                  #password="ngModel" required>
+                <div *ngIf="password.errors && l.submitted">
+                  <div *ngIf="password.errors.required" class="error-massage">Password is required</div>
+                  <div *ngIf="password.errors.minlength" class="error-massage">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
+              </div>
+
+              <a class="forgoten"  routerLink="/forgotten_password">Forgot your email or password</a><br><br>
+              <div class="item">
+                <label class="checkbox-label" for="remember-me">Remember Me</label>
+                <input type="checkbox" id="remember-me" name="remember-me" [(ngModel)]="rememberMe">
+              </div> <br><br>
+              <input type="submit" value="Login" class="submit" id="submit-login">
+              <div class="form-group">
+                <div *ngIf="l.submitted && isLoginFailed">
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div *ngIf="routerPath == '/register'" class="form" id="register">
+
+            <form *ngIf="!isSuccessful" #regForm='ngForm' (ngSubmit)="regForm.form.valid && submitRegister()" 
+              class="register-form" id="register-form">
+
+
+              <div class="form-group img-group">
+                <div class="profile-pic-div">
+                  <img [src]='imgUrl' id="registerForm.photo">
+                  <input (change)="selectFile($event)"
+                    type="file" id="file" class="file">
+                  <label for="file" class="uploadBtn" id="uploadBtn">Choose Photo</label>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label title="required" for="fName">First Name* :</label>
+                  <input pattern="^[a-zA-Z]+$" [(ngModel)]="registerForm.firstName" name="firstName" type="text"
+                    id="fName" required minlength="3" maxlength="25" #firstName="ngModel" />
+                  <div *ngIf="firstName.errors && regForm.submitted">
+                    <div *ngIf="firstName.errors.required" class="error-massage">First Name is required</div>
+                    <div *ngIf="firstName.errors.minlength" class="error-massage">
+                      First Name must be at least 3 characters
+                    </div>
+                    <div *ngIf="firstName.errors.maxlength" class="error-massage animate__fadeInLeftBig">
+                      First Name must be at most 25 characters
+                    </div>
+                    <div *ngIf="firstName.errors.pattern" class="error-massage">
+                      First Name must contain only letters
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <div class="form-group" >
+                  <label title="required" for="lName">Last Name* :</label>
+                  <input pattern="^[a-zA-Z ]*$" [(ngModel)]="registerForm.lastName" type="text" name="lastName"
+                    id="lName" required minlength="3" maxlength="25" #lastName="ngModel" />
+                  <div *ngIf="lastName.errors && regForm.submitted">
+                    <div *ngIf="lastName.errors.required" class="error-massage">Last Name is required</div>
+                    <div *ngIf="lastName.errors.minlength" class="error-massage">
+                      Last Name must be at least 3 characters
+                    </div>
+                    <div *ngIf="lastName.errors.maxlength" class="error-massage">
+                      Last Name must be at most 25 characters
+                    </div>
+                    <div *ngIf="lastName.errors.pattern" class="error-massage">
+                      Last Name must contain only letters
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label title="required" for="username">Username* :</label>
+                <input [(ngModel)]="registerForm.username" minlength="3" maxlength="25" required type="text"
+                  name="username" id="username" #username="ngModel" />
+                <div *ngIf="username.errors && regForm.submitted">
+                  <div *ngIf="username.errors.required" class="error-massage">Username is required</div>
+                  <div *ngIf="username.errors.minlength" class="error-massage">
+                    Username must be at least 3 characters
+                  </div>
+                  <div *ngIf="username.errors.maxlength" class="error-massage">
+                    Username must be at most 25 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City* :</label>
+                  <div class="form-select">
+                    <select [(ngModel)]="registerForm.city" name="city" id="city" required #city='ngModel'>
+                      <option value="" disabled selected>Choose your City</option>
+                      <option *ngFor='let city of cities'>{{city.name}}</option>
+                    </select>
+                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                  </div>
+                  <div  *ngIf="city.errors && regForm.submitted">
+                    <div *ngIf="city.errors.required" class="error-massage">City is required</div>                 
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address :</label>
+                  <input [(ngModel)]="registerForm.street" type="text" name="address" id="address"  #street="ngModel" minlength='3' maxlength='50'/>
+                  <div *ngIf="street.errors && regForm.submitted">
+                   
+                    <div *ngIf="street.errors.minlength" class="error-massage">
+                      Address must be at least 3 characters
+                    </div>
+                    <div *ngIf="street.errors.maxlength" class="error-massage">
+                      Address must be at most 50 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="registerForm.email" required email
+                  #email="ngModel" />
+                  <div  *ngIf="email.errors && regForm.submitted">
+                    <div *ngIf="email.errors.required" class="error-massage">Email is required</div>
+                    <div *ngIf="email.errors.email" class="error-massage">
+                      Email must be a valid email address
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label title="required" for="password">Password* :</label>
+                <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" [(ngModel)]="registerForm.password" 
+                  required type="password" name="password" id="password" minlength="8" maxlength="50" #password="ngModel">
+                  <div *ngIf="password.errors && regForm.submitted">
+                    <div *ngIf="password.errors.required" class="error-massage">Password is required</div>
+                    <div *ngIf="password.errors.minlength" class="error-massage">
+                      Password  must be at least 8 characters
+                    </div>
+                    <div *ngIf="password.errors.maxlength" class="error-massage">
+                      Password  must be at most 50 characters
+                    </div>
+                    <div *ngIf="password.errors.pattern" class="error-massage">
+                      Password contain at least one upercase, one lowercase , one special character
+                    </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label title="required" for="confPass">Confirm Password* :</label>
+                <input  pattern="{{registerForm.password}}" #conPass="ngModel" maxlength="50" minlength="8" type="password"  required name="confPass" id="confirm_password" required [(ngModel)]="confirmPass">
+                <div *ngIf="conPass.errors && regForm.submitted">
+                  <div *ngIf="conPass.errors.required" class="error-massage">
+                    Confirm  Password is required</div>
+                  <div *ngIf="conPass.errors.pattern" class="error-massage">
+                    Your Password doesnt much with the Confimation
+                  </div>
+                  
+                </div>
+                
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone :</label>
+                <input [(ngModel)]="registerForm.phone" pattern="[0-9]+" type="text" name="phone" id="phone"
+                  minlength="10" maxlength="10" #phone="ngModel">
+                  <div *ngIf="phone.errors && regForm.submitted">
+                    <div *ngIf="phone.errors.minlength" class="error-massage">
+                      Please enter a valid phone number
+                    </div>
+                    <div *ngIf="phone.errors.maxlength" class="error-msg">
+                      Please enter a valid phone number
+                    </div>
+                    <div *ngIf="phone.errors.pattern" class="error-msg">
+                      Please enter a valid phone number
+                    </div>
+                  </div>
+              </div>
+
+              <div class="form-submit">
+                <input type="submit" value="Register&Accept" class="submit" name="submit" id="submit" />
+                <div class="form-group">
+                  <div *ngIf="regForm.submitted && isSignUpFailed">
+                    {{ loginErrorMessage }}
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <span data-is-not-yielded="true" class="agreement">By clicking
+                  Register &amp; Accept, you agree to the
+                  PetClub <a target="_blank" href="#" data-tracking-will-navigate=""
+                    data-tracking-control-name="user-agreement" >User
+                    Agreement</a>, <a target="_blank" routerLink="/terms-policy" data-tracking-will-navigate=""
+                    data-tracking-control-name="privacy-policy" >Privacy Policy</a>, and <a target="_blank" href="#"
+                    data-tracking-will-navigate="" data-tracking-control-name="cookie-policy" >Cookie
+                    Policy</a>. </span>
+              </div>  
+              
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

@@ -1,0 +1,68 @@
+<nav id='main-navbar'>
+    <div id="img-cont">
+        <a routerLink="/home"><img src="/assets/images/logo.png" alt="logo"></a>
+    </div>
+    <div id="ul-burger" *ngIf="!isLoggedIn">
+        <div class="image" (click)="toggleProperties()"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="ul-cont" *ngIf="isLoggedIn">
+        <div class="image" (click)="toggleProperties()"><img
+                [src]="user.img?user.img:'../../../assets/images/defaultProfileImage.jpg'"
+                alt="prfImg"></div>
+    </div>
+    <div id="ul-cont" *ngIf="!isLoggedIn">
+        <div id="login_button"><a routerLink="/login">LOGIN/REGISTER</a></div>
+    </div>
+    <ul id="bar-ul">
+        <a routerLink="/home">
+            <li>HOME</li>
+        </a>
+        <a routerLink="/find-service">
+            <li>FIND A SERVICE</li>
+        </a>
+        <a routerLink="/lost-found">
+            <li>LOST & FOUND</li>
+        </a>
+        <a routerLink="/about-us">
+            <li>ABOUT US</li>
+        </a>
+
+    </ul>
+
+
+    <div id="profile_menu" *ngIf="menu_properties">
+        <ul id="bar-ul">
+            <a routerLink="/home">
+                <li>HOME</li>
+            </a>
+            <a routerLink="/find-service">
+                <li>FIND A SERVICE</li>
+            </a>
+            <a routerLink="/lost-found">
+                <li>LOST & FOUND</li>
+            </a>
+            <a routerLink="/about-us">
+                <li>ABOUT US</li>
+            </a>
+
+        </ul>
+        <ul id="menu-ul">
+            <a routerLink="/profile_properties" *ngIf="isLoggedIn">
+                <li>Profile properties</li>
+            </a>
+            <a routerLink="/dashboard/doctor/clients" *ngIf="showAdminBoard">
+                <li>Vet Dashboard</li>
+            </a>
+            <a (click)='logout()' *ngIf="isLoggedIn">
+                <li>Log out</li>
+            </a>
+            <a routerLink="/login" *ngIf="!isLoggedIn">
+                <li>Login</li>
+            </a>
+            <a routerLink="/register" *ngIf="!isLoggedIn">
+                <li>Register</li>
+            </a>
+        </ul>
+    </div>
+
+</nav>

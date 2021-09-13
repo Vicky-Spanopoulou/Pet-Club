@@ -1,0 +1,91 @@
+<div
+  id="create-pet-reminder"
+  class="full-screen flex-container-center"
+  *ngIf="modal"
+>
+  <div class="main-forms" id="best">
+    <div class="container">
+      <h1 class="page-header">
+        <span class="highlight"> Reminder-Form </span>
+      </h1>
+      <div class="form">
+        <!-- Close form button -->
+        <div class="form-close" (click)="closeModal()">
+          <i class="fas fa-times"></i>
+        </div>
+
+        <!-- FORM  -->
+        <form
+          *ngIf="!isSuccessful"
+          class="register-form"
+          id="reminder-form"
+          #f="ngForm"
+          (submit)="submitReminderForm()"
+        >
+          <div class="form-group">
+            <ngx-editor-menu
+              [editor]="editor"
+              class="editor-menu"
+              name="comment"
+              id="reminder-form-textarea"
+            >
+            </ngx-editor-menu>
+
+            <!-- info  -->
+            <ngx-editor
+              [editor]="editor"
+              [(ngModel)]="infoJson"
+              #descriptions="ngModel"
+              [disabled]="false"
+              [placeholder]="'What do you want to remember...?'"
+              name="descriptions"
+              maxlength="255"
+              #rem="ngModel"
+            ></ngx-editor>
+          </div>
+
+          <!-- reminder  -->
+          <div class="form-radio">
+            <div class="form-radio-item">
+              <input
+                [(ngModel)]="reminderForm.done"
+                #done="ngModel"
+                [checked]="reminderForm.done"
+                [value]="true"
+                type="radio"
+                name="gender"
+                id="male-reminder"
+              />
+              <label for="male-reminder">Done</label>
+              <span class="check"></span>
+            </div>
+            <div class="form-radio-item">
+              <input
+                [(ngModel)]="reminderForm.done"
+                #notDone="ngModel"
+                [checked]="!reminderForm.done"
+                [value]="false"
+                type="radio"
+                name="gender"
+                id="female-reminder"
+              />
+              <label for="female-reminder">Not Done</label>
+              <span class="check"></span>
+            </div>
+          </div>
+
+          <!-- submit button -->
+          <div class="form-submit">
+            <input
+              type="submit"
+              value="Submit Form"
+              class="submit"
+              name="submit"
+              id="submit-rem"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

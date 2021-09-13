@@ -1,0 +1,214 @@
+.paymentSelected{
+    width: 100%;
+    color: green;
+  
+  }
+
+  
+  #invoice{
+      margin-top: 50px;
+      margin-left: 250px;
+      width: calc(100% - 500px) ;
+      align-items: center;
+      height: 100%;
+      font-family: var(--default-font-family);
+      font-size: x-large;
+      
+  
+  }
+  #invoice #date-invoice{
+      width: 100%;
+      display: inline-block;
+  }
+ #invoice img{
+      float: left;
+      margin-top: 75px;
+      width: 300px;
+      height: 150px;
+  }
+ #invoice #date-invoice #container{
+      margin-top: 100px;
+      float: right;
+  }
+  
+ #invoice #date-invoice h3{
+      border-bottom: 2px solid black;
+  }
+ #invoice #date-invoice span{
+      font-weight: bold;
+      margin-right: 30px;
+  }
+ #invoice #info-invoice{
+      width: 100%;
+      height: 500px;
+      border-top: 1px solid black;
+      border-bottom: 1px dashed black;
+  }
+ #invoice #info-invoice p{
+      padding-bottom: 50px;
+  }
+  #invoice #info-invoice #left-info{
+      width: 50%;
+      float: left;
+  }
+#invoice #info-invoice #right-info{
+      width: 50%;
+      float: right;
+  }
+ #invoice #amount-invoice{
+      width: 100%;
+  }
+  
+ #invoice #amount-invoice table{
+      margin-top: 30px;
+      vertical-align: center;
+      text-align: center;
+      font-family: var(--default-font-family);
+      font-size: large;
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid gray ;
+      border-spacing: 0px;
+    }
+  
+ #invoice #amount-invoice table th:first-child{
+      border-top-left-radius: 8px ;
+      border-bottom-left-radius: 8px ;
+  }
+#invoice #amount-invoice table  th:last-child{
+    border-top-right-radius: 8px ;
+    border-bottom-right-radius: 8px ;
+  }
+  
+ #invoice #amount-invoice table tbody{
+    vertical-align: top;
+  }
+ #invoice #amount-invoice table td,th{
+    line-height: 40px;
+    padding: 5px;
+  }
+  
+ #invoice #amount-invoice table thead {
+    width: auto;
+    height: 50px;
+    background-color: burlywood;
+    color: white;
+  }
+  
+ #invoice #amount-invoice #total{
+      font-size: x-large;
+      float: right;
+  }
+
+  #invoice #info-invoice #right-info #paid{
+    font-family: var(--default-font-family);
+    border: none;
+    width: 35%;
+    font-size: large;
+  }
+  
+  
+  
+  @media screen and (max-width:1400px)  {
+    #mid-down{
+      margin: 0;
+    }
+ #invoice{
+      width: calc(100% - 500px);
+    }
+  #invoice #date-invoice {
+      width: 100%;
+    }
+   
+ #invoice #info-invoice{
+      width: 100%;
+      height: 100%;
+    }
+ #invoice #info-invoice #left-info{
+      width: 100%;
+    }
+    #invoice #info-invoice #right-info{
+      width: 100%;
+      float: left;
+    }
+ #invoice #amount-invoice{
+      position: relative;
+    }
+#invoice #amount-invoice table{
+      margin: 0;
+    }
+ #invoice #amount-invoice #total{
+      margin-right:0px;
+    }
+ #invoice #amount-invoice #total span{
+      margin:0;
+    }
+  }
+  @media screen and (max-width: 850px){
+    #mid{
+      margin: 0;
+    }
+   
+    #mid #mid-table table thead tr th {
+      font-size: small;
+      
+    }
+    #dashboard-pages-container  #mid{
+      width: 500px;
+    }
+    #dashboard-pages-container  #mid #mid-table table{
+      width: 500px;
+    }
+    #mid-down{
+      margin-left: 0px;
+      padding:0;
+      width: 200px;
+      
+    }
+ #invoice{
+      margin-left: 0;
+      margin-top: 20px;
+    }
+ #invoice #date-invoice {
+      width: 100%;
+    }
+#invoice #date-invoice img{
+      margin-top: 10px;
+    }
+ #invoice #date-invoice #container{
+      margin-top: 0;
+      margin-left: 2px;
+      display: block;
+      width: 100%;
+    }
+ #invoice #date-invoice h3{
+      width: 100px;
+    }
+ #invoice #info-invoice{
+      width: 300px;
+    }
+ #invoice #amount-invoice table{
+      margin: 0;
+    }
+ #invoice #amount-invoice #total{
+      margin:0;
+      float: left;
+    }
+ #invoice #amount-invoice #total span{
+      margin: 0;
+    }
+  }
+  @media screen and (max-width: 500px){
+
+    #invoice #date-invoice {
+      display: block;
+      float: left;
+    }
+    #invoice #info-invoice{
+      padding-top: 450px;
+      display: block;
+      float: left;
+    }
+
+  }
+  

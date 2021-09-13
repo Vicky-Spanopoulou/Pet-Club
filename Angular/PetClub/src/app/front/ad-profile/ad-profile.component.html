@@ -1,0 +1,144 @@
+
+    
+
+    <app-ad-form #adForm [externalAd]='adObject'></app-ad-form>
+
+    <header>
+        <app-front-navbar></app-front-navbar>
+
+        <app-map 
+        #mapComponent 
+        id="map"  
+        lat="{{adObject.address.latitude}}" 
+        lng="{{adObject.address.longitude}}" 
+        zoom="6" 
+        width="100%" 
+        height="500px"
+        >
+        </app-map>
+
+    </header>
+
+
+    <main>
+        <section></section>
+
+        <section>
+            
+            <div class="ad-cont shadow map-marker" >
+                <div class="ad-cont-image">
+                    <img [src]="imgUrl?imgUrl:'../../../../../assets/images/animals-lost-pet.jpg'"
+                        alt="pet photo">
+                        <div class="ribbon-{{adObject.adCategory|lowercase}} ribbon-top-right"><span>{{adObject.adCategory}}</span></div>
+                </div>
+                <div class="ad-cont-body">
+                    <div class="ad-cont-details">
+                        <span class="name">Name:</span><span class="name-value">{{adObject.petName}}</span>
+                    </div>
+                    <hr>
+                    <div class="ad-cont-some-words" [innerHTML]="adObject.someWords">
+                        <!-- 50 words -->
+                    </div>
+                    <hr>
+                    <div class="ad-cont-address">
+                        <div class="city" *ngIf = "adObject.address.city.name">
+                            <span class="icon"><i class="fas fa-city"></i></span>
+                            <span class="value">{{adObject.address.city.name}}</span>
+                        </div>
+                        <div class="address" *ngIf = "adObject.address.street">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span class="value">{{adObject.address.street}}</span>
+                        </div>
+                        <div class="address" *ngIf = "adObject.sex">
+                            <span class="icon"><i class="fas fa-venus-mars"></i></span>
+                            <span class="value">{{adObject.sex}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="ad-descr-text" class="shadow">
+                <div class="header">
+                    <h3>Description</h3>
+                    <hr>
+                </div>
+                <div id="text" [innerHTML]="adObject.descriptions">
+                    
+                </div>
+            </div>
+
+            <!-- Ad Details -->
+            <div class="sidebox-cont shadow">
+                <div class="sidebox-cont-header">
+                    <h3>Ad Details</h3>
+                    <!-- button for edit menu -->
+                    <span *ngIf='userIsTheOwner' (click)="toggleMenuShown()"><i class="fas fa-ellipsis-v"></i></span>
+                    <!-- menu items div -->
+                    <div *ngIf='menuShown' id="edit-menu" class="shadow "> 
+                        <!-- <a href=""> -->
+                            <div class="menu-item">
+                                <span class="item-value" (click)="editTheAd()">Edit</span>
+                            </div>
+                        <!-- </a> -->
+                        <a href="">
+                            <div class="menu-item" (click)="deleteTheAd()">
+                                <span class="item-value">Delete</span>
+                            </div>
+                        </a>
+                    </div>
+                    <hr>
+                </div>
+                <div class="sidebox-cont-body">
+                    <div class="sidebox-cont-det" *ngIf = "adObject.sex">
+                        <span class="icon"><i class="fas fa-venus-mars"></i></span>
+                        <span class="value">{{adObject.sex}}</span>
+                    </div>
+                    <div class="sidebox-cont-det" *ngIf = "adObject.chipNumber">
+                        <span class="icon"><i class="fas fa-barcode"></i></span>
+                        <span class="value">{{adObject.chipNumber}}</span>
+                    </div>
+                    <div class="sidebox-cont-det" *ngIf = "adObject.postDate">
+                        <span class="icon"><i class="fas fa-upload"></i></span>
+                        <span class="value">{{adObject.postDate |date:'dd/MM/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact With -->
+            <div class=" sidebox-cont shadow">
+                <div class="sidebox-cont-header">
+                    <h3>Contact With</h3>
+                    <hr>
+                </div>
+                <div class="sidebox-cont-body">
+                    <div class="sidebox-cont-det">
+                        <span class="icon"><i class="fas fa-signature"></i></span>
+                        <span class="value">{{adUser.firstName}} {{adUser.lastName}}</span>
+                    </div>
+                    <div class="sidebox-cont-det" *ngIf = "adUser.phone">
+                        <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                        <span class="value"><a href="tel:{{adUser.phone}}">{{adUser.phone}}</a></span>
+                    </div>
+                    <div class="sidebox-cont-det" *ngIf = "adUser.email">
+                        <span class="icon"><i class="far fa-envelope-open"></i></span>
+                        <span class="value"><a href="mailto:{{adUser.email}}">{{adUser.email}}</a></span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <aside>
+            <div class="advertisement"
+                style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+            </div>
+        </aside>
+    </main>
+
+    <app-footer></app-footer>
+
+ 

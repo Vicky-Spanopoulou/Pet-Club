@@ -1,0 +1,54 @@
+<div class="content-label-row">
+    <h3>Subscriptions</h3>
+</div>
+<hr>
+
+<div class="content-body">
+    <!-- Here we import our content -->
+
+
+
+        <div class="sub-container">
+            <div class="subscription sub{{i}}" *ngFor="let subscription of subscriptions; let i = index;">
+                <div class="subscription-title">
+                    <label>{{subscription.name}}</label>
+                </div>
+                <div class="sub-body">
+                    <div class="sub-option">
+                        <span class="sub-icon color_green"><i class="fas fa-check"></i></span>
+                        <span class="sub-title">Be in our Catalog</span>
+                    </div>
+                    <div class="sub-option">
+                        <span class="sub-icon color_green"><i class="fas fa-check"></i></span>
+                        <span class="sub-title">Users can contact with you</span>
+                    </div>
+                    <div class="sub-option">
+                        <span *ngIf="subscription.role!=='ROLE_DOCTOR'" class="sub-icon color_red"><i class="fas fa-times"></i></span>
+                        <span *ngIf="subscription.role=='ROLE_DOCTOR'" class="sub-icon color_green"><i class="fas fa-check"></i></span>
+                        <span class="sub-title">Become Assossiated Vet</span>
+                    </div>
+                    <div class="sub-option">
+                        <span *ngIf="subscription.role!=='ROLE_DOCTOR'" class="sub-icon color_red"><i class="fas fa-times"></i></span>
+                        <span *ngIf="subscription.role=='ROLE_DOCTOR'" class="sub-icon color_green"><i class="fas fa-check"></i></span>
+                        <span class="sub-title">electronic prescriptions</span>
+                    </div>
+                    <div class="sub-price">
+                        <span class="price">{{subscription.price}}$/</span>
+                        <span class="period">{{subscription.duration}} Days</span>
+                    </div>
+                
+                    <a [routerLink]="['shopping-cart/', subscription.id]" >
+                        <div class="buy-button">
+                            BUY NOW
+                        </div>
+                    </a>
+                </div>
+            </div>
+          
+        </div>
+
+
+    
+
+
+</div>

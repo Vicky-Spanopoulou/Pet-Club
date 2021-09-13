@@ -1,0 +1,552 @@
+
+body{
+    background-color: #F3F3F3;
+    width: 100%;
+    font-family: var(--main-font);
+}
+header{
+    color:white;
+    padding: 20px;
+    width: 100%;
+    height: 500px;
+    background-size: 100%;
+}
+
+/* main */
+main{
+    display:grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-gap: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: var(--main-font);
+}
+section{
+    padding: 0px;
+}
+aside{
+    margin-top: 70px;
+}
+#profile-navbar{
+    width: 100%;
+    min-width: 400px;
+    height: 50px;
+    background-color: white;
+}
+#profile-navbar #profile-image{
+    width: 160px;
+    height: 160px;
+    padding: 5px;
+    background-color: white;
+    margin-top: -110px;
+    float: left;
+    position: relative;
+}
+#profile-navbar #profile-image #inputUserPhoto,
+#profile-navbar #profile-image #inputUserPhotoLabel{
+    display: none;
+}
+#profile-navbar #profile-image:hover #inputUserPhotoLabel{
+    display: block;
+    position: absolute;
+    right:5px;
+    top: 5px;
+    cursor: pointer;
+    color: var(--first-color);
+    font-size: 25px;
+}
+#profile-navbar #profile-image img{
+    width: 150px;
+    height: 150px;
+}
+#profile-navbar #profile-nav{
+    height: 50px;
+    float: right;
+}
+#profile-navbar #profile-nav #profile-nav-burger{
+    display: none;
+    cursor: pointer;
+}
+#profile-navbar #profile-nav-select{
+    width: 200px;
+    float: right;
+}
+#profile-navbar #profile-nav-select select{
+    font-family: var(--main-font);
+    font-size: 19px;
+    color:var(--first-color);
+    padding-left: 2px;
+    border: none;
+    margin-top:10px;
+}
+#profile-navbar #profile-nav-select select:focus{
+    border:2px solid var(--first-color);
+}
+#profile-nav #nav-list{
+    float:right;
+    text-align: right;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+}
+
+#profile-nav #nav-list .nav-item{
+    display: inline-block;
+    height: 40px;
+    list-style: none;
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 5px 0px 0px;
+    cursor:pointer;
+    font-family: var(--headers-font);
+    color: var(--second-color);
+}
+.selected{
+    color: var(--first-color) !important;
+    font-weight: bold !important;
+    
+}
+#profile-nav #nav-list .nav-item:hover
+{
+    color: var(--first-color);
+}
+
+
+/*----------------- PAGE CONTENT ---------------- */
+
+main #content{
+    width: 100%;
+    min-width: 400px;
+    grid-gap: 0px;
+}
+
+
+
+
+/*------------ content for MY PETS ------------------*/
+main #content .profile-div-container{
+    float: right;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 100%;
+    min-width: 250px;
+    width:calc(96% - 250px);
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+main #content .profile-div-container#ad-content,
+main #content .profile-div-container#reminder-content{
+    display: none;
+}
+main #content .profile-div-container .content-label-row{
+    width:calc(100%);
+    height: 40px;
+    line-height:40px;
+    margin-bottom: 7px;
+}
+main #content .profile-div-container .content-label-row h3{
+    color:var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 40px;
+    width:150px;
+    float: left;
+}
+main #content .profile-div-container hr{
+    width:100%;
+    background-color: var(--first-color);
+}
+main #content .profile-div-container .content-label-row .add-button{
+    max-width: 100px;
+    min-width: 100px;
+    float: right;
+}
+main #content .profile-div-container .content-label-row .add-button .newButton{
+    float: right;
+    font-weight: bold;
+    width:30px;
+    height: 30px;
+    line-height: 30px;
+    border:2px solid var(--first-color);
+    color:var(--first-color);
+    text-align: center;
+    cursor: pointer;
+}
+main #content .profile-div-container .content-label-row .add-button .newButton span{
+    display: none;
+}
+main #content .profile-div-container .content-label-row .add-button .newButton:hover{
+    width:80px;
+}
+main #content .profile-div-container .content-label-row .add-button .newButton:hover span{
+    display: inline-block;
+}
+main #content .profile-div-container .content-body{
+    width: 100%;
+    min-height: 310px;
+    padding-top: 60px;
+}
+main#pet-profile #content .profile-div-container .content-body{
+    padding-top: 10px;
+}
+main #content .profile-div-container .content-body#reminder-content-body{
+    padding-top: 10px;
+}
+
+/*---------------- PETS -----------------------*/
+.pet-container{
+    display: inline-block;
+    width: 200px;
+    min-width: 170px;
+    margin: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.pet-container:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pet-container .image{
+    display: block;
+    width:200px;
+    height: 200px;
+    position: relative;
+    z-index:0;
+}
+.image .detail-bar{
+    display: block;
+    height: 20%;
+    width: 100%;
+    background-color: rgb(26, 102, 26,0.65);
+    line-height:50px;
+    position:absolute;
+    bottom: 0px;
+    overflow:hidden;
+    font-size:15px;
+    z-index: 0;
+    color:white;
+}
+.image .detail-bar .pet-name{
+    position:inherit;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.image .detail-bar a{
+    text-decoration: none;
+    color: white;
+}
+
+.image .detail-bar .more{
+    font-size: 12px;
+    position:relative;
+    float: right;
+    height:100%;
+    margin-top: 0px;
+    width: 25%;
+    float: right;
+    background-color: tomato; ;
+    padding-left: 2%;
+    overflow: hidden;
+    transition: 0.5s;
+    left: 0%;
+}
+.pet-container .detail-bar .more:hover{
+    display: block;
+    width:100%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+/*-------------------- My Reminder ------------------*/
+#reminder-content-body #reminder-container{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color:var(--default-font-color);
+}
+#reminder-content-body #reminder-container .reminder-item{
+    width:100%;
+    display: flow-root;
+    border-bottom: 2px solid var(--first-color);
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color:var(--default-font-color);
+    position: relative;
+}
+#reminder-content-body #reminder-container .reminder-item:hover{
+    background-color: var(--first-color);
+    color: white;
+    font-weight: bold;
+}
+#reminder-content-body #reminder-container .reminder-item .ver-burger{
+    /* display: inline-block; */
+    width:10px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top:5px ;
+    z-index: 0;
+    cursor: pointer;
+    font-size: 25px;
+    color:var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item:hover .ver-burger{
+    color: white;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu{
+    width: 200px;
+    min-height: 30px;
+    background-color: var(--first-color);
+    color: white;
+    border: 2px solid var(--first-color);
+    position: absolute;
+    top:-40px;
+    left: 30px;
+    z-index: 2;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu .menu-item{
+    width: 100% ;
+    height: 40px;
+    text-transform: none;
+    color:white;
+    line-height: 40px;
+    font-family: var(--headers-font);
+    font-size: 25px;
+    padding-left: 10px;
+    z-index: 2;
+}
+#reminder-content-body #reminder-container .reminder-item .edit-menu .menu-item:hover{
+    background-color: white;
+    color:var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item:first-child{
+    border-top: 2px solid var(--first-color);
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-text {
+    display: inline-block;
+    width:calc(100% - 80px);
+    font-family: var(--main-font);
+    margin-left: 20px;
+    z-index: 1;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox{
+    width:50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    float: right;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox input[type=checkbox]{
+    margin:auto;
+    width:20px;
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px;
+}
+#reminder-content-body #reminder-container .reminder-item .reminder-checkbox input[type=checkbox]:hover{
+    cursor: pointer;
+}
+
+/* ----------------- Table for Vet History ----------------- */
+#pet-history-content-body{
+    color:var(--default-font-color);
+}
+#pet-history-content-body #table{
+    width: 100%;
+}
+#table table{
+    width:100%;
+    border-spacing: 0px;
+}
+#pet-history-content-body #table #table-body{
+    max-height: 370px;
+    overflow:auto auto;
+}
+/* width */
+#pet-history-content-body #table #table-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-track {
+    background: white; 
+  }
+   
+  /* Handle */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-thumb {
+    background: var(--first-color-blur); 
+  }
+  
+  /* Handle on hover */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-thumb:hover {
+    background: var(--default-font-color); 
+  }
+#pet-history-content-body #table #table-body table{
+    min-width: 500px;
+}
+#table table tr{
+    cursor: pointer;
+    font-weight: bold;
+}
+#table table tr th{
+    background-color: white;
+    border-color: white;
+    color: var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 30px;
+    border-bottom: 2px solid var(--first-color);
+}
+#table #table-body table tr.always-shown{
+    height: 30px;
+}
+#table #table-body table tr.description{
+    font-weight: normal;
+    font-size: 22px;
+}
+
+#table #table-body table tr.always-shown:nth-child(4n+4),
+#table #table-body table tr.always-shown:nth-child(4n+4) td a{
+    color:var(--default-font-color);
+    background-color: white;
+}
+#table #table-body table tr.always-shown:nth-child(4n+2),
+#table #table-body table tr.always-shown:nth-child(4n+2) td a{
+    background-color: var(--first-color);
+    color:white;
+}
+#table #table-body table tr.description:nth-child(4n+1){
+    color:var(--default-font-color);
+    background-color: white;
+}
+#table #table-body table tr.description:nth-child(4n+3){
+    background-color: var(--first-color);
+    color:white;
+}
+
+#table #table-body table tr td{
+    text-align: center;
+    height: 40px;
+}
+
+#table #table-body table tr.description td{
+    text-align: left;
+    padding: 10px;
+    padding-left: 20px;
+    min-height: 40px;
+}
+
+@media screen and (max-width: 1240px) {
+    main#pet-profile{
+        display:grid;
+        grid-template-columns: 100% ;
+    }
+    main#pet-profile section:nth-child(2){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media screen and (max-width: 1060px) {
+    main{
+        display:grid;
+        grid-template-columns: 100% ;
+    }   
+    section:nth-child(2){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+   
+}
+@media screen and (max-width: 840px) {
+    main#pet-profile #content .profile-div-container{
+        float: none;
+        display: block;
+        width:80%;
+        margin: auto;
+        margin-top:20px;
+    } 
+}
+@media screen and (max-width: 660px) {
+     .pet-container{
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    main #content .profile-div-container{
+        float: none;
+        display: block;
+        width:80%;
+        margin: auto;
+        margin-top:20px;
+    } 
+    main #content .profile-div-container#ad-content,
+    main #content .profile-div-container#reminder-content{
+        display: none;
+    }
+    #profile-navbar{
+        display:block;
+        height: 50px;
+        width: 100%;
+        position: relative;
+    }
+   #profile-navbar #profile-nav{
+    width:50px;
+    float: right;
+   }
+   #profile-navbar #profile-nav #profile-nav-burger{
+    display: block;
+    background-color: white;
+    width:50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    text-align: center;
+    color:var(--default-font-color);
+   }
+   #profile-navbar #profile-nav #nav-list{
+        background: white;
+        width:200px;
+        position: absolute;
+        right: 0;
+        top: 60;
+        min-height: 150px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+   }
+   #profile-navbar #profile-nav #nav-list .nav-item{
+       display: block;
+       width: 100%;
+   }
+   
+}
+@media screen and (max-width: 640px) {
+    main#pet-profile #content .profile-div-container{
+        width:100%;
+    } 
+}
+@media screen and (max-width: 550px) {
+    section:nth-child(2){
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .pet-container{
+       display: block;
+       margin: auto;
+       margin-bottom: 10px;
+   }
+   main #content .profile-div-container{
+       width:100%;
+   } 
+}
+    

@@ -1,0 +1,44 @@
+
+        <header>
+            <app-horizontal-nav></app-horizontal-nav>
+        </header>
+    <main>
+        <section>
+            <app-vertical-nav></app-vertical-nav>
+        </section>
+            <div id="dashboard-pages-container">
+                <div id="mid">
+                    <div id="search-div">
+                        <input  [(ngModel)]="searchUser"  (input)="handleUsers()"  id="search-bar" type="text" placeholder="Search User..."><i
+                            class="fas fa-search"></i>
+                        <div id="add-user" (click)="addUser()" ><i class="fas fa-user-plus"></i>Add User</div>
+                    </div>
+                    <div id="mid-table">
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </thead>
+                            <tbody>                             
+                                <tr *ngFor="let user of filterUsers " (click)="fillUser(user,user.invoiceDetails.id)" >
+                                    <td><img src="{{user.img?user.img:'../../../assets/images/defaultProfileImage.jpg'}}"></td>
+                                    <td>{{user.firstName}}</td>
+                                    <td>{{user.lastName}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.role | replacerole | titlecase}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>   
+                <div  id="mid-down">  
+                    <div id="close-window" *ngIf="visibleForm" (click)="onCloseForm()"><i class="fas fa-times"></i></div>
+                    <app-dash-user-form *ngIf="visibleForm" [dtoUser]="userForm" [imgUrl]="userImage" [dtoInvoiceDetails]="invoiceForm" (notify)="updateTable()" ></app-dash-user-form>
+                </div>
+            </div>
+    </main>
+
+

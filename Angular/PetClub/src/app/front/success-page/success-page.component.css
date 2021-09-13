@@ -1,0 +1,40 @@
+
+header{
+    width: 100%; 
+    height: 30px;
+}
+
+.success-div{
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--second-font);
+}
+
+.success-div h1{
+    font-size: 100px;
+    letter-spacing: 8px;
+    font-family: var(--decorative-font);
+    color: var(--main-home-color);
+    margin-bottom: 20px;
+}
+
+.success-div a{
+    color: var(--main-home-color);
+    text-decoration: none;
+}
+
+.success-div a:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+
+    .success-div h1{
+        font-size: 80px;
+    }
+
+}

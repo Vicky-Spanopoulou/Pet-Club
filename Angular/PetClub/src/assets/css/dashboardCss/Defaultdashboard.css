@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Poppins:wght@200&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+::ng-deep :root{
+    --navbar-color :  rgb(113, 191, 166,1);
+    --logo-backgournd-color: rgb(113, 191, 166,1);
+    --logo-color:rgb(72, 72, 75);
+    --default-font-family: 'Poppins', sans-serif;
+    --headers-font:'Amatic SC', cursive;
+    --main-font: 'Roboto', sans-serif;
+    --first-color-blur : rgb(113, 191, 166,0.65);
+    --first-color : rgb(113, 191, 166,1);
+    --third1-color: #2596be;
+    --light-gray:#767676;
+    --default-font-color : var(--light-gray);
+}
+
+body {
+    margin: 0;
+  }
+  
+  header{
+      position: relative;
+    height: 50px;
+    width: 100%;
+  }
+
+  main{
+    width: 100%;
+    height: 100%;
+    display: grid; 
+     /*Every page should have  a section and a main */
+    grid-template-columns:        80px          calc(100% - 80px);
+  }
+  .hidden{
+    display: none !important;
+}
+  

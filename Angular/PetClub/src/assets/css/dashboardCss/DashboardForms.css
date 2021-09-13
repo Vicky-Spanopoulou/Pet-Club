@@ -1,0 +1,543 @@
+::ng-deep
+
+.NgxEditor {
+  width: 660px;
+  min-height: 130px;
+  overflow-y: scroll;
+
+}
+
+.NgxEditor__Content {
+  min-height: 130px; /* make all of the editor area clickable */
+}
+
+.main-forms display-flex,
+.signup-content,
+.form-row,
+.form-radio,
+.select-icon,
+.select-icon i {
+    display: flex;
+}
+.main-forms{
+    width: 100%;
+    height: 100%;
+    margin-top: 150px;
+}
+#create-password{
+    height: 150px;
+}
+
+
+.main-forms .container {
+   
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.main-forms input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+}
+
+.main-forms h2 {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    color: #222;
+    font-family: 'sans-serif';
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+}
+
+.main-forms .form-row {
+    margin: 0 -15px;
+}
+
+#register-form-pet{
+    width: 100%;
+    height: 100%;
+}
+ .space-div {  
+    display: block;
+    width: 100%; 
+    height: 100%; 
+    z-index: 2;  
+}
+.space-div .form-group{
+    width: 100%;
+    margin-bottom: 30px;
+    float: left;
+    display: block;
+    margin-right: 0;
+}
+
+
+
+.main-forms .form-header{
+    width: 80%;
+    font-family: var(--main-font);
+
+    margin-right: 0;
+    border-bottom: 1px solid black;
+}
+#business-header{
+    float: left;
+    margin-top: 15px;
+}
+
+#title-user{
+    width: 88%;
+    margin: 0;
+    margin-right: 0px!important;
+}
+#register-form-user{
+    margin-top: 20px;
+}
+
+#title-pet{
+    margin: 0;
+}
+
+#input-containers{
+    width: 60%;
+    float: left;
+    display: block;
+}
+
+
+.main-forms input,
+select {
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 30px;
+    border: 1px solid #ebebeb;
+    padding: 2px;
+    box-sizing: border-box;
+    font-family: var(--default-font-family);
+    font-size: 15px;
+}
+
+.main-forms input:focus,
+select:focus {
+    border: 1px solid var(--third1-color);
+}
+
+.main-forms label {
+    font-weight: bold;
+    margin-bottom: 2px;
+    display: block;
+    font-family: var(--default-font-family);
+    font-size: medium;
+}
+
+.main-forms .form-radio {
+    float: left;
+    width: 100%;
+    margin-bottom: 18px;
+
+}
+
+
+
+.main-forms .radio-label {
+    padding-right: 72px;
+}
+
+.main-forms .form-radio-item {
+    position: relative;
+    margin-right: 45px;
+}
+
+.main-forms .form-radio-item label {
+    font-weight: 500;
+    font-size: 13px;
+    padding-left: 25px;
+    position: relative;
+    z-index: 9;
+    display: block;
+    cursor: pointer;
+}
+
+.main-forms .check {
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #ebebeb;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    top: 4px;
+    left: 0px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+.main-forms .check:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+.main-forms input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.main-forms input[type=radio]:checked~.check {
+    border: 1px solid var(--third1-color);
+}
+
+.main-forms input[type=radio]:checked~.check::before {
+    background: var(--third1-color);
+}
+
+.main-forms .form-submit{
+    width: 100%;
+    float: left;
+}
+
+.main-forms .form-submit-user {
+    text-align: right;
+    padding-top: 27px;
+}
+
+
+.main-forms .submit-user {
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.main-forms #submit-user{
+    width: 70%;
+    float: left;
+    background: var(--first-color-blur);
+    color: #fff;
+    font-family: var(--main-font);
+    font-size: large;
+}
+.main-forms 
+#submit-doctor {
+    width: 100%;
+    float: left;
+    background: var(--first-color-blur);
+    color: #fff;
+    font-family: var(--main-font);
+    font-size: large;
+    
+}
+.main-forms 
+#submit-pass {
+    width: 100%;
+    float: left;
+    background: var(--first-color-blur);
+    color: #fff;
+    font-family: var(--main-font);
+    font-size: large;
+    
+}
+.main-forms #submit-ads{
+    background: var(--first-color-blur);
+    color: #fff;
+    font-family: var(--main-font);
+    font-size: large;
+    width: 70%;
+    height: 33px!important;
+    padding: 0;
+   
+}
+.main-forms #submit-ads:hover{
+    cursor: pointer;
+  background-color: var(--first-color);
+  color:black;
+  transition: 0.5s;
+
+}
+
+.main-forms #submit-user:hover {
+    cursor: pointer;
+    background-color: var(--first-color);
+    color:black;
+    transition: 0.5s;
+}
+
+.main-forms #submit-doctor:hover {
+    cursor: pointer;
+    background-color: var(--first-color);
+    color:black;
+    transition: 0.5s;
+}
+.main-forms #submit-pass:hover {
+    cursor: pointer;
+    background-color: var(--first-color);
+    color:black;
+    transition: 0.5s;
+}
+#img-container{
+    width: 25%;
+    display: block;
+    float: right;
+}
+
+.main-forms .profile-pic-div {
+    height: 300px;
+    width: 300px;
+    transform: translate(0, -50%);
+    overflow: hidden;
+    border: 1px solid grey;
+    float: right;
+    margin-top: 100px;
+    z-index: -10;
+    margin-top: 200px;
+   
+}
+
+
+.main-forms #photo {
+    height: 100%;
+    width: 100%;
+    position: static;
+    z-index: -10;
+
+}
+
+.main-forms #file {
+    display: none;
+}
+
+.main-forms #uploadBtn {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: wheat;
+  line-height: 30px;
+  font-family: sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  
+}
+
+.main-forms .item {
+    display: inline;
+    width: 20%;
+}
+
+.main-forms .checkbox-label {
+    display: inline!important;
+}
+#verified,#not-locked,#advertisment,#active{
+    height: 15px;
+    margin-left: 5px;
+}
+
+.main-forms input[type=checkbox] {
+    display: inline!important;
+    width: 20px !important;  
+}
+
+#map{
+    width: 100%;
+    height:400px;
+}
+
+#text-area-pet-details{
+    width: 50%;
+}
+.delete-form-btn{
+    cursor: pointer;
+    text-align: center;
+    display: inline;
+    float: right;
+    width: 180px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid red;  
+    margin-bottom: 20px;
+}
+.delete-form-btn:hover{
+    background-color: red;   
+    transition: 0.5s;
+}
+.delete-form-btn:hover p{
+    color: white;
+    transition: 0.5s;
+}
+.delete-form-btn p{
+    font-family: var(--main-font);
+    font-size: large; 
+    font-weight: bold;  
+    color: red;
+    margin-top: 5px;
+    align-items: center;
+}
+#form-submit-ads{
+    margin-top: 310px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .main-forms h2 {
+        line-height: 1.66;
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        color: #222;
+        font-family: 'sans-serif';
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    .main-groups .pag .main-forms .container {
+        width: 100%;
+
+    }
+
+    .main-forms .profile-pic-div {
+        display: block;
+        float: none;
+        width:150px;
+        height: 150px;
+    }
+
+
+ 
+
+    .main-forms .signup-content {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column;
+    }
+
+
+
+
+    .main-forms input,
+    select {
+        display: block;
+        width: 100%;
+        border: 1px solid #ebebeb;
+        padding: 2px;
+        box-sizing: border-box;
+        font-family: 'sans-serif';
+    }
+    #submit-user{
+        width: 100%!important;
+    }
+    .delete-form-btn{
+        width: 99.3%;
+    }
+
+    #form-submit-ads{
+        margin-bottom: 5px;
+    }
+    #submit-ads{
+        width: 100%!important;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .main-forms .register-form {
+        padding: 50px 40px 50px 40px;
+    }
+
+    .main-forms .upload-pet-img {
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-forms .container {
+        width: 100%;
+    }
+
+    .main-forms .form-row {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column;
+        margin: 0px;
+    }
+ 
+
+    .main-forms .form-row .form-group {
+        width: 100%;
+        padding: 0px;
+        
+    }
+
+
+    .main-forms .radio-label {
+        padding-right: 22px;
+    }
+
+    .main-forms .form-radio-item {
+        margin-right: 25px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-forms .form-radio {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column;
+    }
+
+    .main-forms .submit {
+        width: 100%;
+    }
+}

@@ -1,0 +1,193 @@
+#main-navbar{
+    font-family: var(--main-navbar-font);
+    background-image:linear-gradient(140deg, white 25%, transparent 25%, transparent 26%,var(--main-nav-color) 10%);
+    display: block;
+    width:80%;
+    position: relative;
+    margin:auto;
+    position: fixed;
+    top: 50px;
+    left: 10%;
+    transition: top 0.3s;
+    height: 82px;
+    z-index:5;
+}
+#main-navbar #ul-cont #login_button
+{
+    display:inline;
+    height: 82px;
+    line-height: 82px;
+    float: right;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: var(--main-navbar-font);
+    font-size: 35px;
+}
+#main-navbar #img-cont{
+    width: 25%;
+    display: inline;
+    height:82px;
+    float: left;
+    margin-left: 20px;
+}
+#main-navbar #img-cont img,
+#main-navbar #img-cont img{
+    height: 100%;
+}
+#main-navbar #ul-burger{
+    display: none;
+}
+#main-navbar #ul-burger .image i{
+    color:white;
+}
+#main-navbar #ul-cont,
+#main-navbar #ul-cont{
+    height: 200px;
+    margin:0px;
+    padding:0px;
+    display: inline;
+    width:400px;
+}
+#main-navbar #ul-cont #login_button a{
+    text-transform: none;
+    color: white;
+}
+#main-navbar ul,
+#main-navbar ul{
+    float:right;
+    width: 50%;
+    text-align: right;
+    margin:0px;
+    padding:0px;
+}
+#main-navbar>ul>a>li,
+#main-navbar>ul>a>li{
+    
+    margin-right: 20px;
+    list-style: none;
+    display: inline;
+    font-size: 35px;
+    line-height: 82px;
+}
+#main-navbar ul a li{
+    color: var(--main-navbar-text-color);
+    text-decoration: none;
+    font-family: var(--main-navbar-font);
+}
+#main-navbar ul a:hover li{
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--hover-navbar-text-color);
+}
+nav#main-navbar .image{
+    height: 82px;
+    line-height: 50px;
+    padding-top: 15px;
+    padding-right: 10px;
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+nav#main-navbar .image{
+    height: 82px;
+    padding-top: 15px;
+    padding-right: 10px;
+    float: right;
+}
+#main-navbar .image img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+nav#main-navbar #profile_menu{
+    display: block;
+    width: 200px;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    top:82px;
+}
+#main-navbar #profile_menu ul{
+    width: 100%;
+    border:2px solid var(--first-color-blur);
+    border-top: 0px;
+    cursor: pointer;
+}
+
+
+#main-navbar #profile_menu ul#bar-ul{
+    display: none;
+}
+#main-navbar #profile_menu ul a li {
+    list-style: none;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--first-color-blur);
+}
+#main-navbar #profile_menu ul a li:hover {
+    list-style: none;
+    background-color: var(--first-color);
+}
+#main-navbar #profile_menu ul a li{
+    text-decoration: none;
+    color:var(--main-navbar-text-color);
+}
+
+#main-navbar #profile_menu ul a li:hover {
+    color: var(--hover-navbar-text-color);
+}
+#main-navbar #profile_menu #menu-ul a:nth-child(2) li{
+    color: white;
+    background-color: var(--first-color);
+}
+#main-navbar #profile_menu #menu-ul a li{
+    font-size: 35px;
+    text-align: center;
+    padding: 0px;
+    font-weight: bolder;
+}
+#main-navbar #profile_menu #menu-ul a:nth-child(2) li{
+    color: white;
+}
+
+@media screen and (max-width: 1550px) {
+    #main-navbar{
+        width: 100%;
+        left:0;
+    }
+}
+
+@media screen and (max-width: 1230px) {
+   
+    #main-navbar{
+        background-image:linear-gradient(140deg, white 200px, transparent 30px, transparent 215px,var(--main-nav-color) 10%);
+        min-width: 365px;
+    }
+    
+    #main-navbar ul#bar-ul{
+        display: none;
+    }
+    #main-navbar #ul-burger{
+        display: block;
+    }
+    #main-navbar #profile_menu ul#bar-ul{
+        display: block;
+    }
+}
+@media screen and (max-width: 529px) {
+    #main-navbar #ul-cont{
+        display: none;
+    }
+    #main-navbar #profile_menu ul#menu-ul{
+        display: block;
+    }
+}
+
+

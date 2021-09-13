@@ -1,0 +1,76 @@
+<header>
+        <app-front-navbar></app-front-navbar>
+    </header>
+
+
+
+    <main>
+        <section></section>
+
+
+        <!-- Page's Content -->
+        <section>
+
+            <div id="user-properties-template">
+
+                <!-- Left Menu -->
+                <div class="left-menu shadow">
+                    <div class="menu-container">
+                        <a (click)="onUserProperties()">
+                            <div class="menu-item">
+                                <span class="menu-icon"><i class="fas fa-user-edit"></i></span>
+                                <span class="menu-title">User Properties</span>
+                            </div>
+                        </a>
+                        <a (click)="onSecurityProperties()">
+                            <div class="menu-item">
+                                <span class="menu-icon"><i class="fas fa-key"></i></span>
+                                <span class="menu-title">Security Properties</span>
+                            </div>
+                        </a>
+                        <a *ngIf='showYourSubscription' (click)="onUserSubscription()">
+                            <div class="menu-item">
+                                <span class="menu-icon"><i class="fas fa-crown"></i></span>
+                                <span class="menu-title">Your Subscription</span>
+                            </div>
+                        </a>
+                        <a *ngIf='showSubscription' (click)="onAllSubscriptions()">
+                            <div class="menu-item">
+                                <span class="menu-icon"><i class="fas fa-crown"></i></span>
+                                <span class="menu-title">Subscriptions</span>
+                            </div>
+                        </a>
+                        <a *ngIf="showCompanyPage" 
+                        (click)="onCompanyPage()">
+                            <div class="menu-item">
+                                <span class="menu-icon"><i class="fas fa-building"></i></span>
+                                <span class="menu-title">Company Page</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="properties-template-content small-shadow">
+                <app-user-properties *ngIf="userProperties"></app-user-properties>
+                <app-security-properties *ngIf="securityProperties"></app-security-properties>
+                <app-user-subscription *ngIf="userSubscription"></app-user-subscription>
+                <app-all-subscriptions *ngIf="allSubscriptions"></app-all-subscriptions>
+                <app-company-page *ngIf="companyPage"></app-company-page>
+            </div>
+        </div>
+
+        </section>
+
+
+
+        <aside>
+            <div class="advertisement"
+                style='background:url("https://www.elepod.gr/images/users/34865/images/-34865-PET%20SHOP-%CE%96%CE%A9%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%A0%CE%A4%CE%97%CE%9D%CE%9F%CE%A4%CE%A1%CE%9F%CE%A6%CE%95%CE%A3-%CE%9A%CE%91%CE%A4%CE%9F%CE%99%CE%9A%CE%99%CE%94%CE%99%CE%91-%CE%A9%CE%94%CE%99%CE%9A%CE%91%20%CE%A0%CE%A4%CE%97%CE%9D%CE%91-%CE%91%CE%9E%CE%95%CE%A3%CE%9F%CE%A5%CE%91%CE%A1%20%CE%96%CE%A9%CE%A9%CE%9D-%CE%A4%CE%91%20%CE%91%CE%97%CE%94%CE%9F%CE%9D%CE%99%CE%91%20%CE%A3%CE%A0%CE%91%CE%A1%CE%A4%CE%97-6-large.jpg") no-repeat;background-size: 100%;'>
+
+            </div>
+        </aside>
+
+    </main>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+

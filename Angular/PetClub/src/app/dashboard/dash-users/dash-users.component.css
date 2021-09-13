@@ -1,0 +1,243 @@
+#dashboard-pages-container{ 
+  width: calc(100% - 80px);
+  margin-top: 30px;
+    display: block;  
+  }
+
+#dashboard-pages-container{ 
+    width: calc(100% - 80px);
+    margin-top: 30px;
+      display: block;  
+    }
+    
+
+#dashboard-pages-container{ 
+  width: calc(100% - 80px);
+  margin-top: 30px;
+    display: block;  
+  }
+
+  #mid{
+    padding: 15px;
+    width:100% ;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(218, 208, 208);
+    border-radius: 5px;
+    max-height: 900px;
+  }
+
+  #dashboard-pages-container #mid #search-div #add-user i{
+  font-size: 23px;
+  width: 30px;
+  float: left;
+}
+
+#dashboard-pages-container #search-div{
+  width: 100%;
+  height: 50px;
+}
+#dashboard-pages-container #search-div #search-bar{ 
+  border: none;
+  width: 300px;
+  height: 30px;
+}
+#dashboard-pages-container #search-div  i:hover{
+  cursor: pointer;
+}
+#dashboard-pages-container #search-div #search-owner{
+  border: none;
+  width: 350px;
+  height: 30px;
+  float: right;
+}
+#dashboard-pages-container #search-div #search-owner #search-owner-input{
+  border: none;
+  width: 260px;
+  height: 30px;
+  float: left;
+}
+#dashboard-pages-container #search-div #search-owner  .button{
+  border: none;
+  background-color: rgb(235, 235, 235);
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  float: right;
+  margin-right: 10px;
+}
+#dashboard-pages-container #search-div #search-owner  .button:hover{
+  background-color: rgb(221, 220, 220);
+  cursor: pointer;
+}
+#dashboard-pages-container #search-div #search-bar:focus{
+  outline: none;
+}
+#dashboard-pages-container #search-div #add-user{
+  cursor: pointer;
+  display: block;
+  float: right;
+  padding-right: 20px;
+}
+#dashboard-pages-container #add-icon{
+  cursor: pointer;
+  float: right;
+  width: 25px;
+  height:25px;
+}
+#dashboard-pages-container  #mid #mid-table{
+    width: 100%;
+    max-height: 500px;
+    overflow: auto auto;
+}
+#dashboard-pages-container  #mid #mid-table::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#dashboard-pages-container  #mid #mid-table::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#dashboard-pages-container  #mid #mid-table::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(var(--first-color)))
+}
+#dashboard-pages-container  #mid #mid-table table{
+    vertical-align: center;
+    font-family: var(--default-font-family);
+    font-size: large;
+    width: 100%;
+    height: 100%;
+    overflow: none auto;
+    border-spacing: 0px;
+  }
+  #dashboard-pages-container #mid-table table thead {
+    text-align: left;
+    width: auto;
+    height: 50px;
+    background-color: var( --first-color-blur);
+    color: white;
+  }
+#dashboard-pages-container #mid-table div:nth-child(odd){
+  display: inline;
+}
+#dashboard-pages-container #mid-table tbody tr td i{
+    font-size:  20px;
+}
+#dashboard-pages-container #mid-table tbody tr td:hover{
+  cursor: pointer; 
+}
+
+#dashboard-pages-container #mid-table table th:first-child{
+    border-top-left-radius: 8px ;
+}
+#dashboard-pages-container #mid-table table th:last-child{
+  border-top-right-radius: 8px ;
+}
+#dashboard-pages-container #mid-table table tr:last-child td:first-child{
+  border-bottom-left-radius: 8px ;
+}
+#dashboard-pages-container #mid-table table tr:last-child td:last-child{
+  border-bottom-right-radius: 8px ;
+}
+
+#dashboard-pages-container #mid-table table tbody{
+  vertical-align: center;
+}
+#dashboard-pages-container #mid-table table td,th{
+  line-height: 40px;
+    padding: 5px;
+
+ 
+}
+#dashboard-pages-container #mid-table table td:nth-child(1){
+  text-align: center;
+}
+
+#dashboard-pages-container #mid-table table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#dashboard-pages-container #mid-table table td img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto;
+}
+#dashboard-pages-container #mid-table table .user-form-action{
+  text-align: center;
+}
+
+
+#mid-down{
+  width: 100%;
+  height: 1000px;
+  display: block;
+  }
+  #close-window{
+    color: var( --first-color-blur);
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+    float: right;
+}
+#close-window:hover{
+    cursor: pointer;
+    color:  red;
+}
+
+  @media screen and (max-width:1360px){
+    #mid{
+      margin: 0px;
+    }
+  }
+  @media screen and (max-width:960px){
+    #mid{
+      width: 600px;
+      overflow: hidden;
+    }
+    #mid #mid-table{
+      border-spacing: 0px;    
+      overflow: auto auto;
+    }
+    #search-div input{
+      width: 20px;
+    }
+  }
+  @media screen and (max-width:500px){
+    #mid{
+      margin-top: 20px;
+      float: left;
+      width: 380px;
+      overflow: hidden;
+    }
+    #mid #mid-table{
+   
+      width: 100%;
+      overflow: auto auto;
+    }
+    #mid #mid-table table{
+      border-spacing: 0px;    
+    overflow: auto auto;
+    }
+    #mid-down{
+      width: 300px;
+      display: block;
+      float: left;
+    }
+    #close-window{
+      margin-top: 150px;
+  }
+
+
+  }
+ 

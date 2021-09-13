@@ -1,0 +1,415 @@
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: white;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+ #history-container{
+    margin-top: 50px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(218, 208, 208);
+    border-radius: 5px;
+    height: 500px;
+
+}
+ #history-container #history-pet-table-div{
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 20px;
+    float: left;
+  
+}
+
+   #history-container #history-title{
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    color: var(--first-color);
+    border-bottom: 1px solid var(--first-color);
+}
+ #history-container #history-pet-table-div #dropdown-table{
+    width: calc(100% - 50px);
+    height: 430px;
+    overflow: auto auto;
+}
+  #history-container #history-pet-table-div #dropdown-table::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+   #history-container #history-pet-table-div #dropdown-table::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+   #history-container #history-pet-table-div #dropdown-table::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(var(--first-color)))
+}
+
+   #history-container #history-pet-table{
+    vertical-align: center;
+    font-family: var(--default-font-family);
+    font-size: large;
+    width: 100% ;
+    height: 100%;
+  }
+   #history-container  #history-pet-table div:nth-child(odd){
+  display: inline;
+}
+
+   #history-container  #history-pet-table th:first-child{
+    border-top-left-radius: 8px ;
+}
+  #history-container  #history-pet-table th:last-child{
+  border-top-right-radius: 8px ;
+}
+   #history-container  #history-pet-table tr:last-child td:first-child{
+  border-bottom-left-radius: 8px ;
+}
+   #history-container  #history-pet-table tr:last-child td:last-child{
+  border-bottom-right-radius: 8px ;
+}
+
+   #history-container  #history-pet-table tbody{
+  vertical-align: top;
+
+}
+  #history-container  #history-pet-table th{
+  background-color: white;
+  color: var(--first-color);
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  padding: 5px;
+}
+  #history-container  #history-pet-table td{
+    text-align: center;
+    line-height: 40px;
+}
+   #history-container  #history-pet-table td:nth-child(1){
+  text-align: center;
+}
+  #history-container  #history-pet-table thead {
+    width: auto;
+    border-bottom: 1px solid gray;
+}
+   #history-container  #history-pet-table tr:nth-child(even){
+    background-color:white ;
+    color: var(--first-color);
+}
+   #history-container  #history-pet-table tr:nth-child(odd) {
+    background-color: var(--first-color);
+    color: white;
+}
+
+  #caracter-pet-div{
+width: 45%;
+float: right;
+}
+  #caracter-pet-div #description-caracter p{
+    width: 100%;
+    height: 430px;
+    overflow: auto auto;
+}
+  #caracter-pet-div #description-caracter p::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+    #caracter-pet-div #description-caracter p::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+    #caracter-pet-div #description-caracter p::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(var(--first-color)))
+}
+  #history-container #caracter-title{
+    width: calc(100% - 50px);
+    color: var(--first-color);
+    margin-top: 15px;
+    border-bottom: 1px solid var(--first-color);
+
+}
+  #history-container #description-caracter{
+    width: calc(100% - 50px);
+    font-family: var(--default-font-family);
+    font-size: large;
+    height: 80%;
+    background-color: white;
+}
+
+   #examination-pet-form{
+    font-family: var(--default-font-family);
+    font-size: large;
+    margin-top: 50px;
+    width: 100%;
+    height: 500px;
+}
+
+  #examination-pet-form #diagnosis-form{
+    width:100%;
+    height: 100%;
+   
+}
+
+   #examination-pet-form #type-of-diagnosis{
+    width: calc(100% - 200px);
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 100px;
+    
+}
+   #examination-pet-form #type-of-diagnosis #exam-img-div{
+    padding-right: 0px;
+    width: 25%;
+    display: inline-block;
+
+    float: left;
+}
+   #examination-pet-form #type-of-diagnosis #exam-img-div img{
+    margin-right: 50px;
+    float: right;
+}
+   #examination-pet-form #type-of-diagnosis #container-diagnosis-date{ 
+    width: 30%;
+    display: inline-block;
+ 
+    
+}
+  #examination-pet-form #type-of-diagnosis #container-diagnosis-date #type-of-examination{
+    width: 100%;
+    
+}
+   #examination-pet-form #type-of-diagnosis #container-diagnosis-date #type-of-examination select{
+    width: 100%;
+    height: 40px;
+    font-family: var(--default-font-family);
+    font-size: medium;
+
+}
+
+ #examination-pet-form #type-of-diagnosis #container-diagnosis-date #exam-date{
+    width: 100%;
+    padding-top: 45px;
+
+}
+ #examination-pet-form #type-of-diagnosis #container-diagnosis-date #exam-date input{
+
+    width: 100%;
+    height: 40px;
+    font-family: var(--default-font-family);
+    font-size: medium;
+  
+}
+
+   #examination-pet-form #type-of-diagnosis #container-diagnosis-date #exam-date #from{
+    width: 100%;
+    float: left;   
+    padding-bottom: 45px;
+}
+
+
+  #examination-pet-form #type-of-diagnosis #container-diagnosis-date #exam-date #until{ 
+    width: 100%;
+    float: right;
+    padding-bottom: 45px;
+}
+   #examination-pet-form #text-diagnosis{
+    padding-top: 0;
+    width: 39%;
+    float: right;
+    display: inline-block;
+}
+  #examination-pet-form #text-diagnosis label{
+    width: 100%;
+}
+   #examination-pet-form #text-diagnosis textarea{
+    width: 100%;
+    height:265px;
+}
+  #examination-pet-form #text-diagnosis input{
+    font-size: x-large;
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    background-color: var(--first-color-blur);
+    color:white;
+}
+#examination-pet-form #text-diagnosis input:hover{
+  background-color: var(--first-color);
+  color:black
+}
+#pet-history-content-body{
+    width: 100%;
+   height: 100%;
+    float: left;
+}
+#pet-history-content-body #table{
+    width: 100%;
+}
+#table table{
+    width:100%;
+    border-spacing: 0px;
+}
+#pet-history-content-body #table #table-body{
+    max-height: 370px;
+    overflow:auto auto;
+}
+/* width */
+#pet-history-content-body #table #table-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-track {
+    background: white; 
+  }
+   
+  /* Handle */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-thumb {
+    background: var(--first-color-blur); 
+  }
+  
+  /* Handle on hover */
+  #pet-history-content-body #table #table-body::-webkit-scrollbar-thumb:hover {
+    background: var(--default-font-color); 
+  }
+#pet-history-content-body #table #table-body table{
+    min-width: 500px;
+}
+#table table tr{
+    cursor: pointer;
+    font-weight: bold;
+}
+#table table tr th{
+    background-color: white;
+    border-color: white;
+    color: var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 30px;
+    border-bottom: 2px solid var(--first-color);
+}
+#table #table-body table tr.always-shown{
+    /* margin-top: 10px; */
+    height: 30px;
+}
+#table #table-body table tr.description{
+    font-weight: normal;
+    font-size: 22px;
+}
+
+#table #table-body table tr.always-shown:nth-child(4n+4){
+    color:var(--default-font-color);
+    background-color: white;
+}
+#table #table-body table tr.always-shown:nth-child(4n+2){
+    background-color: var(--first-color);
+    color:white;
+}
+#table #table-body table tr.description:nth-child(4n+1){
+    color:var(--default-font-color);
+    background-color: white;
+}
+#table #table-body table tr.description:nth-child(4n+3){
+    background-color: var(--first-color);
+    color:white;
+}
+
+#table #table-body table tr td{
+    text-align: center;
+    /* border-top: 2px solid white ; */
+    height: 40px;
+}
+#table #table-body table tr.description td{
+    text-align: left;
+    padding: 10px;
+    padding-left: 20px;
+    min-height: 40px;
+}
+
+@media screen and (max-width: 1230px){
+       #history-container{
+        box-shadow: none;
+    }
+      #examination-pet-form #type-of-diagnosis #exam-img-div{
+        width: 100%;
+        padding: 0px;
+        display:block;
+    }
+      #examination-pet-form #type-of-diagnosis #exam-img-div img{
+        /* margin-left: 200px; */
+        margin-bottom: 30px;
+        float: left;
+    }
+     #examination-pet-form #type-of-diagnosis #container-diagnosis-date{
+        margin-top: 30px;
+        width: 100%;
+        display: block;
+    }
+       #examination-pet-form #text-diagnosis{
+        padding-top: 0;
+        width: 100%;
+        display: block;
+    }
+    #pet-history-content-body{
+        margin-top: 50px;
+        width: 100%;
+        height: 100%;
+        float: left;
+    }
+       #history-container #history-pet-table-div{
+        width: 100%;
+        /* height: 500px; */
+        display: block;
+        margin-top: 15px;
+        margin-left: 20px;
+    }
+      #history-container #history-pet-table-div #table table tbody tr th{
+        font-size: large;
+    }
+        #caracter-pet-div{
+        width: 100%;
+        /* display: inline-block; */
+        /* float: right; */
+        }
+}
+@media screen and (max-width: 600px){
+       #examination-pet-form #text-diagnosis textarea{
+        height: 200px;
+    }
+    #pet-history-content-body{
+        margin-top: 120px;
+
+    }
+}
+
+

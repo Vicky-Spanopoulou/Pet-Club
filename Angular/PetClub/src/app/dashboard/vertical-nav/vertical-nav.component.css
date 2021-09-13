@@ -1,0 +1,163 @@
+
+.shown{
+    display: block !important ;
+  }
+
+  #navbar-vertical{
+    position: fixed;
+    width: 60px;
+    transition: 0.5s;
+    height: 100%;
+    background-color: var(--navbar-color);
+    z-index: 10;
+  }
+  #navbar-vertical:hover{
+      width: 250px;
+  }
+  #navbar-vertical #navbar-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--navbar-color);
+    transition: 0.5s;
+  }
+  #navbar-vertical #navbar-list li{
+    height: 50px;
+  }
+  #navbar-vertical #navbar-list li:hover span{
+    cursor: pointer;
+    color: var(--logo-backgournd-color);
+  }
+
+  #navbar-vertical #navbar-list li a{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: inline;
+    color: white;
+    line-height: 50px;
+    text-decoration: none;
+  }
+  #navbar-vertical #navbar-list li a:hover{
+    color: var(--logo-backgournd-color);
+  }
+  
+  
+  #navbar-vertical ul li a .icon-navbar{
+    display: inline-block;
+    width: calc(100% - 70% - 30px);
+    line-height: 30px;
+    height: 40px;
+    padding-left: 20px;
+  
+  }
+  #navbar-vertical ul li a .title-navbar{
+    display: none;
+    overflow: hidden;
+    line-height: 30px;
+    width: calc(100% - 20% - 30px);
+    height: 40px;
+    padding-left: 15px;
+  }
+  #navbar-vertical:hover #navbar-list li a .title-navbar{
+    overflow: visible;
+    display: inline;
+  }
+  #navbar-vertical #navbar-list li:hover a .notification-navbar{
+    background-color: red;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 15px;
+    display: inline-block;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    
+  }
+  #navbar-vertical #navbar-list li a .notification-navbar{
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin-left: 19px;
+    border-radius: 50%;
+    font-size: 15px;
+    display: inline-block;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+  }
+  #responsive-button{
+    align-items : center;
+    display: none;
+    color: white;
+    font-size: 30px;
+  }
+  
+  #navbar-vertical #navbar-list li a img{
+  display: inline;
+  width: 10%;
+  height: 100%;
+  width: 55px;
+  border-radius: 50%;
+  float: left;
+  
+  margin-right: 10px;
+  margin-top: 5px;
+  }
+  #navbar-vertical li:hover{
+    background-color: white;
+    border-top-left-radius: 50px 50px  ;
+    border-bottom-left-radius: 50px 50px  ;
+  }
+
+  @media screen and (max-width:500px){
+
+      #navbar-vertical:hover{
+        width: 250px;
+    }
+    #navbar-vertical:hover ul li a .title-navbar{
+      padding: 0;
+      display: block;
+      float: right;
+    }
+    #navbar-vertical{
+        width: 40px;
+        position: fixed;
+      }
+      #navbar-vertical #navbar-list{
+        display: block; 
+        width: 100%;
+        top: 40px;
+        left: 0px;
+      }
+
+      #navbar-vertical ul li a .icon-navbar{
+        width: 10%;
+        display: block;
+        float: left;
+        padding-left: 10px;
+        margin-right: 0px!important;
+      }
+
+ 
+ 
+      #navbar-vertical #navbar-list li a .title-navbar{     
+        display: none; 
+      }
+
+      #navbar-vertical #navbar-list li a .notification-navbar{
+      position: absolute;
+      margin-left: 10px;
+      } 
+      #responsive-button{
+        padding-left: 6px;
+      }
+     
+      #responsive-button{
+        display: inline-block;
+      } 
+  
+}

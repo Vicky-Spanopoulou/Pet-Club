@@ -1,0 +1,232 @@
+<header>
+        <app-front-navbar></app-front-navbar>
+    </header>
+
+    <main>
+        <section></section>
+
+        <section>
+
+            <div class="box-container shadow">
+                <div class="box-header">
+                    <span class="header">
+                        Shopping Cart
+                    </span>
+                    <hr>
+                </div>
+                <div class="box-body">
+                    <div class="box-row">
+                        <div class="box-title">Subscription: </div>
+                        <div class="box-value">{{choosenSubscription.name}}</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="box-title">From: </div>
+                        <div class="box-value">{{now | date:'dd-MM-yyyy'}}</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="box-title">Duration Days: </div>
+                        <div class="box-value">{{choosenSubscription.duration}}</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="box-title">Price: </div>
+                        <div class="box-value">{{choosenSubscription.price}}$</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="billing-details shadow">
+                <div class="billing-header">
+                    <span class="header">
+                        Invoice Details
+                    </span>
+                    <span (click)="toggleEditForm()" class="edit-buttons" id="edit"><i class="fas fa-edit"></i></span>
+                    <span (click)="cancelEdit()" class="edit-buttons hidden" id="cancel"><i class="fas fa-window-close"></i></span>
+                    <hr>
+                </div>
+                <div class="billing-body">
+                   <form class="properties_user_from"   #f="ngForm" (submit)="f.form.valid && submitInvoiceForm()"> 
+
+
+                        <div class="form-group">
+                            <label class="input-label" for="companyName">Company Name :</label>
+                            <input #name="ngModel" class="disabled-input inputs" required type="text" name="cName" id="cName-doc" [(ngModel)]="invoiceDetailsForm.companyName"  />
+                            <div *ngIf="name.errors && f.submitted">
+                                <div *ngIf="name.errors.required" class="error-msg">
+                                    Company Name is required</div>
+                                <div *ngIf="name.errors.minlength" class="error-msg">
+                                    Company must be at least 3 characters
+                                </div>
+                                <div *ngIf="name.errors.maxlength" class="error-msg">
+                                    Company must be at most 25 characters
+                                </div>
+                                
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="vat_number">VAT number :</label>
+                            <input maxlength="11" minlength="9" #vat="ngModel" class="disabled-input inputs" required type="text" name="vat_number" id="vat_number" [(ngModel)]="invoiceDetailsForm.vatNumber" >
+                            <div *ngIf="vat.errors && f.submitted">
+                                <div *ngIf="vat.errors.required" class="error-msg">
+                                    Vat Number is required</div>
+                                <div *ngIf="vat.errors.minlength" class="error-msg">
+                                    Vat Number must be  11 characters
+                                </div>
+                                <div *ngIf="vat.errors.maxlength" class="error-msg">
+                                    Vat Number must be  11 characters
+                                </div>
+                                
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="confPass">Public Financial Service :</label>
+                            <input minlength="3" maxlength="25" #doy="ngModel" class="disabled-input inputs" pattern="^[a-zA-Z ]*$" required type="text" name="pfs" id="pfs" [(ngModel)]="invoiceDetailsForm.financialService" >
+                            <div *ngIf="doy.errors && f.submitted">
+                                <div *ngIf="doy.errors.required" class="error-msg">
+                                    Vat Number is required</div>
+                                <div *ngIf="doy.errors.minlength" class="error-msg">
+                                    Vat Number must be at least 3 characters
+                                </div>
+                                <div *ngIf="doy.errors.maxlength" class="error-msg">
+                                    Vat Number must be at most 25 characters
+                                </div>
+                                
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="">Address :</label>
+                            <input class="disabled-input inputs" required type="text" name="address" id="address-doc"  [(ngModel)]="invoiceDetailsForm.street" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="city1">City :</label>
+                            <select #city="ngModel" class="disabled-input inputs" name="city" id="city1" [(ngModel)]="invoiceDetailsForm.city" required>
+                                <option value="" disabled selected>Choose your City</option>
+                                <option [value]="city.name" *ngFor="let city of cityCategories" selected>{{city.name}}</option>
+                            </select>
+                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            <div  *ngIf="city.errors && f.submitted">
+                                <div *ngIf="city.errors.required" class="error-msg">City is required</div>                 
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="postal">Postal Code :</label>
+                            <input #postalCode="ngModel" pattern="[0-9]+" class="disabled-input inputs" type="text" name="postal" id="postal" maxlength="5" minlength="5" [(ngModel)]="invoiceDetailsForm.postalCode" required>
+                            <div *ngIf="postalCode.errors && f.submitted">
+                                <div *ngIf="postalCode.errors.minlength" class="error-msg">
+                                  Please enter a valid postalCode
+                                </div>
+                                <div *ngIf="postalCode.errors.maxlength" class="error-msg">
+                                  Please enter a valid postalCode
+                                </div>
+                                <div *ngIf="postalCode.errors.pattern" class="error-msg">
+                                  Please enter a valid postal xode
+                                </div>
+                              </div>
+                        
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="phone">Phone :</label>
+                            <input #phone="ngModel" class="disabled-input inputs" type="text" name="phone" id="phone-doc" [(ngModel)]="invoiceDetailsForm.phone" required>
+                            <div *ngIf="phone.errors && f.submitted">
+                                <div *ngIf="phone.errors.minlength" class="error-msg">
+                                  Please enter a valid phone number
+                                </div>
+                                <div *ngIf="phone.errors.maxlength" class="error-msg">
+                                  Please enter a valid phone number
+                                </div>
+                                <div *ngIf="phone.errors.pattern" class="error-msg">
+                                  Please enter a valid phone number
+                                </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-label" for="email">Email :</label>
+                            <input type="email" class="disabled-input inputs" name="email" [(ngModel)]="invoiceDetailsForm.companyEmail" required email
+                            #email="ngModel" />
+                            <div  *ngIf="email.errors && f.submitted">
+                                <div *ngIf="email.errors.required" class="error-msg">Email is required</div>
+                                <div *ngIf="email.errors.email" class="error-msg">
+                                  Email must be a valid email address
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Save Changes" class="submit disabled-input inputs hidden" name="submit"
+                                id="submit" />
+                        </div>
+
+                    </form> 
+                </div>
+            </div>
+
+            <div class="box-container shadow">
+                <div class="box-header">
+                    <span class="header">
+                        Agreement
+                    </span>
+                    <hr>
+                </div>
+                <div class="box-body">
+                    <div class="box-option">
+                        <div class="check"><input type="checkbox" name="terms" [checked]="checkBox1" (click)="toggleCheckBox1()"></div>
+                        <div class="box-title">I agree with <a href="">Terms And Conditions</a></div>
+                    </div>
+                    <div class="box-option">
+                        <div class="check"><input type="checkbox" name="terms" [checked]="checkBox2" (click)="toggleCheckBox2()" ></div>
+                        <div class="box-title">All billing Details are mine</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div *ngIf="purchaseMethod" class="box-container shadow" >
+                <div class="box-header">
+                    <span class="header">
+                        Purchase Method
+                    </span>
+                    <hr>
+                </div>
+                <div class="box-body">
+                    <div class="box-selection">
+                        <div class="radioButtons">
+                            <div class="radioButton">
+                                <input type="radio" id="paypal" 
+                                [(ngModel)]="purchaceMethod" name="purchase" 
+                                value="paypal" (change)="choosePurchace($event)">
+                                <label for="paypal">PayPal / Credit Card</label><br>
+                            </div>
+                            <div class="radioButton">
+                                <input type="radio" id="bankTransfer" 
+                                [(ngModel)]="purchaceMethod" name="purchase" 
+                                value="bankTransfer" (change)="choosePurchace($event)">
+                                <label for="bankTransfer">Bank Transfer</label><br>
+                            </div>
+                        </div>
+                        <div class="purchase-container">
+                            <div *ngIf="showPaypal" id="paypal-container">
+                                <app-paypal [subscription] = 'choosenSubscription'></app-paypal>
+                            </div>
+                            <div *ngIf="showBankTransfer" id="bank-container">
+                                <div id="info">
+                                    please transfer $ 200 to the following bank account: <br>
+                                    RF25848-54812-25896-73468 <br>
+                                    and write your email as a "reason"
+                                </div>
+                                <div id="buy-bankTransfer" (click)="onBankTransfer()">Bank Transfer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside></aside>
+    </main>
+
+
+
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+

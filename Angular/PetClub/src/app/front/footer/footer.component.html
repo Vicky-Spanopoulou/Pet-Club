@@ -1,0 +1,60 @@
+<footer>
+    <div class="content">
+        <div class="left box">
+            <div class="upper">
+                <div class="topic">About us</div>
+                <p>Our team Chris, Nasos, Nick and Vicky made this page for our final project in the 
+                    Coding Bootcamp CB13 by 
+                    <span><a id="pc-link" href="https://peoplecerteducation.org/" target="_blank">PeopleCert Education</a></span>.</p>
+            </div>
+            <div class="lower">
+                <div class="topic">Contact us</div>
+                <div class="phone">
+                    <a href="#"><i class="fas fa-phone-volume"></i>Give us a call</a>
+                </div>
+                <div class="email">
+                    <a href="#"><i class="fas fa-envelope"></i>petapp.cb13@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="middle box">
+            <div class="topic">Pet Club</div>
+            <div><a routerLink="/home" >Home</a></div>
+            <div><a routerLink="/about-us" >About Us</a></div>
+            <div><a routerLink="/register" >Login/Register</a></div>
+            <div><a routerLink="/find-service" >Find a Service</a></div>
+            <div><a routerLink="/lost-found" >Lost & Found</a></div>
+            <div><a routerLink="/terms-policy" >Terms & Conditions</a></div>
+        </div>
+        <div class="right box">
+            <div class="topic">Subscribe to our newsletter</div>
+            <form #f="ngForm" (submit)="f.form.valid && onSubmit()">
+                <input 
+                type="text" 
+                placeholder="Enter email address"
+                [(ngModel)] = "emailForm.message"
+                name="message"
+                email
+                >
+                <input type="submit" name="" value="Send">
+                <div class="media-icons ">
+                    <a class="animate__animated animate__bounceInRight facebook-icon" href="#"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="animate__animated animate__bounceInRight instagram-icon" href="#"><i
+                            class="fab fa-instagram"></i></a>
+                    <a class="animate__animated animate__bounceInRight twiter-icon" href="#"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="animate__animated animate__bounceInRight youtube-icon" href="#"><i
+                            class="fab fa-youtube"></i></a>
+                    <a class="animate__animated animate__bounceInRight linkedin-icon" href="#"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a class="animate__animated animate__bounceInRight github-icon" href="#"><i
+                            class="fab fa-github"></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <p>Copyright © 2021 <a href="#">FantasticFour</a> All rights reserved</p>
+    </div>
+</footer>

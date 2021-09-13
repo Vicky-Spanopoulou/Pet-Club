@@ -1,0 +1,68 @@
+<app-reminder-form #reminderForm [editReminder]="editRem"></app-reminder-form>
+
+<div
+  id="create-pet-ad"
+  class="full-screen flex-container-center"
+  (click)="this.openModal()"
+  *ngIf="modal"
+></div>
+<div id="reminder-content" class="profile-div-container small-shadow">
+  <div class="content-label-row">
+    <h3>My Reminder</h3>
+    <div class="add-button">
+      <div class="newButton" (click)="this.openModal()">
+        <i class="fas fa-plus"></i>
+        <span>New</span>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <!-- REMINDER BODY -->
+  <div
+    *ngIf="filteredReminders.length > 0"
+    id="reminder-content-body"
+    class="content-body"
+  >
+    <div id="reminder-container">
+      <div
+        class="reminder-item"
+        *ngFor="let reminder of filteredReminders; let i = index"
+      >
+        <span class="ver-burger" (click)="showUndoMenu(i)"
+          ><i class="fas fa-ellipsis-v"></i>
+          <div
+            class="edit-menu shadow"
+            [attr.id]="'undoMenu' + i"
+            *ngIf="showMenu === i"
+          >
+            <div class="menu-item" (click)="editReminder(reminder)">
+              <span class="item-value">Edit</span>
+            </div>
+            <div class="menu-item"><span class="item-value" (click)="onDeleteRem(reminder)">Delete</span></div>
+          </div></span
+        >
+        <span class="reminder-text" [innerHTML]="reminder.info" ></span>
+        <!-- {{ reminder.info }} [innerHTML]="reminder.info" -->
+
+        <!-- checkbox  -->
+        <span class="reminder-checkbox"
+          ><input
+            type="checkbox"
+            name="reminder {{ reminder.id }}"
+            [value]="reminder.done"
+            [checked]="reminder.done"
+            (click)="reminderChangeCondition(reminder)" />
+             <span class="checkmark"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="filteredReminders.length <= 0"
+    id="reminder-content-body"
+    class="content-body"
+  >
+    <label id="empty-error">You have no Reminders yet!!!</label>
+  </div>
+</div>

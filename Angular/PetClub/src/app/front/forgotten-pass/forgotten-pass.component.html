@@ -1,0 +1,26 @@
+<div>
+
+  <header>
+    <app-front-navbar></app-front-navbar>
+  </header>
+
+  <!-- Forgotten password -->
+  <div class="pass-div">
+    <h1>Enter your email</h1>
+    
+
+    <form (submit)="resetPassword()">
+      <div class="input-email">
+        <input class="enter-email" type="email" name="" id="" email placeholder="Enter your email here!"
+          [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="input-reset">
+        <input class="submit-reset" type="submit" value="Reset Password">
+      </div>
+    </form>
+    <h3 class="mail-check">Check your email for your new password!</h3>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

@@ -1,0 +1,48 @@
+
+        <header>
+            <app-horizontal-nav></app-horizontal-nav>
+        </header>
+    <main>
+        <section>
+            <app-vertical-nav></app-vertical-nav>
+        </section>
+        <div id="dashboard-pages-container">
+            <div id="mid">
+                <div id="search-div">
+                    <input   id="search-bar" [(ngModel)]="searchBusiness"  (input)="searchBusinessByName()" type="text" placeholder="Search Business Category.."><i
+                        class="fas fa-search"></i>
+                </div>
+                <div id="mid-left">
+                    <ul>
+                        <li (click)='filterStatus("All")' ><span><i class="far fa-bell"></i></span><span>All</span></li>
+                        <li (click)='filterStatus("Published")' ><span><i class="fab fa-product-hunt"></i></span><span>Published</span></li>
+                        <li (click)='filterStatus("Unpublished")' ><span><i class="fas fa-lock"></i></span><span>Unpublished</span></li>
+                        <li (click)='filterStatus("Unchecked")' ><span><i class="fas fa-check-double"></i></span><span>Unchecked</span></li>
+                        <li (click)='filterStatus("Unpaid")' ><span><i class="fas fa-bell"></i></span><span>Unpaid</span></li>
+                    </ul>
+                </div>
+                <div id="mid-table">
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Company Name</th>
+                            <th>Category</th>
+                            <th>State</th>
+                        </thead>
+                        <tbody *ngIf="providedBusinesses && providedBusinesses.length">
+                            <tr  *ngFor="let business of providedBusinesses" (click)="editBusinessForm(business)">
+                                <td><img src="{{business.imgLogo?business.imgLogo:'../../../assets/images/BusinessLOGO.png'}}"></td>
+                                <td>{{business.name}}</td>
+                                <td>{{business.businessCategory?business.businessCategory.name:''}}</td>
+                                <td>{{business.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="mid-down"> 
+                <div id="close-window" *ngIf="editPageForm" (click)="onCloseForm()"><i class="fas fa-times"></i></div>
+                <app-dash-pages-form *ngIf="editPageForm" [dtoBusiness]="businessForm" (notify)="updateTable()" ></app-dash-pages-form>  
+            </div>
+        </div>
+    </main>

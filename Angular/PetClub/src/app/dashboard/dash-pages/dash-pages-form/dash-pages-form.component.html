@@ -1,0 +1,252 @@
+<div class="main-forms">
+  <div class="container">
+    <div class="signup-content">
+      <div class="signup-form">
+        <div class="page-header">
+          <h1><span> Store Registration Form </span></h1>
+        </div>
+
+        <div class="form">
+          <form method="POST" class="register-form" id="register-form" (ngSubmit)="submitBussForm()" #regForm="ngForm">
+            <div class="form-group">
+              <div class="profile-pic-div" id="profile-pic-div-store">
+                <img [src]="
+                    dtoBusiness.imgBackgroundURL
+                      ? dtoBusiness.imgBackgroundURL
+                      : '../../../../assets/images/BusinessPageBackground.png'
+                  " id="photo-store" class="photo" />
+                <input type="file" id="file-store" class="file" (change)="selectImgBackground($event)" />
+                <label for="file-store" id="uploadBtn-store" class="uploadBtn">Choose Photo</label>
+              </div>
+            </div>
+
+            <!-- photo -->
+            <div class="form-group">
+              <div class="profile-pic-div" id="profile-pic-div-store-logo">
+                <img [src]="
+                    dtoBusiness.imgLogoURL
+                      ? dtoBusiness.imgLogoURL
+                      : '../../../../assets/images/BusinessLOGO.png'
+                  " id="photo-store-logo" class="photo" />
+                <input type="file" id="file-store-logo" class="file" (change)="selectImgLogo($event)" />
+                <label for="file-store-logo" id="uploadBtn-store-logo" class="uploadBtn">Choose Photo</label>
+              </div>
+            </div>
+
+            <!-- page status -->
+            <div class="form-group">
+              <label for="status">Page Status :</label>
+              <select name="status" id="status" [(ngModel)]="dtoBusiness.status">
+                <option value="" disabled selected>Choose Status</option>
+                <option [value]="status" *ngFor="let status of pageStatus">
+                  {{ status | titlecase }}
+                </option>
+              </select>
+              <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+            </div>
+
+            <!-- company name -->
+            <div class="form-group">
+              <label for="companyName" title="required">Company Name* :</label>
+              <input type="text" name="cName" id="cName-store" [(ngModel)]="dtoBusiness.name" required minlength="3"
+                maxlength="25" #companyName="ngModel" />
+              <div *ngIf="companyName.errors && regForm.submitted">
+                <div *ngIf="companyName.errors.required" class="error-massage">
+                  Company Name is required
+                </div>
+                <div *ngIf="companyName.errors.minlength" class="error-massage">
+                  Company Name must be at least 3 characters
+                </div>
+                <div *ngIf="companyName.errors.maxlength" class="error-massage">
+                  Company Name must be at most 25 characters
+                </div>
+              </div>
+            </div>
+
+            <!-- city -->
+            <div class="form-group">
+              <label for="city" title="required">City* :</label>
+              <select name="city" id="city" [(ngModel)]="dtoBusiness.city" required #city="ngModel">
+                <option value="" disabled selected>Choose City</option>
+                <option [value]="city.name" *ngFor="let city of citiesCategory">
+                  {{ city.name }}
+                </option>
+              </select>
+              <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+              <div *ngIf="city.errors && regForm.submitted">
+                <div *ngIf="city.errors.required" class="error-massage">
+                  Field is required
+                </div>
+              </div>
+            </div>
+
+            <!-- business categories -->
+            <div class="form-group">
+              <label for="business-categories" title="required">Bussines Categories* :</label>
+              <select name="business-categories" id="business-categories" [(ngModel)]="dtoBusiness.businessCategory"
+                required #catBus="ngModel">
+                <option value="" disabled selected>
+                  Choose Bussiness Categorie
+                </option>
+                <option [value]="business.name" *ngFor="let business of businessCategories">
+                  {{ business.name | titlecase }}
+                </option>
+              </select>
+              <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+              <div *ngIf="catBus.errors && regForm.submitted">
+                <div *ngIf="catBus.errors.required" class="error-massage">
+                  Field is required
+                </div>
+              </div>
+            </div>
+
+            <!-- phone -->
+            <div class="form-group">
+              <label for="phone-store" title="required">Phone* :</label>
+              <input pattern="[0-9]+" type="text" name="phone" id="phone-store" required maxlength="10" minlength="10"
+                [(ngModel)]="dtoBusiness.phone" #phone="ngModel" />
+              <div *ngIf="phone.errors && regForm.submitted">
+                <div *ngIf="phone.errors.required" class="error-massage">
+                  Phone is required
+                </div>
+                <div *ngIf="phone.errors.pattern" class="error-massage">
+                  Please enter a valid number
+                </div>
+              </div>
+            </div>
+
+            <!-- email -->
+            <div class="form-group">
+              <label for="email-store" title="required">Email* :</label>
+              <input type="email" name="email" id="email-store" [(ngModel)]="dtoBusiness.email" #mail="ngModel" email
+                maxlength="250" required />
+              <div *ngIf="mail.errors && regForm.submitted">
+                <div *ngIf="mail.errors.required" class="error-massage">
+                  Email is required
+                </div>
+                <div *ngIf="mail.errors.email" class="error-massage">
+                  Please enter a valid number
+                </div>
+                <div *ngIf="mail.errors.maxlength" class="error-massage">
+                  Please enter a valid number
+                </div>
+              </div>
+            </div>
+
+            <!-- some words -->
+            <div class="form-group">
+              <label for="text" title="required">Some Words for your Store :</label>
+              <ngx-editor-menu [editor]="editor" id="editor-menu">
+              </ngx-editor-menu>
+              <ngx-editor class="editor-pet" id="editor-text" [editor]="editor" [(ngModel)]="dtoBusiness.textJson"
+                #behavior="ngModel" [disabled]="false" [placeholder]="'Type here...'" name="text" minHeight="500px"
+                minlength="50" maxlength="500" #sm="ngModel" required></ngx-editor>
+              <div *ngIf="sm.errors && regForm.submitted">
+                <div *ngIf="sm.errors.required" class="error-massage">
+                  This field is required
+                </div>
+                <div *ngIf="sm.errors.minlength" class="error-massage">
+                  Description must have at least 50 characters
+                </div>
+                <div *ngIf="sm.errors.maxlength" class="error-massage">
+                  Description must not be more than 500 characters
+                </div>
+              </div>
+            </div>
+
+            <!-- description -->
+            <div class="form-group">
+              <label for="description">Store Description :</label>
+              <ngx-editor-menu [editor]="editor2" id="editor-menu">
+              </ngx-editor-menu>
+              <ngx-editor class="editor-pet" id="editor-description" [editor]="editor2"
+                [(ngModel)]="dtoBusiness.descriptionJson" #behavior="ngModel" [disabled]="false"
+                [placeholder]="'Type here...'" name="description" minHeight="500px" maxlength="2000"
+                #description="ngModel"></ngx-editor>
+              <div *ngIf="description.errors && regForm.submitted">
+                <div *ngIf="description.errors.maxlength" class="error-massage">
+                  Description must not be more than 20000 characters
+                </div>
+              </div>
+            </div>
+
+            <!-- facebook -->
+            <div class="form-group">
+              <label for="facebook-store">Link Your Facebook :</label>
+              <input type="text" name="facebook" id="facebook-store" minlength="3" maxlength="25"
+                [(ngModel)]="dtoBusiness.facebook" />
+            </div>
+            <div class="form-group">
+              <label for="google-store">Link Your Instagram :</label>
+              <input type="text" name="insta" id="insta-store" minlength="3" maxlength="25"
+                [(ngModel)]="dtoBusiness.instagram" />
+            </div>
+
+            <div class="form-group">
+              <label for="personal-page-store">Link Personal Page :</label>
+              <input type="text" name="personal-page" id="personal-page-store" minlength="3" maxlength="25"
+                [(ngModel)]="dtoBusiness.pageUrl" />
+            </div>
+            <div class="form-group">
+              <label for="address" title="required">Store Address* :</label>
+              <input type="text" name="address" id="address" (keyup)="findStreet()" #street="ngModel" [(ngModel)]="str"
+                [(ngModel)]="dtoBusiness.street" [value]="str" required maxlength="250" />
+              <div *ngIf="street.errors && regForm.submitted">
+                <div *ngIf="street.errors.required" class="error-massage">
+                  This field is required
+                </div>
+                <div *ngIf="street.errors.maxlength" class="error-massage">
+                  Can not be more than 250 characters
+                </div>
+              </div>
+            </div>
+
+            <!-- pc -->
+            <div class="form-group">
+              <label for="postalCode" title="required">Postal Code* :</label>
+              <input type="text" name="postalCode" id="postalCode" [(ngModel)]="dtoBusiness.postalCode" required
+                #ps="ngModel" minlength="5" maxlength="5" />
+              <div *ngIf="ps.errors && regForm.submitted">
+                <div *ngIf="ps.errors.required" class="error-massage">
+                  This field is required
+                </div>
+                <div *ngIf="ps.errors.maxlength" class="error-massage">
+                  Put a valid postal code
+                </div>
+                <div *ngIf="ps.errors.minlength" class="error-massage">
+                  Put a valid postal code
+                </div>
+              </div>
+            </div>
+
+            <!-- latitude -->
+            <div class="form-group">
+              <label for="">latitude</label>
+              <input type="text" name="latitude" id="latitude" disabled #latitude [(ngModel)]="dtoBusiness.latitude"
+                [value]="lat" />
+            </div>
+
+            <!-- longitude -->
+            <div class="form-group">
+              <label for="">longtitude</label>
+              <input type="text" name="longtitude" id="longtitude" disabled #longitude
+                [(ngModel)]="dtoBusiness.longitude" [value]="lng" />
+            </div>
+
+            <!-- map -->
+            <div id="map">
+              <app-map #mapComponent id="map" lat="39.11035094005105" lng="23.263987890625017" zoom="6" width="100%"
+                height="300px" (click)="mapClick($event)">
+              </app-map>
+            </div>
+
+            <!-- submit button -->
+            <div class="form-submit">
+              <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

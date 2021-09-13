@@ -1,0 +1,355 @@
+.disabled-input{
+    pointer-events: none !important;
+    border:none !important;
+    /* for the "select" arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.display-none{
+    display: none !important;
+}
+ .content-label-row{
+    width:100%;
+    height: 40px;
+    line-height:40px;
+    margin-bottom: 7px;
+}
+  .content-label-row h3{
+    color:var(--first-color);
+    font-family: var(--headers-font);
+    font-size: 40px;
+    float: left;
+}
+.content-label-row span{
+    font-size: 30px;
+    float:right;
+    color:var(--first-color);
+    cursor:pointer;
+    margin-left: 20px;
+}
+ .content-label-row span#cancel{
+    color:red;
+}
+  .content-label-row span a{
+    text-transform: none;
+    color: var(--first-color);
+}
+ .content-label-row hr{
+    width:100%;
+    background-color: var(--first-color);
+}
+ .content-body{
+    width: 100%;
+    min-height: 310px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.content-body label{
+    width: 49%;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.content-body label.title{
+    font-family: var(--headers-font);
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--first-color);
+    text-align: right;
+    float: left;
+}
+.content-body label.value{
+    font-family: var(--main-font);
+    font-size: 20px;
+    font-weight: normal;
+    color: var(--default-font-color);
+    text-align: left;
+    float: right;
+}
+.content-body label.info{
+    width: 90%;
+    float: left;
+    font-family: var(--main-font);
+    font-size: 12px;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--default-font-color);
+    text-align: left;
+    margin-top: 40px;
+}
+.content-body label.info a{
+    text-transform: none;
+    color:var(--first-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.properties_user_from{
+    width: 100%;
+}
+.properties_user_from .image-group{
+    width:80%;
+    margin: auto;
+}
+
+.properties_user_from#company-form .image-group{
+    width:100%;
+}
+
+
+.properties_user_from .image-group .profile-pic-div {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--second-color);
+    margin: auto;
+  
+    /* IE 9 */
+    transform: translate(0px, -40px);
+    /* Standard syntax */
+}
+.properties_user_from#company-form .image-group#image-photo .profile-pic-div{
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--second-color);
+    border-radius: 00%;
+    margin:0px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+    /* IE 9 */
+    transform: translate(0px, -40px);
+    /* Standard syntax */
+}
+.properties_user_from#company-form .image-group#image-logo .profile-pic-div{
+    width: 300px;
+    height: 150px;
+    border: 1px solid var(--second-color);
+    border-radius: 0%;
+    margin:0px;
+    margin-bottom: 30px;
+    /* IE 9 */
+    transform: translate(0px, -40px);
+    /* Standard syntax */
+}
+
+.properties_user_from#company-form .image-group#image-photo .photo,
+.properties_user_from#company-form .image-group#image-logo .photo,
+.properties_user_from .image-group #photo {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+.properties_user_from#company-form .image-group .file,
+.properties_user_from .image-group #file {
+    display: none;
+  }
+.properties_user_from#company-form .image-group .uploadBtn,
+.properties_user_from .image-group #uploadBtn {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: var(--second-color);;
+    color: wheat;
+    line-height: 30px;
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+.properties_user_from .form-group{
+    width:80%;
+    margin: auto;
+    min-height: 35px;
+    padding-top: 20px;
+}
+.properties_user_from#company-form .form-group{
+    width:100%;
+  
+}
+
+.properties_user_from .form-group label{
+    display: inline-block;
+    width:44%;
+    height: 35px;
+    line-height: 35px;
+    font-family: var(--headers-font);
+    color:var(--first-color);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}
+.properties_user_from#company-form .form-group label{
+    display: block;
+    width:80%;
+    text-align: left;
+}
+
+
+
+.properties_user_from .form-group select,
+.properties_user_from .form-group input,
+.properties_user_from .form-group textarea{
+    display: inline-block;
+    width: 54%;
+    height: 35px;
+    line-height:35px;
+    border: 1px solid var(--first-color-blur);
+    background-color: white;
+    font-size: 20px;
+    color:var(--default-font-color);
+}
+.properties_user_from#company-form .form-group select,
+.properties_user_from#company-form .form-group input,
+.properties_user_from#company-form .form-group textarea{
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.ck.ck-content.ck-focused{
+    height: 150px !important;
+    border:2px solid var(--first-color-blur) !important;
+}
+
+/* Editors automatic label */
+.ck.ck-label.ck-voice-label{
+    display:none !important;
+}
+
+
+.properties_user_from .form-submit{
+    margin-top: 10px;
+    height: 35px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.properties_user_from .form-submit input{
+    float: right;
+    height: 35px;
+    width: 150px;
+    margin-top: 30px;
+    margin-right: 11%;
+    border: 2px solid var(--first-color);
+    border-radius: 3px;
+    background-color: white;
+    color:var(--first-color);
+    font-size: 17px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.properties_user_from#company-form .form-submit input{
+    margin:0px;
+    margin-top: 30px;
+}
+
+.properties_user_from#company-form .form-submit input:hover,
+.properties_user_from .form-submit input:hover{
+    background-color:var(--first-color); 
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.properties_user_from .form-group input:focus,
+.properties_user_from .form-group select:focus,
+.properties_user_from .form-group textarea:focus {
+  outline: none;
+  box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -o-box-shadow: none !important;
+  -ms-box-shadow: none !important;
+}
+
+#map-tip{
+    font-style: italic;
+    color: var(--default-font-color);
+}
+#map {
+    width: 100% !important;
+    height: 300px!important;
+}
+
+.del_button{
+    width:150px;
+    height: 30px;
+    background-color: white;
+    color: red;
+    font-family: var(--main-font);
+    border:2px solid red;
+    border-radius: 3px;
+    transition: 0.5s;
+    margin:auto;
+    margin-top: 30px;
+    display: block;
+}
+.del_button:hover{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.error-message{
+    width:97%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    border: 4px solid rgb(255, 153, 51);
+    border-radius: 5px;
+    background-color: rgb(255, 153, 51,0.15);
+    padding: 20px;
+    text-align: justify;
+    color: rgb(255, 153, 51);
+    font-weight: bold;
+}
+.error-msg{
+     
+    color: red;
+    font-family: var(--second-font);
+  }
+
+@media screen and (max-width: 580px) {
+    .properties_user_from .form-group{
+        width: 100%;
+    }
+    .properties_user_from .form-group label{
+        width:170px;
+    }
+   
+
+.properties_user_from .form-group select,
+.properties_user_from .form-group input,
+.properties_user_from .form-group textarea{
+    display: inline-block;
+    width: calc(100% - 175px);
+    height: 35px;
+    line-height:35px;
+    border: 1px solid var(--first-color-blur);
+    background-color: white;
+    font-size: 20px;
+    color:var(--default-font-color);
+}
+    
+}
+@media screen and (max-width: 500px) {
+    .properties_user_from .form-group label{
+        width:100%;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .properties_user_from .form-group select,
+    .properties_user_from .form-group input,
+    .properties_user_from .form-group textarea{
+        width: 100%;
+    }
+}
