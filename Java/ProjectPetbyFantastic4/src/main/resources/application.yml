@@ -11,8 +11,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://ra1.anystream.eu:1790/production_pet_club
-    password: Maria179@
-    username: root
+    password: 
+    username: 
   jpa:
     show-sql: true
     hibernate:
