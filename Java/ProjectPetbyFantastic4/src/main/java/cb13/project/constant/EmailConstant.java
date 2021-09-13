@@ -3,7 +3,7 @@ package cb13.project.constant;
 public class EmailConstant {
     public static final String SIMPLE_MAIL_TRANSFER_PROTOCOL = "smtps";
     public static final String USERNAME = "petapp.cb13@gmail.com";
-    public static final String PASSWORD = "cb13fantastic4";
+    public static final String PASSWORD = "";
     public static final String FROM_EMAIL = "petapp.cb13@gmail.com";
     public static final String CC_EMAIL = "";
     public static final String EMAIL_SUBJECT = "Pet Club, - Email Verification";
