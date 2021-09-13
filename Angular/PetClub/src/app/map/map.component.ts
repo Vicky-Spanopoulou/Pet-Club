@@ -46,7 +46,7 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     // Creates the platform for the map
     this.platform = new H.service.Platform({
-      apikey: 'd6EndoN23ZdsY6Aa0r29VadjDTeVx-PACRR7ZIhcq8E',
+      apikey: '',
     });
 
     this.geocodingService = this.platform.getGeocodingService();
