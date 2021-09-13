@@ -144,4 +144,3 @@ The ADMIN role can access only the Admin Dashboard, where one can manage all of 
 This project is a result of teamwork and dedication to our goal.
 We all worked hard and gave our best. Thank you guys!
 
-# Pet-Club
